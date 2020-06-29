@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
+import ReactDatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 import {
   Input,
@@ -74,7 +76,6 @@ const PodcastsPostForm = () => {
               fullWidth
             />
           </Grid>
-
           <Grid item xs={6}>
             <TextField
               name="podcast_mp3"
@@ -86,7 +87,6 @@ const PodcastsPostForm = () => {
               fullWidth
             />
           </Grid>
-
           <Grid item xs={12}>
             <TextField
               name="podcast_description"
@@ -99,7 +99,6 @@ const PodcastsPostForm = () => {
               fullWidth
             />
           </Grid>
-
           <Grid item xs={6}>
             <TextField
               name="podcast_duration"
@@ -110,7 +109,6 @@ const PodcastsPostForm = () => {
               fullWidth
             />
           </Grid>
-
           <Grid item xs={6}>
             <TextField
               name="podcast_image"
@@ -122,7 +120,6 @@ const PodcastsPostForm = () => {
               fullWidth
             />
           </Grid>
-
           <Grid item xs={6}>
             <FormControl variant="outlined" className="MuiFormControl-fullWidth">
               <InputLabel id="demo-simple-select-outlined-label" fullWidth>
@@ -146,7 +143,6 @@ const PodcastsPostForm = () => {
               />
             </FormControl>
           </Grid>
-
           <Grid item xs={6}>
             <FormControl variant="outlined" className="MuiFormControl-fullWidth">
               <InputLabel id="demo-simple-select-outlined-label" fullWidth>
@@ -170,8 +166,7 @@ const PodcastsPostForm = () => {
               />
             </FormControl>
           </Grid>
-
-          <Grid item xs={12}>
+          <Grid item xs={6}>
             <FormControl className={classes.formControl}>
               <InputLabel id="demo-mutiple-chip-label">Chip</InputLabel>
               <Select
@@ -198,6 +193,18 @@ const PodcastsPostForm = () => {
                 ))}
               </Select>
             </FormControl>
+          </Grid>
+          <Grid item xs={6}>
+            <Controller
+              as={ReactDatePicker}
+              control={control}
+              className="MuiFormControl-fullWidth"
+              valueName="selected" // DateSelect value's name is selected
+              onChange={([selected]) => selected}
+              name="podcast_creation_date"
+              placeholderText="Date de création"
+              variant="outlined"
+            />
           </Grid>
 
           <Grid item xs={12}>
