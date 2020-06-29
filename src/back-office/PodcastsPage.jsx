@@ -1,8 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
+import PodcastsPostForm from './PodcastsPostForm';
 
-const PodcastsPage = props => {
-  return <div></div>;
+const PodcastsPage = () => {
+  return (
+    <div>
+      <>
+        <Container>
+          <Paper elevation={2}>
+            <PodcastsPostForm />
+          </Paper>
+        </Container>
+      </>
+    </div>
+  );
 };
 
 PodcastsPage.propTypes = {};

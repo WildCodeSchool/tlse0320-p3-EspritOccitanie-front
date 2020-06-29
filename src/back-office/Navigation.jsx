@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -26,12 +26,6 @@ function TabPanel(props) {
     </div>
   );
 }
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
-};
 
 function a11yProps(index) {
   return {
@@ -77,16 +71,10 @@ export default function VerticalTabs() {
         <Tab label="Progamm" {...a11yProps(4)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <Box my={4}>
-          <Typography variant="h4" component="h1" gutterBottom>
-            Ajouter une nouvelle émission
-          </Typography>
-
-          <PodcastsPage />
-        </Box>
+        Emissions
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <PodcastsPage />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
