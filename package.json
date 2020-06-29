@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
+    "clsx": "^1.1.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-hook-form": "^5.7.2",
+    "react-scripts": "3.2.0",
+    "react-select": "^3.1.0",
+    "yup": "^0.29.1"
   },
   "scripts": {
     "start": "react-scripts start",
