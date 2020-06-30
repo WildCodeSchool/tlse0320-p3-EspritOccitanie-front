@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios';
 
 import {
   Input,
@@ -47,6 +48,44 @@ const MenuProps = {
 };
 
 const PodcastsPostForm = () => {
+  //Get Program request
+  const [program, setProgram] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/program').catch(function(error) {
+        console.log(error.toJSON());
+      });
+      // setProgram(result.data);
+    };
+    fetchData();
+  }, []);
+
+  //Get Category request
+  const [category, setCategory] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/category').catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setCategory(result.data);
+    };
+    fetchData();
+  }, []);
+
+  //Get Animator request
+  const [animators, setAnimators] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/animator').catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setAnimators(result.data);
+    };
+    fetchData();
+  }, []);
+
+  console.log(animator);
+
   const { handleSubmit, register, control } = useForm();
   const classes = useStyles();
   const [personName, setPersonName] = React.useState([]);
@@ -186,7 +225,7 @@ const PodcastsPostForm = () => {
                 )}
                 MenuProps={MenuProps}
               >
-                {names.map(name => (
+                {animators.map(animator => (
                   <MenuItem key={name} value={name}>
                     {name}
                   </MenuItem>
