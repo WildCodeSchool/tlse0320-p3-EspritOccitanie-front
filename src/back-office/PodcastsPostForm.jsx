@@ -48,31 +48,31 @@ const MenuProps = {
 };
 
 const PodcastsPostForm = () => {
-  //Get Program request
-  const [program, setProgram] = useState([]);
+  // Get Program request
+  const [programs, setPrograms] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('/program').catch(function(error) {
         console.log(error.toJSON());
       });
-      // setProgram(result.data);
+      // setPrograms(result.data);
     };
     fetchData();
   }, []);
 
-  //Get Category request
-  const [category, setCategory] = useState([]);
+  // Get Category request
+  const [categorys, setCategorys] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('/category').catch(function(error) {
         console.log(error.toJSON());
       });
-      setCategory(result.data);
+      setCategorys(result.data);
     };
     fetchData();
   }, []);
 
-  //Get Animator request
+  // Get Animator request
   const [animators, setAnimators] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -84,16 +84,13 @@ const PodcastsPostForm = () => {
     fetchData();
   }, []);
 
-  console.log(animator);
-
   const { handleSubmit, register, control } = useForm();
   const classes = useStyles();
   const [personName, setPersonName] = React.useState([]);
 
-  const names = ['Oliver Hansen', 'Van Henry', 'April Tucker', 'Ralph Hubbard'];
-
   const handleChange = event => {
-    setPersonName(event.target.value);
+    let animatorId = event.target.value;
+    setPersonName(animatorId);
   };
 
   const onSubmit = data => {
@@ -195,9 +192,9 @@ const PodcastsPostForm = () => {
                     id="demo-simple-select-outlined"
                     label="Catégorie"
                   >
-                    <MenuItem value={1}>Ecologie</MenuItem>
-                    <MenuItem value={2}>Economie</MenuItem>
-                    <MenuItem value={3}>blabalba</MenuItem>
+                    {categorys.map(category => (
+                      <MenuItem value={category.category_id}>{category.category_name}</MenuItem>
+                    ))}
                   </Select>
                 }
                 name="ro_category_category_id"
@@ -207,7 +204,7 @@ const PodcastsPostForm = () => {
           </Grid>
           <Grid item xs={6}>
             <FormControl className={classes.formControl}>
-              <InputLabel id="demo-mutiple-chip-label">Chip</InputLabel>
+              <InputLabel id="demo-mutiple-chip-label">Animateurs</InputLabel>
               <Select
                 inputRef={register}
                 labelId="demo-mutiple-chip-label"
@@ -218,7 +215,7 @@ const PodcastsPostForm = () => {
                 input={<Input id="select-multiple-chip" />}
                 renderValue={selected => (
                   <div className={classes.chips}>
-                    {selected.map(value => (
+                    {selected.map((value, i) => (
                       <Chip key={value} label={value} className={classes.chip} />
                     ))}
                   </div>
@@ -226,8 +223,10 @@ const PodcastsPostForm = () => {
                 MenuProps={MenuProps}
               >
                 {animators.map(animator => (
-                  <MenuItem key={name} value={name}>
-                    {name}
+                  <MenuItem key={animator.animator_id} value={animator.animator_id}>
+                    {`${animator.animator_id} - ` +
+                      animator.animator_firstname +
+                      animator.animator_lastname}
                   </MenuItem>
                 ))}
               </Select>
