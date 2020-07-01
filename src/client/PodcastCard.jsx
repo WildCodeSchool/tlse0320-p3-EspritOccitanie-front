@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './PodcastCard.scss';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,10 +13,31 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const PodcastCard = () => {
-  const classes = useStyles();
+const PodcastCard = props => {
+  const {
+    podcast_creation_date,
+    podcast_description,
+    podcast_duration,
+    podcast_id,
+    podcast_image,
+    podcast_mp3,
+    podcast_title,
+    ro_category_category_id,
+    ro_program_program_id
+  } = props.dataPodcasts;
 
-  const bgImgPodcast = 'test.jpg';
+  const [programName, setProgramName] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(`/program/${ro_program_program_id}`).catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setProgramName(result.data);
+    };
+    fetchData();
+  }, []);
+
+  const classes = useStyles();
 
   return (
     <div className="podcastCard">
@@ -27,16 +49,16 @@ const PodcastCard = () => {
             </IconButton>
           </div>
           <div className="group">
-            <div className="title">nom emission</div>
-            <div className="date">date</div>
+            <div className="title">{programName.program_title}</div>
+            <div className="date">{podcast_creation_date}</div>
           </div>
         </div>
-        <div className="duration">duree</div>
+        <div className="duration">{podcast_duration}</div>
       </div>
 
-      <div className="coverPodcast" style={{ backgroundImage: `url(${bgImgPodcast})` }} />
+      <div className="coverPodcast" style={{ backgroundImage: `url(${podcast_image})` }} />
       <div className="content">
-        <h2>titre podacst</h2>
+        <h2>{podcast_title}</h2>
       </div>
       <div className="footer">
         <Button variant="outlined" color="primary" size="small" href="#outlined-buttons">
