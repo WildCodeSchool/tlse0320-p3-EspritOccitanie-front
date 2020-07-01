@@ -55,7 +55,7 @@ const PodcastsPostForm = () => {
       const result = await axios.get('/program').catch(function(error) {
         console.log(error.toJSON());
       });
-      // setPrograms(result.data);
+      setPrograms(result.data);
     };
     fetchData();
   }, []);
@@ -95,7 +95,16 @@ const PodcastsPostForm = () => {
 
   const onSubmit = data => {
     let dataForms = { ...data, ro_animator_animator_id: personName };
-    console.log(JSON.stringify(dataForms));
+    axios
+      .post('/podcast', dataForms)
+      .then(res => res.data)
+      .then(res => {
+        alert(`Le podcast a bien été ajouté dans la base de données`);
+      })
+      .catch(e => {
+        console.error(e);
+        alert(`Erreur concernant l'ajout du podcast ${e.message}`);
+      });
   };
 
   return (
@@ -169,9 +178,11 @@ const PodcastsPostForm = () => {
                     id="demo-simple-select-outlined"
                     label="Programme"
                   >
-                    <MenuItem value={1}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {programs.map(program => {
+                      return (
+                        <MenuItem value={program.program_id}>{program.program_title}</MenuItem>
+                      );
+                    })}
                   </Select>
                 }
                 name="ro_program_program_id"
@@ -192,9 +203,11 @@ const PodcastsPostForm = () => {
                     id="demo-simple-select-outlined"
                     label="Catégorie"
                   >
-                    {categorys.map(category => (
-                      <MenuItem value={category.category_id}>{category.category_name}</MenuItem>
-                    ))}
+                    {categorys.map(category => {
+                      return (
+                        <MenuItem value={category.category_id}>{category.category_name}</MenuItem>
+                      );
+                    })}
                   </Select>
                 }
                 name="ro_category_category_id"
@@ -235,6 +248,7 @@ const PodcastsPostForm = () => {
           <Grid item xs={6}>
             <Controller
               as={ReactDatePicker}
+              dateFormat="yyyy-MM-dd"
               control={control}
               className="MuiFormControl-fullWidth"
               valueName="selected" // DateSelect value's name is selected
@@ -244,6 +258,8 @@ const PodcastsPostForm = () => {
               variant="outlined"
             />
           </Grid>
+
+          {/* '2013-07-08 09:00:00' */}
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
