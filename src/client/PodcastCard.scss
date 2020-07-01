@@ -1,0 +1,52 @@
+.podcastCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 300px;
+  min-height: 400px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06), 0px 2px 14px rgba(0, 0, 0, 0.04),
+    0px 6px 10px rgba(0, 0, 0, 0.1);
+  // --- Header ---- //
+  .header {
+    padding: 15px 15px 15px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .wrap {
+      display: flex;
+      align-items: center;
+      .btn-play {
+      }
+
+      .group {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        .title {
+        }
+        .date {
+        }
+      }
+    }
+    .duration {
+    }
+  }
+  // --- Cover podcast ---- //
+  .coverPodcast {
+    min-height: 170px;
+    background-color: #ddd;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .content {
+    h2 {
+    }
+  }
+
+  .footer {
+    padding: 30px;
+  }
+}
