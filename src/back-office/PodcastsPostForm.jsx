@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
+import axios from 'axios';
 
 import {
   Input,
@@ -47,19 +49,70 @@ const MenuProps = {
 };
 
 const PodcastsPostForm = () => {
+  // Get Program request
+  const [programs, setPrograms] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/program').catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setPrograms(result.data);
+    };
+    fetchData();
+  }, []);
+
+  // Get Category request
+  const [categorys, setCategorys] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/category').catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setCategorys(result.data);
+    };
+    fetchData();
+  }, []);
+
+  // Get Animator request
+  const [animators, setAnimators] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/animator').catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setAnimators(result.data);
+    };
+    fetchData();
+  }, []);
+
   const { handleSubmit, register, control } = useForm();
   const classes = useStyles();
   const [personName, setPersonName] = React.useState([]);
 
-  const names = ['Oliver Hansen', 'Van Henry', 'April Tucker', 'Ralph Hubbard'];
-
   const handleChange = event => {
-    setPersonName(event.target.value);
+    let animatorId = event.target.value;
+    setPersonName(animatorId);
   };
 
   const onSubmit = data => {
-    let dataForms = { ...data, ro_animator_animator_id: personName };
-    console.log(JSON.stringify(dataForms));
+    let formDate = data.podcast_creation_date;
+    let podcast_creation_date = moment(formDate).format('yyyy-MM-DD HH:mm:ss');
+
+    let dataForms = {
+      ...data,
+      ro_animator_animator_id: personName
+    };
+
+    axios
+      .post('/podcast', dataForms)
+      .then(res => res.data)
+      .then(res => {
+        alert(`Le podcast a bien été ajouté dans la base de données`);
+      })
+      .catch(e => {
+        console.error(e);
+        alert(`Erreur concernant l'ajout du podcast ${e.message}`);
+      });
   };
 
   return (
@@ -133,9 +186,11 @@ const PodcastsPostForm = () => {
                     id="demo-simple-select-outlined"
                     label="Programme"
                   >
-                    <MenuItem value={1}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {programs.map(program => {
+                      return (
+                        <MenuItem value={program.program_id}>{program.program_title}</MenuItem>
+                      );
+                    })}
                   </Select>
                 }
                 name="ro_program_program_id"
@@ -156,9 +211,11 @@ const PodcastsPostForm = () => {
                     id="demo-simple-select-outlined"
                     label="Catégorie"
                   >
-                    <MenuItem value={1}>Ecologie</MenuItem>
-                    <MenuItem value={2}>Economie</MenuItem>
-                    <MenuItem value={3}>blabalba</MenuItem>
+                    {categorys.map(category => {
+                      return (
+                        <MenuItem value={category.category_id}>{category.category_name}</MenuItem>
+                      );
+                    })}
                   </Select>
                 }
                 name="ro_category_category_id"
@@ -168,7 +225,7 @@ const PodcastsPostForm = () => {
           </Grid>
           <Grid item xs={6}>
             <FormControl className={classes.formControl}>
-              <InputLabel id="demo-mutiple-chip-label">Chip</InputLabel>
+              <InputLabel id="demo-mutiple-chip-label">Animateurs</InputLabel>
               <Select
                 inputRef={register}
                 labelId="demo-mutiple-chip-label"
@@ -179,16 +236,18 @@ const PodcastsPostForm = () => {
                 input={<Input id="select-multiple-chip" />}
                 renderValue={selected => (
                   <div className={classes.chips}>
-                    {selected.map(value => (
+                    {selected.map((value, i) => (
                       <Chip key={value} label={value} className={classes.chip} />
                     ))}
                   </div>
                 )}
                 MenuProps={MenuProps}
               >
-                {names.map(name => (
-                  <MenuItem key={name} value={name}>
-                    {name}
+                {animators.map(animator => (
+                  <MenuItem key={animator.animator_id} value={animator.animator_id}>
+                    {`${animator.animator_id} - ` +
+                      animator.animator_firstname +
+                      animator.animator_lastname}
                   </MenuItem>
                 ))}
               </Select>
