@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
-import Podcasts from './client/Podcasts';
+import PodcastCard from './client/PodcastCard';
 import './App.css';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Switch>
           <Route path="/podcasts">
-            <Podcasts />
+            <PodcastCard />
           </Route>
           <Route path="/admin-radio-occitanie">
             <Navigation />
