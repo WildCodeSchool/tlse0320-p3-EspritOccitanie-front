@@ -3,6 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 import axios from 'axios';
 
 import {
@@ -94,7 +95,14 @@ const PodcastsPostForm = () => {
   };
 
   const onSubmit = data => {
-    let dataForms = { ...data, ro_animator_animator_id: personName };
+    let formDate = data.podcast_creation_date;
+    let podcast_creation_date = moment(formDate).format('yyyy-MM-DD HH:mm:ss');
+
+    let dataForms = {
+      ...data,
+      ro_animator_animator_id: personName
+    };
+
     axios
       .post('/podcast', dataForms)
       .then(res => res.data)
@@ -248,7 +256,6 @@ const PodcastsPostForm = () => {
           <Grid item xs={6}>
             <Controller
               as={ReactDatePicker}
-              dateFormat="yyyy-MM-dd"
               control={control}
               className="MuiFormControl-fullWidth"
               valueName="selected" // DateSelect value's name is selected
@@ -258,8 +265,6 @@ const PodcastsPostForm = () => {
               variant="outlined"
             />
           </Grid>
-
-          {/* '2013-07-08 09:00:00' */}
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
