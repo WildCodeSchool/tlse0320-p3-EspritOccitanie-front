@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
 import PodcastsList from './client/PodcastsList';
 import './App.css';
+import CategoriesPostForm from './back-office/CategoriesPostForm';
 
 function App() {
   return (
