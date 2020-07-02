@@ -10,8 +10,8 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 const useStyles = makeStyles(() => ({
   playIcon: {
-    height: 38,
-    width: 38
+    height: 25,
+    width: 25
   }
 }));
 
@@ -61,7 +61,12 @@ const PodcastCard = props => {
         </div>
       </div>
 
-      <div className="coverPodcast" style={{ backgroundImage: `url(${podcast_image})` }} />
+      <div
+        className="coverPodcast"
+        style={{
+          backgroundImage: `url(${podcast_image ? podcast_image : '/radio-occitanie-default.jpg'})`
+        }}
+      />
       <div className="content">
         <h2>{podcast_title}</h2>
         <p> {podcast_description.substring(0, 80) + '...'}</p>
