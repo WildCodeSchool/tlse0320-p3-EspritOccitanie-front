@@ -5,11 +5,13 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 const useStyles = makeStyles(() => ({
   playIcon: {
-    height: 38,
-    width: 38
+    height: 25,
+    width: 25
   }
 }));
 
@@ -53,12 +55,21 @@ const PodcastCard = props => {
             <div className="date">{podcast_creation_date}</div>
           </div>
         </div>
-        <div className="duration">{podcast_duration}</div>
+        <div className="duration">
+          <AccessTimeIcon></AccessTimeIcon>
+          {podcast_duration}
+        </div>
       </div>
 
-      <div className="coverPodcast" style={{ backgroundImage: `url(${podcast_image})` }} />
+      <div
+        className="coverPodcast"
+        style={{
+          backgroundImage: `url(${podcast_image ? podcast_image : '/radio-occitanie-default.jpg'})`
+        }}
+      />
       <div className="content">
         <h2>{podcast_title}</h2>
+        <p> {podcast_description.substring(0, 80) + '...'}</p>
       </div>
       <div className="footer">
         <Button variant="outlined" color="primary" size="small" href="#outlined-buttons">
