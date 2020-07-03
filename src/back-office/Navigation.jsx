@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import PodcastsPage from './PodcastsPage';
 import CategoriesPage from './CategoriesPage';
+import AnimatorPage from './AnimatorPage';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -81,7 +82,7 @@ export default function VerticalTabs() {
         <CategoriesPage />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        <AnimatorPage />
       </TabPanel>
       <TabPanel value={value} index={4}>
         Item Five
