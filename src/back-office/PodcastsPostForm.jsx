@@ -261,7 +261,6 @@ const PodcastsPostForm = () => {
               className="MuiFormControl-fullWidth"
               valueName="selected" // DateSelect value's name is selected
               onChange={([selected]) => selected}
-              dateFormat="yyyy-MM-dd HH:mm:ss"
               name="podcast_creation_date"
               placeholderText="Date de création"
               variant="outlined"
