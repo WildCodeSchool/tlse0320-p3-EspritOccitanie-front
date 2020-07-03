@@ -90,16 +90,17 @@ const PodcastsPostForm = () => {
   const [personName, setPersonName] = React.useState([]);
 
   const handleChange = event => {
-    let animatorId = event.target.value;
+    const animatorId = event.target.value;
     setPersonName(animatorId);
   };
 
   const onSubmit = data => {
-    let formDate = data.podcast_creation_date;
-    let podcast_creation_date = moment(formDate).format('yyyy-MM-DD HH:mm:ss');
-
-    let dataForms = {
+    const formDate = data.podcast_creation_date;
+    const podcast_creation_date = moment(formDate).format('yyyy-MM-DD HH:mm:ss');
+    console.log('heure de gg', podcast_creation_date);
+    const dataForms = {
       ...data,
+      podcast_creation_date,
       ro_animator_animator_id: personName
     };
 
