@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box';
 import PodcastsPage from './PodcastsPage';
 import CategoriesPage from './CategoriesPage';
 import AnimatorPage from './AnimatorPage';
+import ProgramPage from './PorgramPage';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -73,7 +74,7 @@ export default function VerticalTabs() {
         <Tab label="Progammation" {...a11yProps(4)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        Emissions
+        <ProgramPage />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <PodcastsPage />

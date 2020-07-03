@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
-import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
 import axios from 'axios';
 
 import {
@@ -48,19 +45,7 @@ const MenuProps = {
   }
 };
 
-const PodcastsPostForm = () => {
-  // Get Program request
-  const [programs, setPrograms] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('/program').catch(function(error) {
-        console.log(error.toJSON());
-      });
-      setPrograms(result.data);
-    };
-    fetchData();
-  }, []);
-
+const ProgramPostForm = () => {
   // Get Category request
   const [categorys, setCategorys] = useState([]);
   useEffect(() => {
@@ -95,23 +80,20 @@ const PodcastsPostForm = () => {
   };
 
   const onSubmit = data => {
-    const formDate = data.podcast_creation_date;
-    const podcast_creation_date = moment(formDate).format('yyyy-MM-DD HH:mm:ss');
     const dataForms = {
       ...data,
-      podcast_creation_date,
       ro_animator_animator_id: personName
     };
 
     axios
-      .post('/podcast', dataForms)
+      .post('/program', dataForms)
       .then(res => res.data)
       .then(res => {
-        alert(`Le podcast a bien été ajouté dans la base de données`);
+        alert(`L'émission a bien été créée`);
       })
       .catch(e => {
         console.error(e);
-        alert(`Erreur concernant l'ajout du podcast ${e.message}`);
+        alert(`Erreur concernant l'ajout de l'émission ${e.message}`);
       });
   };
 
@@ -121,31 +103,20 @@ const PodcastsPostForm = () => {
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <TextField
-              name="podcast_title"
+              name="program_title"
               inputRef={register}
               id="outlined-basic"
-              label="Titre du podcast"
-              variant="outlined"
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              name="podcast_mp3"
-              type="text"
-              label="Url du pocast"
-              inputRef={register}
-              id="outlined-basic"
+              label="Titre de l'émission"
               variant="outlined"
               fullWidth
             />
           </Grid>
           <Grid item xs={12}>
             <TextField
-              name="podcast_description"
+              name="program_description"
               inputRef={register}
               id="outlined-multiline-static"
-              label="Description du podcast"
+              label="Description de l'émission"
               multiline
               rows={4}
               variant="outlined"
@@ -154,17 +125,7 @@ const PodcastsPostForm = () => {
           </Grid>
           <Grid item xs={6}>
             <TextField
-              name="podcast_duration"
-              inputRef={register}
-              id="outlined-basic"
-              label="Durée (en minute)"
-              variant="outlined"
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              name="podcast_image"
+              name="program_image"
               type="text"
               label="Url de l'image"
               inputRef={register}
@@ -172,31 +133,6 @@ const PodcastsPostForm = () => {
               variant="outlined"
               fullWidth
             />
-          </Grid>
-          <Grid item xs={6}>
-            <FormControl variant="outlined" className="MuiFormControl-fullWidth">
-              <InputLabel id="demo-simple-select-outlined-label" fullWidth>
-                Programme
-              </InputLabel>
-
-              <Controller
-                as={
-                  <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    label="Programme"
-                  >
-                    {programs.map(program => {
-                      return (
-                        <MenuItem value={program.program_id}>{program.program_title}</MenuItem>
-                      );
-                    })}
-                  </Select>
-                }
-                name="ro_program_program_id"
-                control={control}
-              />
-            </FormControl>
           </Grid>
           <Grid item xs={6}>
             <FormControl variant="outlined" className="MuiFormControl-fullWidth">
@@ -253,22 +189,10 @@ const PodcastsPostForm = () => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={6}>
-            <Controller
-              as={ReactDatePicker}
-              control={control}
-              className="MuiFormControl-fullWidth"
-              valueName="selected" // DateSelect value's name is selected
-              onChange={([selected]) => selected}
-              name="podcast_creation_date"
-              placeholderText="Date de création"
-              variant="outlined"
-            />
-          </Grid>
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
-              Créer le podcast
+              Créer l'émission
             </Button>
           </Grid>
         </Grid>
@@ -277,4 +201,4 @@ const PodcastsPostForm = () => {
   );
 };
 
-export default PodcastsPostForm;
+export default ProgramPostForm;
