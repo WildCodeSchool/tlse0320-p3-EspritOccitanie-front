@@ -288,6 +288,7 @@ const PodcastsPostForm = () => {
                   <MenuItem key={animator.animator_id} value={animator.animator_id}>
                     {`${animator.animator_id} - ` +
                       animator.animator_firstname +
+                      ' ' +
                       animator.animator_lastname}
                   </MenuItem>
                 ))}
