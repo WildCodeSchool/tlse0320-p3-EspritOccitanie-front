@@ -4,7 +4,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
+import * as yup from 'yup';
 import axios from 'axios';
+import './admin.scss';
 
 import {
   Input,
@@ -85,7 +87,28 @@ const PodcastsPostForm = () => {
     fetchData();
   }, []);
 
-  const { handleSubmit, register, control } = useForm();
+  const schema = yup.object().shape({
+    podcast_title: yup
+      .string()
+      .min(4, 'minimun 4 caractères')
+      .required(),
+    podcast_mp3: yup.string().required('le champ est requis'),
+    ro_category_category_id: yup.string().required('le champ est requis'),
+    podcast_creation_date: yup.string().required('le champ est requis'),
+    ro_program_program_id: yup.string().required('le champ est requis'),
+    podcast_duration: yup.string().required('le champ est requis'),
+    animator_id: yup
+      .array()
+      .max(1, 'Pick at least 3 tags')
+      .of(
+        yup.object().shape({
+          label: yup.string().required(),
+          value: yup.string().required()
+        })
+      )
+  });
+
+  const { handleSubmit, register, control, errors } = useForm({ validationSchema: schema });
   const classes = useStyles();
   const [personName, setPersonName] = React.useState([]);
 
@@ -128,6 +151,7 @@ const PodcastsPostForm = () => {
               variant="outlined"
               fullWidth
             />
+            {errors.podcast_title && <p className="alert-form">{errors.podcast_title.message}</p>}
           </Grid>
           <Grid item xs={6}>
             <TextField
@@ -139,6 +163,7 @@ const PodcastsPostForm = () => {
               variant="outlined"
               fullWidth
             />
+            {errors.podcast_mp3 && <p className="alert-form">{errors.podcast_mp3.message}</p>}
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -151,6 +176,9 @@ const PodcastsPostForm = () => {
               variant="outlined"
               fullWidth
             />
+            {errors.podcast_description && (
+              <p className="alert-form">{errors.podcast_description.message}</p>
+            )}
           </Grid>
           <Grid item xs={6}>
             <TextField
@@ -161,6 +189,9 @@ const PodcastsPostForm = () => {
               variant="outlined"
               fullWidth
             />
+            {errors.podcast_duration && (
+              <p className="alert-form">{errors.podcast_duration.message}</p>
+            )}
           </Grid>
           <Grid item xs={6}>
             <TextField
@@ -172,6 +203,7 @@ const PodcastsPostForm = () => {
               variant="outlined"
               fullWidth
             />
+            {errors.podcast_image && <p className="alert-form">{errors.podcast_image.message}</p>}
           </Grid>
           <Grid item xs={6}>
             <FormControl variant="outlined" className="MuiFormControl-fullWidth">
@@ -197,6 +229,9 @@ const PodcastsPostForm = () => {
                 control={control}
               />
             </FormControl>
+            {errors.ro_program_program_id && (
+              <p className="alert-form">{errors.ro_program_program_id.message}</p>
+            )}
           </Grid>
           <Grid item xs={6}>
             <FormControl variant="outlined" className="MuiFormControl-fullWidth">
@@ -222,10 +257,16 @@ const PodcastsPostForm = () => {
                 control={control}
               />
             </FormControl>
+
+            {errors.ro_category_category_id && (
+              <p className="alert-form">{errors.ro_category_category_id.message}</p>
+            )}
           </Grid>
           <Grid item xs={6}>
             <FormControl className={classes.formControl}>
-              <InputLabel id="demo-mutiple-chip-label">Animateurs</InputLabel>
+              <InputLabel id="demo-mutiple-chip-label" name="animator_id">
+                Animateurs
+              </InputLabel>
               <Select
                 inputRef={register}
                 labelId="demo-mutiple-chip-label"
@@ -264,6 +305,10 @@ const PodcastsPostForm = () => {
               placeholderText="Date de création"
               variant="outlined"
             />
+
+            {errors.podcast_creation_date && (
+              <p className="alert-form">{errors.podcast_creation_date.message}</p>
+            )}
           </Grid>
 
           <Grid item xs={12}>

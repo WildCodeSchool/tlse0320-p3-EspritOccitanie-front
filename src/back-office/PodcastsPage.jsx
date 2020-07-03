@@ -5,7 +5,7 @@ import PodcastsPostForm from './PodcastsPostForm';
 
 const PodcastsPage = () => {
   return (
-    <div>
+    <div className="admin-podcast">
       <>
         <Container>
           <Paper elevation={2}>
