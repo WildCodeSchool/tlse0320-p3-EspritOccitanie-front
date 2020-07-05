@@ -35,6 +35,7 @@ const PodcastCard = props => {
         console.log(error.toJSON());
       });
       setProgramName(result.data);
+      console.log(result.data);
     };
     fetchData();
   }, []);
