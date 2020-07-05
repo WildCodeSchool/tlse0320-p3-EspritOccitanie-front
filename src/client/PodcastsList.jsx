@@ -27,6 +27,7 @@ const PodcastsList = () => {
 
   const startSlicePagination = positionPage === 1 ? 0 : positionPage * 9 - 9;
   const endSlicePagination = 9 * positionPage;
+  const lastIndex = paginationPodcast.slice(-1)[0];
 
   return (
     <div>
@@ -40,14 +41,53 @@ const PodcastsList = () => {
             );
           })}
         </Grid>
+        <div className="container-pagination">
+          <button
+            type="button"
+            className="pagination-ro"
+            onClick={() => setPositionPage(positionPage - 1)}
+          >
+            -
+          </button>
+          {paginationPodcast.map(pagination => {
+            if (pagination <= 3) {
+              while (pagination <= 3) {
+                if (pagination === 3) {
+                  return (
+                    <div className="group">
+                      <p className="dotsPagination">...</p>
 
-        {paginationPodcast.map(pagination => {
-          return (
-            <button className="pagination-ro" onClick={() => setPositionPage(pagination + 1)}>
-              {pagination + 1}
-            </button>
-          );
-        })}
+                      <button
+                        type="button"
+                        className="pagination-ro"
+                        onClick={() => setPositionPage(lastIndex + 1)}
+                      >
+                        {lastIndex + 1}
+                      </button>
+                    </div>
+                  );
+                }
+
+                return (
+                  <button
+                    type="button"
+                    className="pagination-ro"
+                    onClick={() => setPositionPage(pagination + 1)}
+                  >
+                    {pagination + 1}
+                  </button>
+                );
+              }
+            }
+          })}
+          <button
+            type="button"
+            className="pagination-ro"
+            onClick={() => setPositionPage(positionPage + 1)}
+          >
+            +
+          </button>
+        </div>
       </Container>
     </div>
   );
