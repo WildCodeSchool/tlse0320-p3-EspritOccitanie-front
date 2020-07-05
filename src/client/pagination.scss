@@ -9,7 +9,13 @@
     color: #383434;
     border-radius: 5px;
     cursor: pointer;
+    &.active {
+      background-color: #323030;
+      color: white;
+      cursor: default;
+    }
   }
+
   .dotsPagination {
     margin: 5px;
     margin-top: 30px;

@@ -43,11 +43,12 @@ const PodcastsList = () => {
         </Grid>
         <div className="container-pagination">
           <button
+            disabled={positionPage === 1 ? true : false}
             type="button"
             className="pagination-ro"
             onClick={() => setPositionPage(positionPage - 1)}
           >
-            -
+            Précédant
           </button>
           {paginationPodcast.map(pagination => {
             if (pagination <= 3) {
@@ -59,7 +60,9 @@ const PodcastsList = () => {
 
                       <button
                         type="button"
-                        className="pagination-ro"
+                        className={
+                          positionPage - 1 === lastIndex ? 'pagination-ro active' : 'pagination-ro'
+                        }
                         onClick={() => setPositionPage(lastIndex + 1)}
                       >
                         {lastIndex + 1}
@@ -71,7 +74,9 @@ const PodcastsList = () => {
                 return (
                   <button
                     type="button"
-                    className="pagination-ro"
+                    className={
+                      positionPage - 1 === pagination ? 'pagination-ro active' : 'pagination-ro'
+                    }
                     onClick={() => setPositionPage(pagination + 1)}
                   >
                     {pagination + 1}
@@ -84,8 +89,9 @@ const PodcastsList = () => {
             type="button"
             className="pagination-ro"
             onClick={() => setPositionPage(positionPage + 1)}
+            disabled={positionPage - 1 === lastIndex ? true : false}
           >
-            +
+            Suivant
           </button>
         </div>
       </Container>
