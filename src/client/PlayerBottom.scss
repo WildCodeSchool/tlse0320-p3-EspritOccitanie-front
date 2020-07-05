@@ -1,0 +1,55 @@
+.player-bottom {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: #181827;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 15px;
+  color: white;
+  .infos {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    .btnPlay {
+      background-color: #ac111b !important;
+      color: white !important;
+      border-radius: 40px;
+      .MuiIconButton-label {
+        color: white;
+      }
+    }
+    .group {
+      text-align: left;
+      margin-left: 15px;
+      .title {
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .author {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .barPlayer {
+    flex-grow: 8;
+
+    input {
+      width: 100%;
+    }
+  }
+  .audio {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+    .infos-duration {
+      font-size: 12px;
+    }
+    .mute {
+      margin-left: 15px;
+    }
+  }
+}
