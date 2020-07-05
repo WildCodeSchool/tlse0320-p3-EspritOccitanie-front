@@ -3,6 +3,8 @@ import { Container, Grid } from '@material-ui/core';
 import axios from 'axios';
 import PodcastCard from './PodcastCard';
 
+import './pagination.scss';
+
 const PodcastsList = () => {
   // Get podcasts request
   const [podcasts, setPodcasts] = useState([]);
@@ -40,7 +42,11 @@ const PodcastsList = () => {
         </Grid>
 
         {paginationPodcast.map(pagination => {
-          return <button onClick={() => setPositionPage(pagination + 1)}>{pagination + 1}</button>;
+          return (
+            <button className="pagination-ro" onClick={() => setPositionPage(pagination + 1)}>
+              {pagination + 1}
+            </button>
+          );
         })}
       </Container>
     </div>
