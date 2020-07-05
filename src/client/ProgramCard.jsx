@@ -43,16 +43,16 @@ const ProgramCard = props => {
             const str = `/animator/${response[i].ro_animator_animator_id}`;
             arrayGet.push(axios.get(str));
           }
-          const animus = axios.all(arrayGet).then(
+          const animatorList = axios.all(arrayGet).then(
             axios.spread((...res) => {
-              let anim = [];
+              let animator = [];
               for (let j = 0; j < res.length; j++) {
-                anim = [...anim, res[j].data];
+                animator = [...animator, res[j].data];
               }
-              return anim;
+              return animator;
             })
           );
-          return animus;
+          return animatorList;
         })
         .catch(error => {
           console.log(error.toJSON());

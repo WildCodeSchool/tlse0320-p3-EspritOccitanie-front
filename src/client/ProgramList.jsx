@@ -3,7 +3,7 @@ import { Container, Grid } from '@material-ui/core';
 import axios from 'axios';
 import ProgramCard from './ProgramCard';
 
-const ProgramList = props => {
+const ProgramList = () => {
   // Get podcasts request
   const [programs, setPrograms] = useState([]);
   useEffect(() => {
