@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -32,13 +33,27 @@ export default function ButtonAppBar() {
               {' '}
               <img src="/logo.svg" alt="logo Esprit Occitannie" />
             </div>
-            <Button color="inherit">Le direct</Button>
-            <Button color="inherit">A propos</Button>
-            <Button color="inherit">Grille des programmes</Button>
-            <Button color="inherit">Émissions</Button>
-            <Button color="inherit">Podcasts</Button>
-            <Button color="inherit">Animateurs</Button>
-            <Button color="inherit">Nous contacter</Button>
+            <Link to="direct">
+              <Button color="inherit">Le direct</Button>
+            </Link>
+            <Link to="a-propos">
+              <Button color="inherit">A propos</Button>
+            </Link>
+            <Link to="grille-des-programmes">
+              <Button color="inherit">Grille des programmes</Button>
+            </Link>
+            <Link to="emissions">
+              <Button color="inherit">Émissions</Button>
+            </Link>
+            <Link to="podcasts">
+              <Button color="inherit">Podcasts</Button>
+            </Link>
+            <Link to="animateurs">
+              <Button color="inherit">Animateurs</Button>
+            </Link>
+            <Link to="contact">
+              <Button color="inherit">Nous contacter</Button>
+            </Link>
           </Toolbar>
         </AppBar>
       </div>
