@@ -9,4 +9,14 @@
     align-items: center;
     justify-content: center;
   }
+
+  .react-datepicker-wrapper {
+    width: 100%;
+    input {
+      height: 34px;
+      padding: 10px;
+      padding-right: 35px;
+      width: 91%;
+    }
+  }
 }
