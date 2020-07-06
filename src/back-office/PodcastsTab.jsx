@@ -25,8 +25,6 @@ const PodcastsTab = props => {
   const [podcasts, setPodcasts] = useState([]);
   const [nbPodcasts, setNbPodcasts] = useState();
 
-  console.log(podcasts);
-
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('/podcast').catch(function(error) {
@@ -37,6 +35,14 @@ const PodcastsTab = props => {
     };
     fetchData();
   }, []);
+
+  // Delete Podcast
+  const DeletePodcast = id => {
+    console.log(id);
+    axios.delete(`/podcast/${id}`).then(response => {
+      console.log(`response`, response);
+    });
+  };
 
   return (
     <Box mx="auto" mt={5}>
@@ -74,7 +80,11 @@ const PodcastsTab = props => {
 
                 <TableCell align="center">{podcast.podcast_creation_date}</TableCell>
                 <TableCell align="center">
-                  <IconButton aria-label="delete" className={classes.margin}>
+                  <IconButton
+                    aria-label="delete"
+                    className={classes.margin}
+                    onClick={() => DeletePodcast(podcast.podcast_id)}
+                  >
                     <DeleteIcon fontSize="large" />
                   </IconButton>
                 </TableCell>
