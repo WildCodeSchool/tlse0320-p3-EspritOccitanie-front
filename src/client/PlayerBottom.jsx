@@ -1,24 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
+
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
+import VolumeMuteIcon from '@material-ui/icons/VolumeMute';
+import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import './PlayerBottom.scss';
 
-const useStyles = makeStyles(() => ({
-  playIcon: {
-    height: 25,
-    width: 25
-  }
-}));
-
 const PlayerBottom = () => {
-  const classes = useStyles();
   const [delay, setDelay] = useState(1000);
   const [playerDuration, setPlayerDuration] = useState(0);
   const [playerCurrentTime, setPlayerCurrentTime] = useState(0);
   const [onPlay, setOnPlay] = useState(false);
+  const [isMute, setIsMute] = useState(true);
 
+  // Play sound
   function play(idPlayer, e) {
     const player = document.querySelector(`#${idPlayer}`);
     setPlayerDuration(Math.trunc(player.duration));
@@ -32,21 +28,25 @@ const PlayerBottom = () => {
     return player.pause();
   }
 
-  useInterval(
-    () => {
-      const player = document.querySelector('#audioPlayer');
-      setPlayerCurrentTime(player.currentTime);
-    },
-    onPlay ? delay : null
-  );
+  // Mute sound
+  function mute(idPlayer, e) {
+    const player = document.querySelector(`#${idPlayer}`);
+    if (isMute) {
+      e.currentTarget.ariaLabel = 'mute';
+      setIsMute(false);
+      return (player.muted = true);
+    }
+    e.currentTarget.ariaLabel = 'on';
+    setIsMute(true);
+    return (player.muted = false);
+  }
 
+  // UseInterval function tool
   function useInterval(callback, delay) {
     const savedCallback = useRef();
-    // Remember the latest function.
     useEffect(() => {
       savedCallback.current = callback;
     }, [callback]);
-    // Set up the interval.
     useEffect(() => {
       function tick() {
         savedCallback.current();
@@ -58,7 +58,17 @@ const PlayerBottom = () => {
     }, [delay]);
   }
 
-  var moment = require('moment');
+  // Update currentTime
+  useInterval(
+    () => {
+      const player = document.querySelector('#audioPlayer');
+      setPlayerCurrentTime(player.currentTime);
+    },
+    onPlay ? delay : null
+  );
+
+  // Format for duration (ss to mm:ss)
+  let moment = require('moment');
   require('moment-duration-format');
   function formatDuration(duration) {
     return moment.duration(duration.toString(), 'seconds').format('mm:ss', { trim: false });
@@ -74,11 +84,7 @@ const PlayerBottom = () => {
               play('audioPlayer', e);
             }}
           >
-            {onPlay ? (
-              <PauseIcon className={classes.playIcon} />
-            ) : (
-              <PlayArrowIcon className={classes.playIcon} />
-            )}
+            {onPlay ? <PauseIcon /> : <PlayArrowIcon />}
           </IconButton>
         </div>
         <div className="group">
@@ -107,7 +113,14 @@ const PlayerBottom = () => {
           {formatDuration(playerCurrentTime)} | {formatDuration(playerDuration)}
         </div>
         <div className="mute">
-          <buttonc type="button">Mute</buttonc>
+          <IconButton
+            aria-label="mute"
+            onClick={e => {
+              mute('audioPlayer', e);
+            }}
+          >
+            {!isMute ? <VolumeOffIcon /> : <VolumeMuteIcon />}
+          </IconButton>
         </div>
       </div>
     </div>

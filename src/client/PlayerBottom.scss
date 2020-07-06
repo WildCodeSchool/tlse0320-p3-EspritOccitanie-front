@@ -50,6 +50,12 @@
     }
     .mute {
       margin-left: 15px;
+      background-color: #343652 !important;
+      color: white !important;
+      border-radius: 40px;
+      .MuiIconButton-label {
+        color: white;
+      }
     }
   }
 }
