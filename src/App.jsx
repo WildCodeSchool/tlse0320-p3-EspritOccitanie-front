@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
 import PodcastsList from './client/PodcastsList';
 import ProgramList from './client/ProgramList';
+import Navbar from './client/Navbar';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+          <Navbar />
           <Route path="/podcasts">
             <PodcastsList />
           </Route>
