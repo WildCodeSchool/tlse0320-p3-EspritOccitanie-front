@@ -34,25 +34,25 @@ export default function ButtonAppBar() {
               <img src="/logo.svg" alt="logo Esprit Occitannie" />
             </div>
             <Link to="direct">
-              <Button color="inherit">Le direct</Button>
+              <Button>Le direct</Button>
             </Link>
             <Link to="a-propos">
-              <Button color="inherit">A propos</Button>
+              <Button>A propos</Button>
             </Link>
             <Link to="grille-des-programmes">
-              <Button color="inherit">Grille des programmes</Button>
+              <Button>Grille des programmes</Button>
             </Link>
             <Link to="emissions">
-              <Button color="inherit">Émissions</Button>
+              <Button>Émissions</Button>
             </Link>
             <Link to="podcasts">
-              <Button color="inherit">Podcasts</Button>
+              <Button>Podcasts</Button>
             </Link>
             <Link to="animateurs">
-              <Button color="inherit">Animateurs</Button>
+              <Button>Animateurs</Button>
             </Link>
             <Link to="contact">
-              <Button color="inherit">Nous contacter</Button>
+              <Button>Nous contacter</Button>
             </Link>
           </Toolbar>
         </AppBar>
