@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -14,15 +14,14 @@ const useStyles = makeStyles(() => ({
 
 const PlayerBottom = () => {
   const classes = useStyles();
+  const [delay, setDelay] = useState(1000);
   const [playerDuration, setPlayerDuration] = useState(0);
   const [playerCurrentTime, setPlayerCurrentTime] = useState(0);
   const [onPlay, setOnPlay] = useState(false);
 
   function play(idPlayer, e) {
     const player = document.querySelector(`#${idPlayer}`);
-    player.addEventListener('loadeddata', setPlayerCurrentTime(player.currentTime));
-    console.log(`aaaa`, player.currentTime);
-    setPlayerDuration(Math.trunc(player.duration / 60));
+    setPlayerDuration(Math.trunc(player.duration));
     if (player.paused) {
       e.currentTarget.ariaLabel = 'pause';
       setOnPlay(true);
@@ -33,15 +32,37 @@ const PlayerBottom = () => {
     return player.pause();
   }
 
-  useEffect(() => {
-    console.log(onPlay);
-    console.log(playerCurrentTime);
-    if (!onPlay) return;
-    console.log('toto');
-    const player = document.querySelector('#audioPlayer');
+  useInterval(
+    () => {
+      const player = document.querySelector('#audioPlayer');
+      setPlayerCurrentTime(player.currentTime);
+    },
+    onPlay ? delay : null
+  );
 
-    player.addEventListener('loadeddata', setPlayerCurrentTime(player.currentTime));
-  }, [playerCurrentTime]);
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+    // Remember the latest function.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
+
+  var moment = require('moment');
+  require('moment-duration-format');
+  function formatDuration(duration) {
+    return moment.duration(duration.toString(), 'seconds').format('mm:ss', { trim: false });
+  }
 
   return (
     <div className="player-bottom">
@@ -75,7 +96,7 @@ const PlayerBottom = () => {
           type="range"
           id="vol"
           name="vol"
-          value={playerCurrentTime / 60}
+          value={playerCurrentTime}
           min="0"
           max={playerDuration}
         />
@@ -83,7 +104,7 @@ const PlayerBottom = () => {
 
       <div className="audio">
         <div className="infos-duration">
-          {playerCurrentTime} /{playerDuration} min
+          {formatDuration(playerCurrentTime)} | {formatDuration(playerDuration)}
         </div>
         <div className="mute">
           <buttonc type="button">Mute</buttonc>

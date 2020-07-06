@@ -8,6 +8,7 @@
     "axios": "^0.19.2",
     "clsx": "^1.1.1",
     "moment": "^2.27.0",
+    "moment-duration-format": "^2.3.2",
     "node-sass": "^4.14.1",
     "react": "^16.10.2",
     "react-datepicker": "^3.0.0",
