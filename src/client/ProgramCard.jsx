@@ -83,6 +83,7 @@ const ProgramCard = props => {
           <Typography variant="subtitle2" gutterBottom>
             Animée par :
             {animators.map(animator => {
+              console.log('animator', animator);
               return (
                 <span>{` ${animator.animator_firstname} ${animator.animator_lastname} `}</span>
               );
