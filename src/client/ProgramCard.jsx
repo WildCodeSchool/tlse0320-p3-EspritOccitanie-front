@@ -74,7 +74,7 @@ const ProgramCard = props => {
           alt="Image de l'émission"
           height="200"
           image={image}
-          title="Contemplative Reptile"
+          title="Image de l'émission"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -95,8 +95,14 @@ const ProgramCard = props => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" variant="outlined" color="secondary">
-          Voir plus
+        <Button
+          id={program_id}
+          href={`/emission/${program_id}`}
+          size="small"
+          variant="outlined"
+          color="secondary"
+        >
+          Voir détails
         </Button>
       </CardActions>
     </Card>
