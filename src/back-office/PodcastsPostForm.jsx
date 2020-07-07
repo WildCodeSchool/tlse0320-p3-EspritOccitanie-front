@@ -174,19 +174,8 @@ const PodcastsPostForm = props => {
   };
 
   if (updateMode) {
-    console.log(valueToUpdate.podcast_title);
     console.log(valueToUpdate);
   }
-
-  // podcast_creation_date: '2020-07-05T08:05:21.000Z';
-  // podcast_description: 'sdggds';
-  // podcast_duration: 'sdgsdg';
-  // podcast_id: 6;
-  // podcast_image: null;
-  // podcast_mp3: 'sf';
-  // podcast_title: 'ccc';
-  // ro_category_category_id: null;
-  // ro_program_program_id: 1;
 
   return (
     <Box p={2} bgcolor="background.paper" display="flex">
@@ -194,18 +183,30 @@ const PodcastsPostForm = props => {
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <TextField
+              key="podcast_title"
               name="podcast_title"
               inputRef={register}
               id="outlined-basic"
               label="Titre du podcast"
               variant="outlined"
               fullWidth
-              value={updateMode ? valueToUpdate.podcast_title : ''}
+              value={valueToUpdate.podcast_mp3}
+            />
+
+            <TextField
+              key="podcast_title"
+              name="podcast_title"
+              inputRef={register}
+              id="outlined-basic"
+              label="Titre du podcast"
+              variant="outlined"
+              fullWidth
             />
             {errors.podcast_title && <p className="alert-form">{errors.podcast_title.message}</p>}
           </Grid>
           <Grid item xs={6}>
             <TextField
+              key="podcast_mp3"
               name="podcast_mp3"
               type="text"
               label="Url du pocast"
