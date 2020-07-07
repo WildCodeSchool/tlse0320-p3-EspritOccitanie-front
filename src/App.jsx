@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <Switch>
-          <Navbar />
           <Route path="/podcasts">
             <PodcastsList />
           </Route>
