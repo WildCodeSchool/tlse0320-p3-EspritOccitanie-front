@@ -20,28 +20,12 @@ const useStyles = makeStyles({
 });
 
 const PodcastsTab = props => {
+  const { setUpdateMode, setPodcastIdToUpdate, podcasts } = props;
   const classes = useStyles();
-
-  const [podcasts, setPodcasts] = useState([]);
-  const [nbPodcasts, setNbPodcasts] = useState();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('/podcast').catch(function(error) {
-        console.log(error.toJSON());
-      });
-      setPodcasts(result.data);
-      setNbPodcasts(result.data.length);
-    };
-    fetchData();
-  }, []);
 
   // Delete Podcast
   const DeletePodcast = id => {
-    console.log(id);
-    axios.delete(`/podcast/${id}`).then(response => {
-      console.log(`response`, response);
-    });
+    axios.delete(`/podcast/${id}`).then(response => {});
   };
 
   return (
@@ -54,8 +38,8 @@ const PodcastsTab = props => {
               <TableCell align="center">Image</TableCell>
               <TableCell align="center">Titre</TableCell>
               <TableCell align="center">Date de mise en ligne</TableCell>
-              <TableCell align="center">Mettre à jours</TableCell>
               <TableCell align="center">Supprimer</TableCell>
+              <TableCell align="center">Mettre à jours</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -89,7 +73,14 @@ const PodcastsTab = props => {
                   </IconButton>
                 </TableCell>
                 <TableCell align="center">
-                  <IconButton aria-label="edit" className={classes.margin}>
+                  <IconButton
+                    aria-label="edit"
+                    className={classes.margin}
+                    onClick={() => {
+                      setPodcastIdToUpdate(podcast.podcast_id);
+                      setUpdateMode(true);
+                    }}
+                  >
                     <EditIcon fontSize="large" />
                   </IconButton>
                 </TableCell>
@@ -103,13 +94,3 @@ const PodcastsTab = props => {
 };
 
 export default PodcastsTab;
-
-// podcast_creation_date: "2020-07-05T08:04:56.000Z"
-// podcast_description: "sdggds"
-// podcast_duration: "sdgsdg"
-// podcast_id: 4
-// podcast_image: null
-// podcast_mp3: "sf"
-// podcast_title: "aaa"
-// ro_category_category_id: null
-// ro_program_program_id: 1

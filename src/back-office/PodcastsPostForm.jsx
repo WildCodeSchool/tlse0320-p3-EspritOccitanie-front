@@ -50,7 +50,9 @@ const MenuProps = {
   }
 };
 
-const PodcastsPostForm = () => {
+const PodcastsPostForm = props => {
+  const { updateMode, podcastIdToUpdate, podcasts } = props;
+
   // Get Program request
   const [programs, setPrograms] = useState([]);
   useEffect(() => {
@@ -87,6 +89,7 @@ const PodcastsPostForm = () => {
     fetchData();
   }, []);
 
+  // Input validation form
   const schema = yup.object().shape({
     podcast_title: yup
       .string()
@@ -108,16 +111,49 @@ const PodcastsPostForm = () => {
       )
   });
 
-  const { handleSubmit, register, control, errors } = useForm({ validationSchema: schema });
+  // Value to send when update
+  let valueToUpdate;
+  if (updateMode) {
+    valueToUpdate = podcasts.filter(podcast => podcast.podcast_id === podcastIdToUpdate)[0];
+  }
+
+  // init react hook form
+  const { handleSubmit, register, control, errors } = useForm({
+    validationSchema: schema
+  });
   const classes = useStyles();
   const [personName, setPersonName] = React.useState([]);
 
+  // animator id
   const handleChange = event => {
     const animatorId = event.target.value;
     setPersonName(animatorId);
   };
 
   const onSubmit = data => {
+    // Submit - create a podcast
+    if (!updateMode) {
+      const formDate = data.podcast_creation_date;
+      const podcast_creation_date = moment(formDate).format('yyyy-MM-DD HH:mm:ss');
+      const dataForms = {
+        ...data,
+        podcast_creation_date,
+        ro_animator_animator_id: personName
+      };
+
+      axios
+        .post('/podcast', dataForms)
+        .then(res => res.data)
+        .then(res => {
+          alert(`Le podcast a bien été ajouté dans la base de données`);
+        })
+        .catch(e => {
+          console.error(e);
+          alert(`Erreur concernant l'ajout du podcast ${e.message}`);
+        });
+    }
+
+    // Submit - update a podcast
     const formDate = data.podcast_creation_date;
     const podcast_creation_date = moment(formDate).format('yyyy-MM-DD HH:mm:ss');
     const dataForms = {
@@ -125,18 +161,32 @@ const PodcastsPostForm = () => {
       podcast_creation_date,
       ro_animator_animator_id: personName
     };
-
     axios
       .post('/podcast', dataForms)
       .then(res => res.data)
       .then(res => {
-        alert(`Le podcast a bien été ajouté dans la base de données`);
+        alert(`Le podcast a bien été modifié dans la base de données`);
       })
       .catch(e => {
         console.error(e);
-        alert(`Erreur concernant l'ajout du podcast ${e.message}`);
+        alert(`Erreur concernant la modification  du podcast ${e.message}`);
       });
   };
+
+  if (updateMode) {
+    console.log(valueToUpdate.podcast_title);
+    console.log(valueToUpdate);
+  }
+
+  // podcast_creation_date: '2020-07-05T08:05:21.000Z';
+  // podcast_description: 'sdggds';
+  // podcast_duration: 'sdgsdg';
+  // podcast_id: 6;
+  // podcast_image: null;
+  // podcast_mp3: 'sf';
+  // podcast_title: 'ccc';
+  // ro_category_category_id: null;
+  // ro_program_program_id: 1;
 
   return (
     <Box p={2} bgcolor="background.paper" display="flex">
@@ -150,6 +200,7 @@ const PodcastsPostForm = () => {
               label="Titre du podcast"
               variant="outlined"
               fullWidth
+              value={updateMode ? valueToUpdate.podcast_title : ''}
             />
             {errors.podcast_title && <p className="alert-form">{errors.podcast_title.message}</p>}
           </Grid>
@@ -162,6 +213,7 @@ const PodcastsPostForm = () => {
               id="outlined-basic"
               variant="outlined"
               fullWidth
+              value={updateMode ? valueToUpdate.podcast_mp3 : ''}
             />
             {errors.podcast_mp3 && <p className="alert-form">{errors.podcast_mp3.message}</p>}
           </Grid>
@@ -174,6 +226,7 @@ const PodcastsPostForm = () => {
               multiline
               rows={4}
               variant="outlined"
+              value={updateMode ? valueToUpdate.podcast_description : ''}
               fullWidth
             />
             {errors.podcast_description && (
@@ -187,6 +240,7 @@ const PodcastsPostForm = () => {
               id="outlined-basic"
               label="Durée (en minute)"
               variant="outlined"
+              value={updateMode ? valueToUpdate.podcast_duration : ''}
               fullWidth
             />
             {errors.podcast_duration && (
@@ -201,6 +255,7 @@ const PodcastsPostForm = () => {
               inputRef={register}
               id="outlined-basic"
               variant="outlined"
+              value={updateMode ? valueToUpdate.podcast_image : ''}
               fullWidth
             />
             {errors.podcast_image && <p className="alert-form">{errors.podcast_image.message}</p>}
@@ -217,6 +272,7 @@ const PodcastsPostForm = () => {
                     labelId="demo-simple-select-outlined-label"
                     id="demo-simple-select-outlined"
                     label="Programme"
+                    value={updateMode ? valueToUpdate.ro_program_program_id : ''}
                   >
                     {programs.map(program => {
                       return (
@@ -314,7 +370,7 @@ const PodcastsPostForm = () => {
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
-              Créer le podcast
+              {updateMode ? 'Mettre à jours le podcast' : 'Créer le podcast'}
             </Button>
           </Grid>
         </Grid>
