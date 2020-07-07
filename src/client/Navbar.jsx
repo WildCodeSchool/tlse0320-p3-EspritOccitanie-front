@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ButtonAppBar() {
+export default function Navbar() {
   const classes = useStyles();
 
   return (
@@ -33,25 +33,25 @@ export default function ButtonAppBar() {
               {' '}
               <img src="/logo.svg" alt="logo Esprit Occitannie" />
             </div>
-            <Link to="direct">
+            <Link className="link" to="direct">
               <Button>Le direct</Button>
             </Link>
-            <Link to="a-propos">
+            <Link className="link" to="a-propos">
               <Button>A propos</Button>
             </Link>
-            <Link to="grille-des-programmes">
+            <Link className="link" to="grille-des-programmes">
               <Button>Grille des programmes</Button>
             </Link>
-            <Link to="emissions">
+            <Link className="link" to="emissions">
               <Button>Émissions</Button>
             </Link>
-            <Link to="podcasts">
+            <Link className="link" to="podcasts">
               <Button>Podcasts</Button>
             </Link>
-            <Link to="animateurs">
+            <Link className="link" to="animateurs">
               <Button>Animateurs</Button>
             </Link>
-            <Link to="contact">
+            <Link className="link" to="contact">
               <Button>Nous contacter</Button>
             </Link>
           </Toolbar>
