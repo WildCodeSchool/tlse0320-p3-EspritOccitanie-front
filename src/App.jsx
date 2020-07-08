@@ -4,6 +4,7 @@ import Navigation from './back-office/Navigation';
 import PodcastsList from './client/PodcastsList';
 import ProgramList from './client/ProgramList';
 import Navbar from './client/Navbar';
+import Apropos from './client/Apropos';
 import LoginPage from './client/LoginPage';
 import './App.css';
 
@@ -13,6 +14,9 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
+          <Route path="/a-propos">
+            <Apropos />
+          </Route>
           <Route path="/podcasts">
             <PodcastsList />
           </Route>
