@@ -119,7 +119,8 @@ const PodcastsPostForm = props => {
 
   // init react hook form
   const { handleSubmit, register, control, errors } = useForm({
-    validationSchema: schema
+    validationSchema: schema,
+    defaultValues: { podcast_title: 'test' }
   });
   const classes = useStyles();
   const [personName, setPersonName] = React.useState([]);
@@ -190,18 +191,8 @@ const PodcastsPostForm = props => {
               label="Titre du podcast"
               variant="outlined"
               fullWidth
-              value={valueToUpdate.podcast_mp3}
             />
 
-            <TextField
-              key="podcast_title"
-              name="podcast_title"
-              inputRef={register}
-              id="outlined-basic"
-              label="Titre du podcast"
-              variant="outlined"
-              fullWidth
-            />
             {errors.podcast_title && <p className="alert-form">{errors.podcast_title.message}</p>}
           </Grid>
           <Grid item xs={6}>
