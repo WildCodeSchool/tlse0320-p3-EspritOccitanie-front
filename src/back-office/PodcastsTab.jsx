@@ -20,8 +20,18 @@ const useStyles = makeStyles({
 });
 
 const PodcastsTab = props => {
-  const { setUpdateMode, setPodcastIdToUpdate, podcasts } = props;
+  const {
+    setUpdateMode,
+    setPodcastIdToUpdate,
+    podcastIdToUpdate,
+    podcasts,
+    setPodcastInfo
+  } = props;
   const classes = useStyles();
+
+  console.log(podcasts);
+  console.log(podcastIdToUpdate);
+  console.log(setPodcastInfo);
 
   // Delete Podcast
   const DeletePodcast = id => {
@@ -79,6 +89,10 @@ const PodcastsTab = props => {
                     onClick={() => {
                       setPodcastIdToUpdate(podcast.podcast_id);
                       setUpdateMode(true);
+
+                      setPodcastInfo(
+                        podcasts.filter(podcast => podcast.podcast_id === podcastIdToUpdate)[0]
+                      );
                     }}
                   >
                     <EditIcon fontSize="large" />
