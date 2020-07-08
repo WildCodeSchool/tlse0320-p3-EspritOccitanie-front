@@ -55,7 +55,7 @@ const PodcastForm = props => {
 
   //   let {podcast_title} = valueToUpdate.podcast_title
 
-  const { podcast_title } = valueToUpdate;
+  // const { podcast_title } = valueToUpdate;
 
   // Input validation form
   const schema = yup.object().shape({
@@ -169,7 +169,7 @@ const PodcastForm = props => {
 
   const methods = useForm();
   const { handleSubmit, control, reset, register } = methods;
-  console.log(`podcast infos = `, podcastInfo.podcast_title);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container spacing={3}>
@@ -181,7 +181,7 @@ const PodcastForm = props => {
             label="Titre du podcast"
             variant="outlined"
             fullWidth
-            value={podcastInfo.podcast_title}
+            value={podcastInfo}
             onChange={e => setPodcastInfo(e.target.value)}
           />
           {/* {errors.podcast_title && <p className="alert-form">{errors.podcast_title.message}</p>} */}

@@ -9,9 +9,7 @@ const PodcastsPage = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const [podcastIdToUpdate, setPodcastIdToUpdate] = useState(null);
   const [podcasts, setPodcasts] = useState([]);
-  const [podcastInfo, setPodcastInfo] = useState({ podcast_title: 'toto' });
-
-  console.log(podcastInfo.podcast_title);
+  const [podcastInfo, setPodcastInfo] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,10 +21,12 @@ const PodcastsPage = () => {
     fetchData();
   }, []);
 
-  // if (updateMode) {
-  //   const values = podcasts.filter(podcast => podcast.podcast_id === podcastIdToUpdate)[0];
-  //   setPodcastInfo(values);
-  // }
+  if (updateMode) {
+    const values = podcasts.filter(podcast => podcast.podcast_id === podcastIdToUpdate)[0];
+    setPodcastInfo(values);
+  }
+
+  console.log(`toto`, podcastInfo);
 
   return (
     <div className="admin-podcast">

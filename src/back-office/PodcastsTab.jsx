@@ -86,11 +86,10 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="edit"
                     className={classes.margin}
-                    onClick={() => {
-                      setPodcastIdToUpdate(podcast.podcast_id);
-                      setUpdateMode(true);
-
-                      setPodcastInfo(
+                    onClick={async () => {
+                      await setPodcastIdToUpdate(podcast.podcast_id);
+                      await setUpdateMode(true);
+                      await setPodcastInfo(
                         podcasts.filter(podcast => podcast.podcast_id === podcastIdToUpdate)[0]
                       );
                     }}
