@@ -3,10 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
-import * as yup from 'yup';
 import axios from 'axios';
 import './admin.scss';
-import { useForm, Controller } from 'react-hook-form';
 
 import {
   Input,
@@ -52,32 +50,6 @@ const MenuProps = {
 
 const PodcastForm = props => {
   const { updateMode, valueToUpdate, podcastInfo, setPodcastInfo } = props;
-
-  //   let {podcast_title} = valueToUpdate.podcast_title
-
-  // const { podcast_title } = valueToUpdate;
-
-  // Input validation form
-  const schema = yup.object().shape({
-    podcast_title: yup
-      .string()
-      .min(4, 'minimun 4 caractères')
-      .required(),
-    podcast_mp3: yup.string().required('le champ est requis'),
-    ro_category_category_id: yup.string().required('le champ est requis'),
-    podcast_creation_date: yup.string().required('le champ est requis'),
-    ro_program_program_id: yup.string().required('le champ est requis'),
-    podcast_duration: yup.string().required('le champ est requis'),
-    animator_id: yup
-      .array()
-      .max(1, 'Pick at least 3 tags')
-      .of(
-        yup.object().shape({
-          label: yup.string().required(),
-          value: yup.string().required()
-        })
-      )
-  });
 
   // Get Program request
   const [programs, setPrograms] = useState([]);
@@ -149,8 +121,6 @@ const PodcastForm = props => {
         ro_animator_animator_id: personName
       };
 
-      console.log(`envois `, dataForms);
-
       axios
         .post('/podcast', dataForms)
         .then(res => res.data)
@@ -172,8 +142,6 @@ const PodcastForm = props => {
         podcast_creation_date,
         ro_animator_animator_id: personName
       };
-
-      console.log(`envois `, dataForms);
 
       axios
         .put(`/podcast/${podcastInfo.podcast_id}`, dataForms)
@@ -203,7 +171,6 @@ const PodcastForm = props => {
             value={podcastInfo.podcast_title ? podcastInfo.podcast_title : ''}
             onChange={e => setPodcastInfo({ ...podcastInfo, podcast_title: e.target.value })}
           />
-          {/* {errors.podcast_title && <p className="alert-form">{errors.podcast_title.message}</p>} */}
         </Grid>
         <Grid item xs={6}>
           <TextField
@@ -217,7 +184,6 @@ const PodcastForm = props => {
             value={podcastInfo.podcast_mp3 ? podcastInfo.podcast_mp3 : ''}
             onChange={e => setPodcastInfo({ ...podcastInfo, podcast_mp3: e.target.value })}
           />
-          {/* {errors.podcast_mp3 && <p className="alert-form">{errors.podcast_mp3.message}</p>} */}
         </Grid>
         <Grid item xs={12}>
           <TextField
@@ -231,9 +197,6 @@ const PodcastForm = props => {
             value={podcastInfo.podcast_description ? podcastInfo.podcast_description : ''}
             onChange={e => setPodcastInfo({ ...podcastInfo, podcast_description: e.target.value })}
           />
-          {/* {errors.podcast_description && (
-            <p className="alert-form">{errors.podcast_description.message}</p>
-          )} */}
         </Grid>
         <Grid item xs={6}>
           <TextField
@@ -245,9 +208,6 @@ const PodcastForm = props => {
             value={podcastInfo.podcast_duration ? podcastInfo.podcast_duration : ''}
             onChange={e => setPodcastInfo({ ...podcastInfo, podcast_duration: e.target.value })}
           />
-          {/* {errors.podcast_duration && (
-            <p className="alert-form">{errors.podcast_duration.message}</p>
-          )} */}
         </Grid>
         <Grid item xs={6}>
           <TextField
@@ -260,7 +220,6 @@ const PodcastForm = props => {
             value={podcastInfo.podcast_image ? podcastInfo.podcast_image : ''}
             onChange={e => setPodcastInfo({ ...podcastInfo, podcast_image: e.target.value })}
           />
-          {/* {errors.podcast_image && <p className="alert-form">{errors.podcast_image.message}</p>} */}
         </Grid>
         <Grid item xs={6}>
           <FormControl variant="outlined" className="MuiFormControl-fullWidth">
@@ -283,9 +242,6 @@ const PodcastForm = props => {
               })}
             </Select>
           </FormControl>
-          {/* {errors.ro_program_program_id && (
-            <p className="alert-form">{errors.ro_program_program_id.message}</p>
-          )} */}
         </Grid>
         <Grid item xs={6}>
           <FormControl variant="outlined" className="MuiFormControl-fullWidth">
@@ -308,10 +264,6 @@ const PodcastForm = props => {
               })}
             </Select>
           </FormControl>
-
-          {/* {errors.ro_category_category_id && (
-            <p className="alert-form">{errors.ro_category_category_id.message}</p>
-          )} */}
         </Grid>
         <Grid item xs={6}>
           <FormControl className={classes.formControl}>
@@ -360,10 +312,6 @@ const PodcastForm = props => {
               shrink: true
             }}
           />
-
-          {/* {errors.podcast_creation_date && (
-            <p className="alert-form">{errors.podcast_creation_date.message}</p>
-          )} */}
         </Grid>
 
         <Grid item xs={12}>
