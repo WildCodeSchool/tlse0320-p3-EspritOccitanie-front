@@ -9,8 +9,21 @@ const PodcastsPage = () => {
   const [updateMode, setUpdateMode] = useState(false);
   const [podcastIdToUpdate, setPodcastIdToUpdate] = useState(null);
   const [podcasts, setPodcasts] = useState([]);
-  const [podcastInfo, setPodcastInfo] = useState();
+  const [podcastInfo, setPodcastInfo] = useState({
+    podcast_creation_date: '',
+    podcast_description: '',
+    podcast_duration: '',
+    podcast_id: null,
+    podcast_image: '',
+    podcast_mp3: '',
+    podcast_title: '',
+    ro_category_category_id: null,
+    ro_program_program_id: null
+  });
 
+  console.log(podcastInfo);
+
+  // get all podcasts
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('/podcast').catch(function(error) {
@@ -21,12 +34,13 @@ const PodcastsPage = () => {
     fetchData();
   }, []);
 
-  if (updateMode) {
-    const values = podcasts.filter(podcast => podcast.podcast_id === podcastIdToUpdate)[0];
-    setPodcastInfo(values);
-  }
-
-  console.log(`toto`, podcastInfo);
+  // set data podcasts to default value for update
+  useEffect(() => {
+    if (updateMode) {
+      const values = podcasts.filter(podcast => podcast.podcast_id === podcastIdToUpdate)[0];
+      setPodcastInfo(values);
+    }
+  }, [podcastIdToUpdate]);
 
   return (
     <div className="admin-podcast">

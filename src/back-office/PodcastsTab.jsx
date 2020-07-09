@@ -29,10 +29,6 @@ const PodcastsTab = props => {
   } = props;
   const classes = useStyles();
 
-  console.log(podcasts);
-  console.log(podcastIdToUpdate);
-  console.log(setPodcastInfo);
-
   // Delete Podcast
   const DeletePodcast = id => {
     axios.delete(`/podcast/${id}`).then(response => {});
@@ -86,12 +82,9 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="edit"
                     className={classes.margin}
-                    onClick={async () => {
-                      await setPodcastIdToUpdate(podcast.podcast_id);
-                      await setUpdateMode(true);
-                      await setPodcastInfo(
-                        podcasts.filter(podcast => podcast.podcast_id === podcastIdToUpdate)[0]
-                      );
+                    onClick={() => {
+                      setPodcastIdToUpdate(podcast.podcast_id);
+                      setUpdateMode(true);
                     }}
                   >
                     <EditIcon fontSize="large" />
