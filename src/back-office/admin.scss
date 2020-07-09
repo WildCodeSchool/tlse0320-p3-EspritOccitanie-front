@@ -19,4 +19,13 @@
       width: 91%;
     }
   }
+
+  .coverPodcast {
+    min-height: 70px;
+    background-color: #ddd;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 3px;
+  }
 }
