@@ -365,22 +365,6 @@ const PodcastForm = props => {
             <p className="alert-form">{errors.podcast_creation_date.message}</p>
           )} */}
         </Grid>
-        {/* <Grid item xs={6}>
-          <Controller
-            as={ReactDatePicker}
-            control={control}
-            className="MuiFormControl-fullWidth"
-            valueName="selected" // DateSelect value's name is selected
-            onChange={([selected]) => selected}
-            name="podcast_creation_date"
-            placeholderText="Date de création"
-            variant="outlined"
-          />
-
-          {errors.podcast_creation_date && (
-            <p className="alert-form">{errors.podcast_creation_date.message}</p>
-          )}
-        </Grid> */}
 
         <Grid item xs={12}>
           <Button type="submit" variant="contained" color="primary">
