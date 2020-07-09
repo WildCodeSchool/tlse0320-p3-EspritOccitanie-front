@@ -103,8 +103,6 @@ const PodcastForm = props => {
     fetchData('animatorHasPodcast, ', animatorHasPodcast);
   }, []);
 
-  console.log();
-
   // Get Category request
   const [categorys, setCategorys] = useState([]);
   useEffect(() => {
@@ -139,8 +137,6 @@ const PodcastForm = props => {
 
     setPodcastInfo({ ...podcastInfo, animatorId: animatorId });
   };
-
-  console.log(personName);
 
   const handleSubmit = event => {
     // Submit - create a podcast
