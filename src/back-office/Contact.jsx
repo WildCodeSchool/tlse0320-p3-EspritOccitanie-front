@@ -28,36 +28,34 @@ const Contact = () => {
     <Box p={2} bgcolor="background.paper" display="flex">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={3}>
-          <Grid item xs={9}>
+          <Grid item xs={12} md={6} lg={6}>
             <TextField
               name="sender"
               inputRef={register}
               id="outlined-basic"
-              label="your_email"
+              label="Votre email"
               variant="outlined"
               fullWidth
             />
-            <TextField
-              name="destination"
-              inputRef={register}
-              id="outlined-basic"
-              label="mail"
-              variant="outlined"
-              fullWidth
-            />
+          </Grid>
+          <Grid item xs={12} md={6} lg={6}>
             <TextField
               name="subject"
               inputRef={register}
               id="outlined-basic"
-              label="Nom du Contact"
+              label="Nom"
               variant="outlined"
               fullWidth
             />
+          </Grid>
+          <Grid item xs={12}>
             <TextField
               name="message"
               inputRef={register}
               id="outlined-basic"
-              label="message"
+              multiline
+              rows={4}
+              label="Message"
               variant="outlined"
               fullWidth
             />
