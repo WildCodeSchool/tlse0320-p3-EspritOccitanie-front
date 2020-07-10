@@ -55,40 +55,6 @@ const ProgramCard = props => {
   const image = program_image || '/radio-occitanie-default.jpg';
 
   return (
-    // <Card className={classes.root}>
-    //   <CardActionArea>
-    //     <CardMedia
-    //       component="img"
-    //       alt="Image de l'émission"
-    //       height="200"
-    //       image={image}
-    //       title="Contemplative Reptile"
-    //     />
-    //     <CardContent>
-    //       <Typography gutterBottom variant="h5" component="h2">
-    //         {program_title}
-    //       </Typography>
-    //       <Typography variant="subtitle2" gutterBottom>
-    //         Animée par :
-    //         {animators.map(animator => {
-    //
-    //           return (
-    //             <span>{` ${animator.animator_firstname} ${animator.animator_lastname} `}</span>
-    //           );
-    //         })}
-    //       </Typography>
-    //       <Typography variant="body2" color="textSecondary" component="p">
-    //         {program_description}
-    //       </Typography>
-    //     </CardContent>
-    //   </CardActionArea>
-    //   <CardActions className="btn-center">
-    //     <Button size="small" variant="outlined" color="secondary">
-    //       Voir plus
-    //     </Button>
-    //   </CardActions>
-    // </Card>
-
     <div className="programCard">
       <div
         className="coverProgram"
