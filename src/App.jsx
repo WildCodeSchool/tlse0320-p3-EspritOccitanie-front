@@ -4,6 +4,7 @@ import Navigation from './back-office/Navigation';
 import PodcastsList from './client/PodcastsList';
 import Contact from './back-office/Contact';
 import ProgramList from './client/ProgramList';
+import ProgramDetail from './client/ProgramDetail';
 import Navbar from './client/Navbar';
 import PlayerBottom from './client/PlayerBottom';
 import LoginPage from './client/LoginPage';
@@ -35,6 +36,9 @@ function App() {
             </Route>
             <Route path="/emissions">
               <ProgramList />
+            </Route>
+            <Route path="/emission/:program_id">
+              <ProgramDetail />
             </Route>
             <Route path="/admin-radio-occitanie">
               <Navigation />
