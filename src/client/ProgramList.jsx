@@ -21,10 +21,10 @@ const ProgramList = () => {
   return (
     <div>
       <Container maxWidth="lg">
-        <Grid container spacing={5}>
+        <Grid container spacing={3}>
           {programs.map(program => {
             return (
-              <Grid item xs={12} md={6} lg={4}>
+              <Grid item xs={12} sm={6} md={4} lg={4}>
                 <ProgramCard dataPrograms={program} />
               </Grid>
             );

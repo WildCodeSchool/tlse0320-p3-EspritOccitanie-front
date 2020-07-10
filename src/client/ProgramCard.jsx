@@ -52,8 +52,6 @@ const ProgramCard = props => {
     fetchData();
   }, []);
 
-  const image = program_image || '/radio-occitanie-default.jpg';
-
   return (
     <div className="programCard">
       <div
@@ -79,7 +77,7 @@ const ProgramCard = props => {
         <p> {program_description.substring(0, 120) + '...'}</p>
       </div>
       <div className="footer">
-        <Button variant="outlined" color="primary" size="small" href="#outlined-buttons">
+        <Button variant="outlined" color="primary" size="small" href={`/emission/${program_id}`}>
           Voir plus
         </Button>
       </div>
