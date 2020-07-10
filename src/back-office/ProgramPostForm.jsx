@@ -84,7 +84,7 @@ const ProgramPostForm = () => {
       ...data,
       ro_animator_animator_id: personName
     };
-
+    console.log('personName', personName);
     axios
       .post('/program', dataForms)
       .then(res => res.data)

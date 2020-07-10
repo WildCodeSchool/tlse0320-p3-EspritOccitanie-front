@@ -7,20 +7,22 @@ import VolumeMuteIcon from '@material-ui/icons/VolumeMute';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import './PlayerBottom.scss';
 
-const PlayerBottom = () => {
+const PlayerBottom = props => {
+  const { onPlay, setOnPlay, isMute, setIsMute } = props;
+
   const [delay, setDelay] = useState(1000);
   const [playerDuration, setPlayerDuration] = useState(0);
   const [playerCurrentTime, setPlayerCurrentTime] = useState(0);
-  const [onPlay, setOnPlay] = useState(false);
-  const [isMute, setIsMute] = useState(true);
 
   // Play sound
   function play(idPlayer, e) {
     const player = document.querySelector(`#${idPlayer}`);
+
     setPlayerDuration(Math.trunc(player.duration));
     if (player.paused) {
       e.currentTarget.ariaLabel = 'pause';
       setOnPlay(true);
+
       return player.play();
     }
     e.currentTarget.ariaLabel = 'play';
@@ -89,13 +91,13 @@ const PlayerBottom = () => {
         </div>
         <div className="group">
           <div className="title">C'est l'oiseau blanc</div>
-          <div className="author">tristan maciag</div>
+          <div className="author">Jean miche</div>
         </div>
       </div>
 
       <div className="barPlayer">
         <audio id="audioPlayer">
-          <source src="http://www.esprit-occitanie.fr/emissions/capecap/2020-03-16capecap(abbearnaud).mp3" />
+          <source src="" />
         </audio>
 
         <input

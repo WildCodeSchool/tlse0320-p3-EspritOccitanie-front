@@ -4,16 +4,10 @@ import './PodcastCard.scss';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause';
 import Button from '@material-ui/core/Button';
 import Icon from '@material-ui/core/Icon';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-
-const useStyles = makeStyles(() => ({
-  playIcon: {
-    height: 25,
-    width: 25
-  }
-}));
 
 const PodcastCard = props => {
   const {
@@ -28,6 +22,8 @@ const PodcastCard = props => {
     ro_program_program_id
   } = props.dataPodcasts;
 
+  const { onPlay, setOnPlay, isMute, setIsMute } = props;
+
   const [programName, setProgramName] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -39,15 +35,25 @@ const PodcastCard = props => {
     fetchData();
   }, []);
 
-  const classes = useStyles();
+  const handleAudio = (urlTrack, e) => {
+    console.log(e.target);
+    document.getElementById('audioPlayer').src = urlTrack;
+
+    if (!onPlay) {
+      document.getElementById('audioPlayer').play();
+      return setOnPlay(true);
+    }
+    document.getElementById('audioPlayer').pause();
+    return setOnPlay(false);
+  };
 
   return (
     <div className="podcastCard">
       <div className="header">
         <div className="wrap">
           <div className="btn-play">
-            <IconButton aria-label="play/pause">
-              <PlayArrowIcon className={classes.playIcon} />
+            <IconButton aria-label="play/pause" onClick={e => handleAudio(podcast_mp3, e)}>
+              {onPlay ? <PauseIcon /> : <PlayArrowIcon />}
             </IconButton>
           </div>
           <div className="group">
