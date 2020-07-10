@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 });
 
 const PodcastsTab = props => {
-  const { setUpdateMode, setPodcastIdToUpdate, podcastIdToUpdate, programsData } = props;
+  const { setUpdateMode, setProgramIdToUpdate, programIdToUpdate, programsData } = props;
   const classes = useStyles();
 
   // Delete Podcast
@@ -74,9 +74,9 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="edit"
                     className={classes.margin}
-                    onClick={async () => {
-                      await setPodcastIdToUpdate(program.podcast_id);
-                      await setUpdateMode(true);
+                    onClick={() => {
+                      setProgramIdToUpdate(program.program_id);
+                      setUpdateMode(true);
                     }}
                   >
                     <EditIcon fontSize="large" />

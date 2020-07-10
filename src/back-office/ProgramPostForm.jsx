@@ -49,7 +49,7 @@ const MenuProps = {
 };
 
 const ProgramPostForm = props => {
-  const { updateMode, valueToUpdate } = props;
+  const { updateMode, valueToUpdate, programIdToUpdate } = props;
 
   // Get Category request
   const [categorys, setCategorys] = useState([]);
@@ -91,7 +91,6 @@ const ProgramPostForm = props => {
         ...data,
         ro_animator_animator_id: personName
       };
-      console.log('personName', personName);
       axios
         .post('/program', dataForms)
         .then(res => res.data)
@@ -105,12 +104,20 @@ const ProgramPostForm = props => {
     }
 
     // update program
-    // const dataForms = {
-    //   ...data,
-    //   ro_animator_animator_id: personName
-    // };
-    // axios
-    // .put(``)
+    const dataForms = {
+      ...data,
+      ro_animator_animator_id: personName
+    };
+    axios
+      .put(`/program/${programIdToUpdate}`, dataForms)
+      .then(res => res.data)
+      .then(res => {
+        alert(`L'émission est modifiée avec succès'`);
+      })
+      .catch(e => {
+        console.error(e);
+        alert(`Erreur concernant la modification  de l'émission ${e}`);
+      });
   };
 
   return (

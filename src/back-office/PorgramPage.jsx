@@ -9,7 +9,7 @@ import './admin.scss';
 
 const ProgramPage = () => {
   const [updateMode, setUpdateMode] = useState(false);
-  const [podcastIdToUpdate, setPodcastIdToUpdate] = useState(null);
+  const [programIdToUpdate, setProgramIdToUpdate] = useState(null);
   const [programsData, setProgramsData] = useState([]);
 
   useEffect(() => {
@@ -29,15 +29,15 @@ const ProgramPage = () => {
           <Paper elevation={2}>
             <ProgramPostForm
               updateMode={updateMode}
-              podcastIdToUpdate={podcastIdToUpdate}
+              programIdToUpdate={programIdToUpdate}
               programsData={programsData}
             />
           </Paper>
           <Paper elevation={2}>
             <ProgramTab
               setUpdateMode={setUpdateMode}
-              podcastIdToUpdate={podcastIdToUpdate}
-              setPodcastIdToUpdate={setPodcastIdToUpdate}
+              programIdToUpdate={programIdToUpdate}
+              setProgramIdToUpdate={setProgramIdToUpdate}
               programsData={programsData}
             />
           </Paper>
