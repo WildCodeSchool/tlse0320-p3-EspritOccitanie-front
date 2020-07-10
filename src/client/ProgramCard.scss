@@ -3,5 +3,6 @@
     0px 6px 10px rgba(0, 0, 0, 0.1);
 }
 .btn-center {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
