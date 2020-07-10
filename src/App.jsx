@@ -13,23 +13,25 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-        <Switch>
-          <Route path="/podcasts">
-            <PodcastsList />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route path="/emissions">
-            <ProgramList />
-          </Route>
-          <Route path="/admin-radio-occitanie">
-            <Navigation />
-          </Route>
-        </Switch>
+        <div className="main-ro">
+          <Switch>
+            <Route path="/podcasts">
+              <PodcastsList />
+            </Route>
+            <Route path="/contact">
+              <Contact />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <Route path="/emissions">
+              <ProgramList />
+            </Route>
+            <Route path="/admin-radio-occitanie">
+              <Navigation />
+            </Route>
+          </Switch>
+        </div>
       </Router>
     </div>
   );

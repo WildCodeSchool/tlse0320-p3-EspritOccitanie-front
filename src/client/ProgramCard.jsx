@@ -13,10 +13,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import './ProgramCard.scss';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345
+    maxWidth: '100%'
   }
 });
 
@@ -94,7 +95,7 @@ const ProgramCard = props => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions className="btn-center">
         <Button size="small" variant="outlined" color="secondary">
           Voir plus
         </Button>
