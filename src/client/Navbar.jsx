@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import './Navbar.scss';
 
 const useStyles = makeStyles(theme => ({
@@ -36,8 +33,8 @@ export default function Navbar() {
             <Link className="link" to="direct">
               <Button>Le direct</Button>
             </Link>
-            <Link className="link" to="a-propos">
-              <Button>A propos</Button>
+            <Link className="link" to="qui-sommes-nous">
+              <Button>Qui sommes nous ?</Button>
             </Link>
             <Link className="link" to="grille-des-programmes">
               <Button>Grille des programmes</Button>
@@ -47,12 +44,6 @@ export default function Navbar() {
             </Link>
             <Link className="link" to="podcasts">
               <Button>Podcasts</Button>
-            </Link>
-            <Link className="link" to="animateurs">
-              <Button>Animateurs</Button>
-            </Link>
-            <Link className="link" to="contact">
-              <Button>Nous contacter</Button>
             </Link>
           </Toolbar>
         </AppBar>
