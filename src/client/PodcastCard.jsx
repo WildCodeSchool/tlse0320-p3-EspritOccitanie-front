@@ -69,8 +69,10 @@ const PodcastCard = props => {
         }}
       />
       <div className="content">
-        <h2>{podcast_title}</h2>
-        <p> {podcast_description.substring(0, 80) + '...'}</p>
+        <h2>{podcast_title.substring(0, 40) + (podcast_title.length < 40 ? '' : '...')}</h2>
+        <p>
+          {podcast_description.substring(0, 80) + (podcast_description.length < 80 ? '' : '...')}
+        </p>
       </div>
       <div className="footer">
         <Button variant="outlined" color="primary" size="small" href="#outlined-buttons">
