@@ -1,15 +1,15 @@
 .player-bottom {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 70px;
   background-color: #181827;
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: calc(100% - 30px);
   padding: 15px;
   color: white;
   .infos {
-    flex-grow: 1;
     display: flex;
     align-items: center;
     .btnPlay {
@@ -30,23 +30,33 @@
       .author {
         font-size: 12px;
       }
+      @media (max-width: 992px) {
+        display: none;
+      }
+    }
+    @media (max-width: 992px) {
+      margin-right: 10px;
     }
   }
 
   .barPlayer {
-    flex-grow: 8;
-
+    width: 60%;
     input {
       width: 100%;
+      @media (max-width: 992px) {
+        max-width: 100%;
+      }
     }
   }
   .audio {
     display: flex;
     align-items: center;
-    flex-grow: 1;
     justify-content: center;
     .infos-duration {
       font-size: 12px;
+      @media (max-width: 992px) {
+        display: none;
+      }
     }
     .mute {
       margin-left: 15px;
