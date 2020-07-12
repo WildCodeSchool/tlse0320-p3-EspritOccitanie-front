@@ -5,7 +5,8 @@ import PodcastCard from './PodcastCard';
 
 import './pagination.scss';
 
-const PodcastsList = () => {
+const PodcastsList = props => {
+  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
   // Get podcasts request
   const [podcasts, setPodcasts] = useState([]);
   const [nbPodcasts, setNbPodcasts] = useState();
@@ -36,7 +37,15 @@ const PodcastsList = () => {
           {podcasts.slice(startSlicePagination, endSlicePagination).map(podcast => {
             return (
               <Grid item xs={12} md={6} lg={4}>
-                <PodcastCard dataPodcasts={podcast} />
+                <PodcastCard
+                  dataPodcasts={podcast}
+                  onPlay={onPlay}
+                  setOnPlay={setOnPlay}
+                  setIdPodastPlay={setIdPodastPlay}
+                  idPodastPlay={idPodastPlay}
+                  playerRef={playerRef}
+                  setDataPlayer={setDataPlayer}
+                />
               </Grid>
             );
           })}

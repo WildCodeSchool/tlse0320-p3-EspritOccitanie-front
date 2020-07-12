@@ -19,6 +19,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const PodcastDetail = props => {
+  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
   const [podcastData, setPodcastData] = useState([]);
   const { id_podcast } = useParams();
 
