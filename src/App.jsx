@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/podcasts">
               <PodcastsList />
             </Route>
-            <Route exact path="/podcasts/:podcast_id">
+            <Route exact path="/podcasts/:id_podcast/:podcast_title">
               <PodcastDetail />
             </Route>
             <Route exact path="/contact">

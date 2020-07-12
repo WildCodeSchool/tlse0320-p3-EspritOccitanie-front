@@ -95,7 +95,7 @@ const PodcastCard = props => {
           variant="outlined"
           color="primary"
           size="small"
-          href={`/podcasts/${slugify(podcast_title)}`}
+          href={`/podcasts/${podcast_id}/${slugify(podcast_title)}`}
         >
           Voir plus
         </Button>
