@@ -76,7 +76,7 @@ const PodcastCard = props => {
       </div>
       <div className="footer">
         <Button variant="outlined" color="primary" size="small" href="#outlined-buttons">
-          En savoir plus
+          Voir plus
         </Button>
       </div>
     </div>
