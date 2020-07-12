@@ -46,7 +46,6 @@ const ProgramCard = props => {
         .catch(error => {
           console.log(error.toJSON());
         });
-      console.log('result', result);
       setAnimators(result);
     };
     fetchData();
@@ -67,7 +66,7 @@ const ProgramCard = props => {
           return (
             <span className="tagAnimateur">
               <span>
-                <img src="./anim.svg" alt="icon" />
+                <img src="/anim.svg" alt="icon" />
               </span>
               {` ${animator.animator_firstname} ${animator.animator_lastname} `}
             </span>

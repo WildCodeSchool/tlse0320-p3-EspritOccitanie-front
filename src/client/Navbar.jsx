@@ -27,7 +27,6 @@ export default function Navbar() {
         <AppBar position="static">
           <Toolbar>
             <div>
-              {' '}
               <img src="/logo.svg" alt="logo Esprit Occitannie" />
             </div>
             <Link className="link" to="direct">

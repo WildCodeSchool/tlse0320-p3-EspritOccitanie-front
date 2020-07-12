@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PodcastCard.scss';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 const PodcastCard = props => {
@@ -47,6 +46,23 @@ const PodcastCard = props => {
     return setOnPlay(false);
   };
 
+  function slugify(string) {
+    const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
+    const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------';
+    const p = new RegExp(a.split('').join('|'), 'g');
+
+    return string
+      .toString()
+      .toLowerCase()
+      .replace(/\s+/g, '-') // Replace spaces with -
+      .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+      .replace(/&/g, '-and-') // Replace & with 'and'
+      .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+      .replace(/\-\-+/g, '-') // Replace multiple - with single -
+      .replace(/^-+/, '') // Trim - from start of text
+      .replace(/-+$/, ''); // Trim - from end of text
+  }
+
   return (
     <div className="podcastCard">
       <div className="header">
@@ -74,12 +90,20 @@ const PodcastCard = props => {
         }}
       />
       <div className="content">
-        <h2>{podcast_title}</h2>
-        <p> {podcast_description.substring(0, 80) + '...'}</p>
+        <h2>{podcast_title.substring(0, 40) + (podcast_title.length < 40 ? '' : '...')}</h2>
+        <p>
+          {podcast_description.substring(0, 80) + (podcast_description.length < 80 ? '' : '...')}
+        </p>
       </div>
       <div className="footer">
-        <Button variant="outlined" color="primary" size="small" href="#outlined-buttons">
-          En savoir plus
+        <div className="categoryTag">Economie</div>
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          href={`/podcasts/${podcast_id}/${slugify(podcast_title)}`}
+        >
+          Voir plus
         </Button>
       </div>
     </div>
