@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
 import PodcastsList from './client/PodcastsList';
@@ -14,6 +14,9 @@ import './App.css';
 function App() {
   const [onPlay, setOnPlay] = useState(false);
   const [isMute, setIsMute] = useState(true);
+  const [idPodastPlay, setIdPodastPlay] = useState();
+  const [dataPlayer, setDataPlayer] = useState();
+  const playerRef = useRef();
 
   return (
     <div className="App">
@@ -22,7 +25,14 @@ function App() {
         <div className="main-ro">
           <Switch>
             <Route exact path="/podcasts">
-              <PodcastsList />
+              <PodcastsList
+                onPlay={onPlay}
+                setOnPlay={setOnPlay}
+                setIdPodastPlay={setIdPodastPlay}
+                idPodastPlay={idPodastPlay}
+                playerRef={playerRef}
+                setDataPlayer={setDataPlayer}
+              />
             </Route>
             <Route exact path="/podcasts/:id_podcast/:podcast_title">
               <PodcastDetail />
@@ -45,7 +55,14 @@ function App() {
           </Switch>
         </div>
       </Router>
-      <PlayerBottom onPlay={onPlay} setOnPlay={setOnPlay} isMute={isMute} setIsMute={setIsMute} />
+      <PlayerBottom
+        onPlay={onPlay}
+        setOnPlay={setOnPlay}
+        isMute={isMute}
+        setIsMute={setIsMute}
+        playerRef={playerRef}
+        dataPlayer={dataPlayer}
+      />
     </div>
   );
 }

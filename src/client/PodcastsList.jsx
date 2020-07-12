@@ -6,7 +6,7 @@ import PodcastCard from './PodcastCard';
 import './pagination.scss';
 
 const PodcastsList = props => {
-  const { onPlay, setOnPlay, isMute, setIsMute } = props;
+  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
   // Get podcasts request
   const [podcasts, setPodcasts] = useState([]);
   const [nbPodcasts, setNbPodcasts] = useState();
@@ -41,8 +41,10 @@ const PodcastsList = props => {
                   dataPodcasts={podcast}
                   onPlay={onPlay}
                   setOnPlay={setOnPlay}
-                  isMute={isMute}
-                  setIsMute={setIsMute}
+                  setIdPodastPlay={setIdPodastPlay}
+                  idPodastPlay={idPodastPlay}
+                  playerRef={playerRef}
+                  setDataPlayer={setDataPlayer}
                 />
               </Grid>
             );

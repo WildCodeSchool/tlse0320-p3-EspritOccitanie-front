@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PodcastCard.scss';
-import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
@@ -21,9 +20,10 @@ const PodcastCard = props => {
     ro_program_program_id
   } = props.dataPodcasts;
 
-  const { onPlay, setOnPlay, isMute, setIsMute } = props;
+  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
 
   const [programName, setProgramName] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`/program/${ro_program_program_id}`).catch(function(error) {
@@ -34,15 +34,15 @@ const PodcastCard = props => {
     fetchData();
   }, []);
 
-  const handleAudio = (urlTrack, e) => {
-    console.log(e.target);
-    document.getElementById('audioPlayer').src = urlTrack;
-
-    if (!onPlay) {
-      document.getElementById('audioPlayer').play();
+  const handleAudio = (urlPodcastAudio, currentIdPodcast) => {
+    setIdPodastPlay(currentIdPodcast);
+    if (!onPlay || (onPlay && idPodastPlay !== currentIdPodcast)) {
+      playerRef.current.src = urlPodcastAudio;
+      playerRef.current.play();
+      setDataPlayer({ programName, podcast_title });
       return setOnPlay(true);
     }
-    document.getElementById('audioPlayer').pause();
+    playerRef.current.pause();
     return setOnPlay(false);
   };
 
@@ -68,8 +68,8 @@ const PodcastCard = props => {
       <div className="header">
         <div className="wrap">
           <div className="btn-play">
-            <IconButton aria-label="play/pause" onClick={e => handleAudio(podcast_mp3, e)}>
-              {onPlay ? <PauseIcon /> : <PlayArrowIcon />}
+            <IconButton aria-label="play" onClick={e => handleAudio(podcast_mp3, podcast_id)}>
+              {onPlay && idPodastPlay === podcast_id ? <PauseIcon /> : <PlayArrowIcon />}
             </IconButton>
           </div>
           <div className="group">

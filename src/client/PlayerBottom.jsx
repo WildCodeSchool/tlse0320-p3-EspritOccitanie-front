@@ -8,39 +8,31 @@ import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import './PlayerBottom.scss';
 
 const PlayerBottom = props => {
-  const { onPlay, setOnPlay, isMute, setIsMute } = props;
+  const { onPlay, setOnPlay, isMute, setIsMute, playerRef, dataPlayer } = props;
 
   const [delay, setDelay] = useState(1000);
   const [playerDuration, setPlayerDuration] = useState(0);
   const [playerCurrentTime, setPlayerCurrentTime] = useState(0);
 
   // Play sound
-  function play(idPlayer, e) {
-    const player = document.querySelector(`#${idPlayer}`);
-
-    setPlayerDuration(Math.trunc(player.duration));
-    if (player.paused) {
-      e.currentTarget.ariaLabel = 'pause';
+  function play() {
+    setPlayerDuration(Math.trunc(playerRef.current.duration));
+    if (playerRef.current.paused) {
       setOnPlay(true);
-
-      return player.play();
+      return playerRef.current.play();
     }
-    e.currentTarget.ariaLabel = 'play';
     setOnPlay(false);
-    return player.pause();
+    return playerRef.current.pause();
   }
 
   // Mute sound
-  function mute(idPlayer, e) {
-    const player = document.querySelector(`#${idPlayer}`);
+  function mute() {
     if (isMute) {
-      e.currentTarget.ariaLabel = 'mute';
       setIsMute(false);
-      return (player.muted = true);
+      return (playerRef.current.muted = true);
     }
-    e.currentTarget.ariaLabel = 'on';
     setIsMute(true);
-    return (player.muted = false);
+    return (playerRef.current.muted = false);
   }
 
   // UseInterval function tool
@@ -82,21 +74,23 @@ const PlayerBottom = props => {
         <div className="btnPlay">
           <IconButton
             aria-label="pause"
-            onClick={e => {
-              play('audioPlayer', e);
+            onClick={() => {
+              play();
             }}
           >
             {onPlay ? <PauseIcon /> : <PlayArrowIcon />}
           </IconButton>
         </div>
         <div className="group">
-          <div className="title">C'est l'oiseau blanc</div>
-          <div className="author">Jean miche</div>
+          <div className="title">
+            {dataPlayer ? dataPlayer.programName.program_title : 'Nom émission'}
+          </div>
+          <div className="author"> {dataPlayer ? dataPlayer.podcast_title : 'Nom podcast'}</div>
         </div>
       </div>
 
       <div className="barPlayer">
-        <audio id="audioPlayer">
+        <audio id="audioPlayer" ref={playerRef}>
           <source src="" />
         </audio>
 
@@ -109,7 +103,6 @@ const PlayerBottom = props => {
           max={playerDuration}
         />
       </div>
-
       <div className="audio">
         <div className="infos-duration">
           {formatDuration(playerCurrentTime)} | {formatDuration(playerDuration)}
@@ -117,8 +110,8 @@ const PlayerBottom = props => {
         <div className="mute">
           <IconButton
             aria-label="mute"
-            onClick={e => {
-              mute('audioPlayer', e);
+            onClick={() => {
+              mute();
             }}
           >
             {!isMute ? <VolumeOffIcon /> : <VolumeMuteIcon />}
