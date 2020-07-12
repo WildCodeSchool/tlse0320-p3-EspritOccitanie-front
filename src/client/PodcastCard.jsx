@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PodcastCard.scss';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import Button from '@material-ui/core/Button';
-import Icon from '@material-ui/core/Icon';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 
 const useStyles = makeStyles(() => ({
@@ -69,12 +68,15 @@ const PodcastCard = props => {
         }}
       />
       <div className="content">
-        <h2>{podcast_title}</h2>
-        <p> {podcast_description.substring(0, 80) + '...'}</p>
+        <h2>{podcast_title.substring(0, 40) + (podcast_title.length < 40 ? '' : '...')}</h2>
+        <p>
+          {podcast_description.substring(0, 80) + (podcast_description.length < 80 ? '' : '...')}
+        </p>
       </div>
       <div className="footer">
+        <div className="categoryTag">Economie</div>
         <Button variant="outlined" color="primary" size="small" href="#outlined-buttons">
-          En savoir plus
+          Voir plus
         </Button>
       </div>
     </div>
