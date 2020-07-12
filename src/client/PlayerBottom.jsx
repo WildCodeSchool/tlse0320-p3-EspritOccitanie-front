@@ -1,39 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import IconButton from '@material-ui/core/IconButton';
-
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import VolumeMuteIcon from '@material-ui/icons/VolumeMute';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
+import { play, mute, formatDuration } from './util/utilFunctions';
 import './PlayerBottom.scss';
 
 const PlayerBottom = props => {
   const { onPlay, setOnPlay, isMute, setIsMute, playerRef, dataPlayer } = props;
-
   const [delay, setDelay] = useState(1000);
   const [playerDuration, setPlayerDuration] = useState(0);
   const [playerCurrentTime, setPlayerCurrentTime] = useState(0);
-
-  // Play sound
-  function play() {
-    setPlayerDuration(Math.trunc(playerRef.current.duration));
-    if (playerRef.current.paused) {
-      setOnPlay(true);
-      return playerRef.current.play();
-    }
-    setOnPlay(false);
-    return playerRef.current.pause();
-  }
-
-  // Mute sound
-  function mute() {
-    if (isMute) {
-      setIsMute(false);
-      return (playerRef.current.muted = true);
-    }
-    setIsMute(true);
-    return (playerRef.current.muted = false);
-  }
 
   // UseInterval function tool
   function useInterval(callback, delay) {
@@ -59,21 +37,13 @@ const PlayerBottom = props => {
     onPlay ? delay : null
   );
 
-  // Format for duration (ss to mm:ss)
-  let moment = require('moment');
-  require('moment-duration-format');
-  function formatDuration(duration) {
-    return moment.duration(duration.toString(), 'seconds').format('mm:ss', { trim: false });
-  }
-
   return (
     <div className="player-bottom">
       <div className="infos">
         <div className="btnPlay">
           <IconButton
-            aria-label="pause"
             onClick={() => {
-              play();
+              play(setPlayerDuration, playerRef, setOnPlay);
             }}
           >
             {onPlay ? <PauseIcon /> : <PlayArrowIcon />}
@@ -109,7 +79,7 @@ const PlayerBottom = props => {
           <IconButton
             aria-label="mute"
             onClick={() => {
-              mute();
+              mute(isMute, setIsMute, playerRef);
             }}
           >
             {!isMute ? <VolumeOffIcon /> : <VolumeMuteIcon />}

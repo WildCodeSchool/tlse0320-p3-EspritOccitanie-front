@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
+import { slugify, handleAudio } from './util/utilFunctions';
 
 const PodcastCard = props => {
   const {
@@ -21,9 +22,7 @@ const PodcastCard = props => {
     ro_category_category_id,
     ro_program_program_id
   } = props.dataPodcasts;
-
   const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
-
   const [programName, setProgramName] = useState([]);
 
   useEffect(() => {
@@ -36,43 +35,28 @@ const PodcastCard = props => {
     fetchData();
   }, []);
 
-  const handleAudio = (urlPodcastAudio, currentIdPodcast) => {
-    if (!onPlay || (onPlay && idPodastPlay !== currentIdPodcast)) {
-      if (idPodastPlay !== currentIdPodcast) {
-        playerRef.current.src = urlPodcastAudio;
-        setIdPodastPlay(currentIdPodcast);
-      }
-      playerRef.current.play();
-      setDataPlayer({ programName, podcast_title });
-      return setOnPlay(true);
-    }
-    playerRef.current.pause();
-    return setOnPlay(false);
-  };
-
-  function slugify(string) {
-    const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
-    const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------';
-    const p = new RegExp(a.split('').join('|'), 'g');
-
-    return string
-      .toString()
-      .toLowerCase()
-      .replace(/\s+/g, '-') // Replace spaces with -
-      .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-      .replace(/&/g, '-and-') // Replace & with 'and'
-      .replace(/[^\w\-]+/g, '') // Remove all non-word characters
-      .replace(/\-\-+/g, '-') // Replace multiple - with single -
-      .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, ''); // Trim - from end of text
-  }
-
   return (
     <div className="podcastCard">
       <div className="header">
         <div className="wrap">
           <div className="btn-play">
-            <IconButton aria-label="play" onClick={e => handleAudio(podcast_mp3, podcast_id)}>
+            <IconButton
+              aria-label="play"
+              onClick={() =>
+                handleAudio(
+                  podcast_mp3,
+                  podcast_id,
+                  idPodastPlay,
+                  onPlay,
+                  programName,
+                  podcast_title,
+                  playerRef,
+                  setIdPodastPlay,
+                  setDataPlayer,
+                  setOnPlay
+                )
+              }
+            >
               {onPlay && idPodastPlay === podcast_id ? <PauseIcon /> : <PlayArrowIcon />}
             </IconButton>
           </div>
