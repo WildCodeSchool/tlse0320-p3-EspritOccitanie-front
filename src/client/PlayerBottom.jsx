@@ -51,12 +51,10 @@ const PlayerBottom = props => {
       }
     }, [delay]);
   }
-
   // Update currentTime
   useInterval(
     () => {
-      const player = document.querySelector('#audioPlayer');
-      setPlayerCurrentTime(player.currentTime);
+      setPlayerCurrentTime(playerRef.current.currentTime);
     },
     onPlay ? delay : null
   );

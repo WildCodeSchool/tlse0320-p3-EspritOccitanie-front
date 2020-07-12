@@ -6,6 +6,8 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import Button from '@material-ui/core/Button';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
 
 const PodcastCard = props => {
   const {
@@ -35,9 +37,11 @@ const PodcastCard = props => {
   }, []);
 
   const handleAudio = (urlPodcastAudio, currentIdPodcast) => {
-    setIdPodastPlay(currentIdPodcast);
     if (!onPlay || (onPlay && idPodastPlay !== currentIdPodcast)) {
-      playerRef.current.src = urlPodcastAudio;
+      if (idPodastPlay !== currentIdPodcast) {
+        playerRef.current.src = urlPodcastAudio;
+        setIdPodastPlay(currentIdPodcast);
+      }
       playerRef.current.play();
       setDataPlayer({ programName, podcast_title });
       return setOnPlay(true);
@@ -97,14 +101,12 @@ const PodcastCard = props => {
       </div>
       <div className="footer">
         <div className="categoryTag">Economie</div>
-        <Button
-          variant="outlined"
-          color="primary"
-          size="small"
-          href={`/podcasts/${podcast_id}/${slugify(podcast_title)}`}
-        >
-          Voir plus
-        </Button>
+
+        <Link component={RouterLink} to={`/podcasts/${podcast_id}/${slugify(podcast_title)}`}>
+          <Button variant="outlined" color="primary" size="small">
+            Voir plus
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -35,7 +35,14 @@ function App() {
               />
             </Route>
             <Route exact path="/podcasts/:id_podcast/:podcast_title">
-              <PodcastDetail />
+              <PodcastDetail
+                onPlay={onPlay}
+                setOnPlay={setOnPlay}
+                setIdPodastPlay={setIdPodastPlay}
+                idPodastPlay={idPodastPlay}
+                playerRef={playerRef}
+                setDataPlayer={setDataPlayer}
+              />
             </Route>
             <Route exact path="/contact">
               <Contact />
