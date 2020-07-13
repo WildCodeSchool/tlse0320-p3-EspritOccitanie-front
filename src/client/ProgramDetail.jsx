@@ -9,9 +9,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import ProgramPodcastList from './ProgramPodcastList';
 
-const ProgramDetail = () => {
+const ProgramDetail = props => {
   const [programData, setProgramData] = useState([]);
   const { program_id } = useParams();
+  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
 
   useEffect(() => {
     axios
@@ -84,7 +85,14 @@ const ProgramDetail = () => {
             );
           })}
           <Grid item xs={12} sm={12} md={12} lg={8}>
-            <ProgramPodcastList />
+            <ProgramPodcastList
+              onPlay={onPlay}
+              setOnPlay={setOnPlay}
+              setIdPodastPlay={setIdPodastPlay}
+              idPodastPlay={idPodastPlay}
+              playerRef={playerRef}
+              setDataPlayer={setDataPlayer}
+            />
           </Grid>
         </Grid>
       </Container>

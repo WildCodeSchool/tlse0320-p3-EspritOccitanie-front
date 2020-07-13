@@ -3,18 +3,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PodcastCard.scss';
 import moment from 'moment';
-import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PauseIcon from '@material-ui/icons/Pause';
 import Button from '@material-ui/core/Button';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-
-const useStyles = makeStyles(() => ({
-  playIcon: {
-    height: 25,
-    width: 25
-  }
-}));
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+import { slugify, handleAudio } from './util/utilFunctions';
 
 const PodcastCard = props => {
   const {
@@ -31,32 +27,42 @@ const PodcastCard = props => {
     category_name
   } = props.dataPodcasts;
 
-  const classes = useStyles();
+  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
+  const [programName, setProgramName] = useState([]);
 
-  function slugify(string) {
-    const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;';
-    const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------';
-    const p = new RegExp(a.split('').join('|'), 'g');
-
-    return string
-      .toString()
-      .toLowerCase()
-      .replace(/\s+/g, '-') // Replace spaces with -
-      .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-      .replace(/&/g, '-and-') // Replace & with 'and'
-      .replace(/[^\w\-]+/g, '') // Remove all non-word characters
-      .replace(/\-\-+/g, '-') // Replace multiple - with single -
-      .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, ''); // Trim - from end of text
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(`/program/${ro_program_program_id}`).catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setProgramName(result.data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="podcastCard">
       <div className="header">
         <div className="wrap">
           <div className="btn-play">
-            <IconButton aria-label="play/pause">
-              <PlayArrowIcon className={classes.playIcon} />
+            <IconButton
+              aria-label="play"
+              onClick={() =>
+                handleAudio(
+                  podcast_mp3,
+                  podcast_id,
+                  idPodastPlay,
+                  onPlay,
+                  programName,
+                  podcast_title,
+                  playerRef,
+                  setIdPodastPlay,
+                  setDataPlayer,
+                  setOnPlay
+                )
+              }
+            >
+              {onPlay && idPodastPlay === podcast_id ? <PauseIcon /> : <PlayArrowIcon />}
             </IconButton>
           </div>
           <div className="group">
@@ -84,14 +90,12 @@ const PodcastCard = props => {
       </div>
       <div className="footer">
         <div className="categoryTag">{category_name}</div>
-        <Button
-          variant="outlined"
-          color="primary"
-          size="small"
-          href={`/podcasts/${podcast_id}/${slugify(podcast_title)}`}
-        >
-          Voir plus
-        </Button>
+
+        <Link component={RouterLink} to={`/podcasts/${podcast_id}/${slugify(podcast_title)}`}>
+          <Button variant="outlined" color="primary" size="small">
+            Voir plus
+          </Button>
+        </Link>
       </div>
     </div>
   );
