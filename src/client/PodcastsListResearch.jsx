@@ -74,7 +74,6 @@ function select(
     (!categorySelected || categorySelected === 'Catégorie') &&
     (!animatorSelected || animatorSelected === 'Animateurs')
   ) {
-    console.log('selectedprogram', podcastHasProgram);
     return podcastHasProgram;
   }
   return podcastsList;
