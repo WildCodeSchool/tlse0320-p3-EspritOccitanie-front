@@ -7,6 +7,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@material-ui/core/Link';
+import { slugify } from './util/utilFunctions';
 import './ProgramCard.scss';
 
 const ProgramCard = props => {
@@ -76,9 +79,11 @@ const ProgramCard = props => {
         <p> {program_description.substring(0, 120) + '...'}</p>
       </div>
       <div className="footer">
-        <Button variant="outlined" color="primary" size="small" href={`/emission/${program_id}`}>
-          Voir plus
-        </Button>
+        <Link component={RouterLink} to={`/emission/${program_id}/${slugify(program_title)}`}>
+          <Button variant="outlined" color="primary" size="small">
+            Voir plus
+          </Button>
+        </Link>
       </div>
     </div>
   );

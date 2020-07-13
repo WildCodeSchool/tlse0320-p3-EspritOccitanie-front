@@ -53,7 +53,7 @@ function App() {
             <Route exact path="/emissions">
               <ProgramList />
             </Route>
-            <Route exact path="/emission/:program_id">
+            <Route exact path="/emission/:program_id/:program_title">
               <ProgramDetail
                 onPlay={onPlay}
                 setOnPlay={setOnPlay}
