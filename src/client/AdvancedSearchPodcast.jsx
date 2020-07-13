@@ -1,73 +1,24 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  Input,
-  TextField,
-  Box,
-  Grid,
-  Select,
-  MenuItem,
-  InputLabel,
-  Button,
-  FormControl,
-  Chip
-} from '@material-ui/core';
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 500,
-    maxWidth: 500
-  },
-  chips: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  },
-  chip: {
-    margin: 2
-  },
-  noLabel: {
-    marginTop: theme.spacing(3)
-  }
-}));
+import { Grid, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
 
 const AdvancedSearchPodcast = props => {
   const {
     programsList,
-    setProgramsList,
     animatorsList,
-    setAnimatorsList,
     categorysList,
-    setCategorysList,
     programSelected,
     handleProgramSelected,
     animatorSelected,
     handleAnimatorSelected,
     categorySelected,
-    handleCategoryelected,
-    podcastHasProgram,
-    setPodcastHasProgram,
-    podcastHasAnimator,
-    setPodcastHasAnimator,
-    podcastHasCategory,
-    setPodcastHasCategory,
-    podcastHasProgramAndAnimator,
-    setPodcastHasProgramAndAnimator,
-    podcastHasProgramAndCategory,
-    setPodcastHasProgramAndCategory,
-    podcastHasAnimatorAndCategory,
-    setPodcastHasAnimatorAndCategory,
-    podcastHasAll,
-    setPodcastHasAll
+    handleCategoryelected
   } = props;
-
-  const classes = useStyles();
 
   return (
     <div>
-      <Grid>
-        <Grid>
+      <Grid container spacing={3}>
+        <Grid lg={4}>
           <FormControl variant="outlined" className="MuiFormControl-fullWidth">
             <InputLabel id="demo-simple-select-outlined-label" fullWidth>
               Émissions
@@ -87,7 +38,7 @@ const AdvancedSearchPodcast = props => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid>
+        <Grid lg={4}>
           <FormControl variant="outlined" className="MuiFormControl-fullWidth">
             <InputLabel id="demo-simple-select-outlined-label" fullWidth>
               Catégorie
@@ -107,7 +58,7 @@ const AdvancedSearchPodcast = props => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid>
+        <Grid lg={4}>
           <FormControl variant="outlined" className="MuiFormControl-fullWidth">
             <InputLabel id="demo-simple-select-outlined-label" fullWidth>
               Animateurs

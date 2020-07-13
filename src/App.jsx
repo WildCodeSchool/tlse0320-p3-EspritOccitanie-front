@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
 import PodcastsList from './client/PodcastsList';
@@ -6,23 +6,21 @@ import Contact from './back-office/Contact';
 import ProgramList from './client/ProgramList';
 import ProgramDetail from './client/ProgramDetail';
 import PodcastDetail from './client/PodcastDetail';
-import AdvancedSearchBar from './client/AdvancedSearchBar';
 import Navbar from './client/Navbar';
 import LoginPage from './client/LoginPage';
 import './App.css';
 
 function App() {
+  const [podcastsList, setPodcastsList] = useState([]);
+
   return (
     <div className="App">
       <Router>
         <Navbar />
         <div className="main-ro">
           <Switch>
-            <Route exact path="/">
-              <AdvancedSearchBar />
-            </Route>
             <Route exact path="/podcasts">
-              <PodcastsList />
+              <PodcastsList podcastsList={podcastsList} setPodcastsList={setPodcastsList} />
             </Route>
             <Route exact path="/podcasts/:id_podcast/:podcast_title">
               <PodcastDetail />

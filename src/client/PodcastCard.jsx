@@ -1,6 +1,8 @@
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PodcastCard.scss';
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -24,19 +26,10 @@ const PodcastCard = props => {
     podcast_mp3,
     podcast_title,
     ro_category_category_id,
-    ro_program_program_id
+    ro_program_program_id,
+    program_title,
+    category_name
   } = props.dataPodcasts;
-
-  const [programName, setProgramName] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(`/program/${ro_program_program_id}`).catch(function(error) {
-        console.log(error.toJSON());
-      });
-      setProgramName(result.data);
-    };
-    fetchData();
-  }, []);
 
   const classes = useStyles();
 
@@ -67,12 +60,12 @@ const PodcastCard = props => {
             </IconButton>
           </div>
           <div className="group">
-            <div className="title">{programName.program_title}</div>
-            <div className="date">{podcast_creation_date}</div>
+            <div className="title">{program_title}</div>
+            <div className="date">{moment(podcast_creation_date).format('DD/MM/YYYY')}</div>
           </div>
         </div>
         <div className="duration">
-          <AccessTimeIcon></AccessTimeIcon>
+          <AccessTimeIcon />
           {podcast_duration}
         </div>
       </div>
@@ -90,7 +83,7 @@ const PodcastCard = props => {
         </p>
       </div>
       <div className="footer">
-        <div className="categoryTag">Economie</div>
+        <div className="categoryTag">{category_name}</div>
         <Button
           variant="outlined"
           color="primary"

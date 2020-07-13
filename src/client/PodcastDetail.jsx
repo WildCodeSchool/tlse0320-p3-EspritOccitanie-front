@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -30,6 +31,7 @@ const PodcastDetail = props => {
         console.log(error.toJSON());
       });
       setPodcastData(result.data);
+      console.log(result.data);
     };
     fetchData();
   }, []);
@@ -58,12 +60,14 @@ const PodcastDetail = props => {
                   </IconButton>
                 </div>
                 <div className="group">
-                  <div className="title">{'nom programme'}</div>
-                  <div className="date">{podcastData.podcast_creation_date}</div>
+                  <div className="title">{podcastData.program_title}</div>
+                  <div className="date">
+                    {moment(podcastData.podcast_creation_date).format('DD/MM/YYYY')}
+                  </div>
                 </div>
               </div>
               <div className="duration">
-                <AccessTimeIcon></AccessTimeIcon>
+                <AccessTimeIcon />
                 {podcastData.podcast_duration}
               </div>
             </div>
@@ -74,15 +78,21 @@ const PodcastDetail = props => {
               <h1>{podcastData.podcast_title}</h1>
 
               <span className="tagAnimateur">
-                <span>
-                  <img src="/anim.svg" alt="icon" />
-                </span>
-                nom animator
+                {podcastData.map(animator => {
+                  return (
+                    <span className="tagAnimateur">
+                      <span>
+                        <img src="/anim.svg" alt="icon" />
+                      </span>
+                      {` ${animator.animator_firstname} ${animator.animator_lastname} `}
+                    </span>
+                  );
+                })}
               </span>
 
               <p>{podcastData.podcast_description}</p>
               <div className="footer-content">
-                <div className="categoryTag">Economie</div>
+                <div className="categoryTag">{podcastData.category_name}</div>
 
                 {podcastData.podcast_mp3 ? (
                   <Button
