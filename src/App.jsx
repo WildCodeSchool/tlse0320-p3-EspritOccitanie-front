@@ -54,7 +54,14 @@ function App() {
               <ProgramList />
             </Route>
             <Route exact path="/emission/:program_id">
-              <ProgramDetail />
+              <ProgramDetail
+                onPlay={onPlay}
+                setOnPlay={setOnPlay}
+                setIdPodastPlay={setIdPodastPlay}
+                idPodastPlay={idPodastPlay}
+                playerRef={playerRef}
+                setDataPlayer={setDataPlayer}
+              />
             </Route>
             <Route exact path="/admin-radio-occitanie">
               <Navigation />

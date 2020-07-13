@@ -5,7 +5,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import PodcastCard from './PodcastCard';
 
-const ProgramPodcastsList = () => {
+const ProgramPodcastsList = props => {
+  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
   // Get podcasts request
   const [programPodcastList, setProgramPodcastList] = useState([]);
   const { program_id } = useParams();
@@ -28,7 +29,15 @@ const ProgramPodcastsList = () => {
           {programPodcastList.map(podcast => {
             return (
               <Grid item xs={12} sm={6} md={6} lg={6}>
-                <PodcastCard dataPodcasts={podcast} />
+                <PodcastCard
+                  dataPodcasts={podcast}
+                  onPlay={onPlay}
+                  setOnPlay={setOnPlay}
+                  setIdPodastPlay={setIdPodastPlay}
+                  idPodastPlay={idPodastPlay}
+                  playerRef={playerRef}
+                  setDataPlayer={setDataPlayer}
+                />
               </Grid>
             );
           })}
