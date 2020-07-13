@@ -6,9 +6,11 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import PauseIcon from '@material-ui/icons/Pause';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import Button from '@material-ui/core/Button';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import { handleAudio } from './util/utilFunctions';
 import './PodcastDetail.scss';
 
 const useStyles = makeStyles(() => ({
@@ -54,8 +56,28 @@ const PodcastDetail = props => {
             <div className="player">
               <div className="wrap">
                 <div className="btn-play">
-                  <IconButton aria-label="play/pause">
-                    <PlayArrowIcon className={classes.playIcon} />
+                  <IconButton
+                    aria-label="play/pause"
+                    onClick={() =>
+                      handleAudio(
+                        podcastData.podcast_mp3,
+                        podcastData.podcast_id,
+                        idPodastPlay,
+                        onPlay,
+                        'podcastData.programName',
+                        podcastData.podcast_title,
+                        playerRef,
+                        setIdPodastPlay,
+                        setDataPlayer,
+                        setOnPlay
+                      )
+                    }
+                  >
+                    {onPlay && idPodastPlay === podcastData.podcast_id ? (
+                      <PauseIcon />
+                    ) : (
+                      <PlayArrowIcon />
+                    )}
                   </IconButton>
                 </div>
                 <div className="group">
