@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+/* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
@@ -45,15 +48,17 @@ const MenuProps = {
   }
 };
 
-const ProgramPostForm = () => {
+const ProgramPostForm = props => {
+  const { updateMode, valueToUpdate, programIdToUpdate } = props;
+
   // Get Category request
   const [categorys, setCategorys] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('/category').catch(function(error) {
-        console.log(error.toJSON());
+      const result = await axios.get('/category').catch(error => {
+        return console.log(error.toJSON());
       });
-      setCategorys(result.data);
+      return setCategorys(result.data);
     };
     fetchData();
   }, []);
@@ -62,10 +67,10 @@ const ProgramPostForm = () => {
   const [animators, setAnimators] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('/animator').catch(function(error) {
-        console.log(error.toJSON());
+      const result = await axios.get('/animator').catch(error => {
+        return console.log(error.toJSON());
       });
-      setAnimators(result.data);
+      return setAnimators(result.data);
     };
     fetchData();
   }, []);
@@ -80,20 +85,38 @@ const ProgramPostForm = () => {
   };
 
   const onSubmit = data => {
+    // create a program
+    if (!updateMode) {
+      const dataForms = {
+        ...data,
+        ro_animator_animator_id: personName
+      };
+      axios
+        .post('/program', dataForms)
+        .then(res => res.data)
+        .then(res => {
+          alert(`L'émission a bien été créée`);
+        })
+        .catch(e => {
+          console.error(e);
+          alert(`Erreur concernant l'ajout de l'émission`);
+        });
+    }
+
+    // update program
     const dataForms = {
       ...data,
       ro_animator_animator_id: personName
     };
-    console.log('personName', personName);
     axios
-      .post('/program', dataForms)
+      .put(`/program/${programIdToUpdate}`, dataForms)
       .then(res => res.data)
       .then(res => {
-        alert(`L'émission a bien été créée`);
+        alert(`L'émission est modifiée avec succès'`);
       })
       .catch(e => {
         console.error(e);
-        alert(`Erreur concernant l'ajout de l'émission ${e.message}`);
+        alert(`Erreur concernant la modification  de l'émission ${e}`);
       });
   };
 
@@ -181,10 +204,7 @@ const ProgramPostForm = () => {
               >
                 {animators.map(animator => (
                   <MenuItem key={animator.animator_id} value={animator.animator_id}>
-                    {`${animator.animator_id} - ` +
-                      animator.animator_firstname +
-                      ' ' +
-                      animator.animator_lastname}
+                    {`${animator.animator_id} - ${animator.animator_firstname} ${animator.animator_lastname}`}
                   </MenuItem>
                 ))}
               </Select>
@@ -193,7 +213,7 @@ const ProgramPostForm = () => {
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
-              Créer l'émission
+              {updateMode ? "Mettre à jour l'émission" : "Créer l'émission"}
             </Button>
           </Grid>
         </Grid>

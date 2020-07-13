@@ -19,4 +19,35 @@
       width: 91%;
     }
   }
+
+  .coverPodcast {
+    min-height: 70px;
+    background-color: #ddd;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 3px;
+  }
+}
+
+.admin-program {
+  .alert-form {
+    background-color: #cc0807;
+    color: white;
+    margin-top: -1px;
+    height: 30px;
+    border-radius: 0px 0px 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .coverProgram {
+    min-height: 70px;
+    background-color: #ddd;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 3px;
+  }
 }
