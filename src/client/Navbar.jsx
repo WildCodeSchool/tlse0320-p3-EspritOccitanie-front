@@ -30,7 +30,9 @@ export default function Navbar() {
         <AppBar position="static" className="navEo">
           <Toolbar className="content-nav">
             <div>
-              <img src="/logo.svg" alt="logo Esprit Occitannie" />
+              <a href="/">
+                <img src="/logo.svg" alt="logo Esprit Occitannie" />
+              </a>
             </div>
             <span className="desktop-link">
               <Link className="link" to="direct">

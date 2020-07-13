@@ -1,6 +1,8 @@
+/* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PodcastCard.scss';
+import moment from 'moment';
 import IconButton from '@material-ui/core/IconButton';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
@@ -20,8 +22,11 @@ const PodcastCard = props => {
     podcast_mp3,
     podcast_title,
     ro_category_category_id,
-    ro_program_program_id
+    ro_program_program_id,
+    program_title,
+    category_name
   } = props.dataPodcasts;
+
   const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
   const [programName, setProgramName] = useState([]);
 
@@ -61,12 +66,12 @@ const PodcastCard = props => {
             </IconButton>
           </div>
           <div className="group">
-            <div className="title">{programName.program_title}</div>
-            <div className="date">{podcast_creation_date}</div>
+            <div className="title">{program_title}</div>
+            <div className="date">{moment(podcast_creation_date).format('DD/MM/YYYY')}</div>
           </div>
         </div>
         <div className="duration">
-          <AccessTimeIcon></AccessTimeIcon>
+          <AccessTimeIcon />
           {podcast_duration}
         </div>
       </div>
@@ -84,7 +89,7 @@ const PodcastCard = props => {
         </p>
       </div>
       <div className="footer">
-        <div className="categoryTag">Economie</div>
+        <div className="categoryTag">{category_name}</div>
 
         <Link component={RouterLink} to={`/podcasts/${podcast_id}/${slugify(podcast_title)}`}>
           <Button variant="outlined" color="primary" size="small">
