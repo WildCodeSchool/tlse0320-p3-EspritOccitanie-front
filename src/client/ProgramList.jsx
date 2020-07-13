@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Grid } from '@material-ui/core';
 import axios from 'axios';
 import ProgramCard from './ProgramCard';
+import AdvancedSearchBar from './AdvancedSearchBar';
 
 const ProgramList = () => {
   // Get podcasts request
@@ -21,6 +22,8 @@ const ProgramList = () => {
   return (
     <div>
       <Container maxWidth="lg">
+        {/* <AdvancedSearchBar  setPodcastsList={setPodcastsList} podcastsList={podcastsList}/> */}
+
         <Grid container spacing={3}>
           {programs.map(program => {
             return (
