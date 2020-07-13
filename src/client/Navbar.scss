@@ -21,3 +21,20 @@
     text-decoration: none !important;
   }
 }
+
+.desktop-link {
+  @media (max-width: 1180px) {
+    display: none;
+  }
+}
+
+.burger {
+  @media (min-width: 1180px) {
+    display: none;
+  }
+}
+
+.content-nav {
+  display: flex !important;
+  justify-content: space-between !important;
+}

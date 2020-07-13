@@ -24,26 +24,32 @@ export default function Navbar() {
   return (
     <div className="navBar">
       <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
+        <AppBar position="static" className="navEo">
+          <Toolbar className="content-nav">
             <div>
               <img src="/logo.svg" alt="logo Esprit Occitannie" />
             </div>
-            <Link className="link" to="direct">
-              <Button>Le direct</Button>
-            </Link>
-            <Link className="link" to="/qui-sommes-nous">
-              <Button>Qui sommes nous ?</Button>
-            </Link>
-            <Link className="link" to="/grille-des-programmes">
-              <Button>Grille des programmes</Button>
-            </Link>
-            <Link className="link" to="/emissions">
-              <Button>Émissions</Button>
-            </Link>
-            <Link className="link" to="/podcasts">
-              <Button>Podcasts</Button>
-            </Link>
+            <span className="desktop-link">
+              <Link className="link" to="direct">
+                <Button>Le direct</Button>
+              </Link>
+              <Link className="link" to="/qui-sommes-nous">
+                <Button>Qui sommes nous ?</Button>
+              </Link>
+              <Link className="link" to="/grille-des-programmes">
+                <Button>Grille des programmes</Button>
+              </Link>
+              <Link className="link" to="/emissions">
+                <Button>Émissions</Button>
+              </Link>
+              <Link className="link" to="/podcasts">
+                <Button>Podcasts</Button>
+              </Link>
+            </span>
+
+            <div className="burger">
+              <img src="/burger.svg" alt="menu burger" />
+            </div>
           </Toolbar>
         </AppBar>
       </div>
