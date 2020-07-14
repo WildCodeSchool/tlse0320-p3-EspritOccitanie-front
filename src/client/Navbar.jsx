@@ -22,8 +22,6 @@ export default function Navbar() {
   const classes = useStyles();
   const [mobileNavActive, setMobileNavActive] = useState(false);
 
-  console.log(mobileNavActive);
-
   return (
     <div className="navBar">
       <div className={classes.root}>

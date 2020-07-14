@@ -4,28 +4,29 @@ import axios from 'axios';
 import ProgramCard from './ProgramCard';
 import AdvancedSearchBar from './AdvancedSearchBar';
 
-const ProgramList = () => {
+const ProgramList = props => {
+  const { setProgramsList, programsList } = props;
   // Get podcasts request
-  const [programs, setPrograms] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      // eslint-disable-next-line func-names
       const result = await axios.get('/program').catch(function(error) {
-        // eslint-disable-next-line no-console
         console.log(error.toJSON());
       });
-      setPrograms(result.data);
+      console.log('program', result.data);
+      setProgramsList(result.data);
     };
     fetchData();
   }, []);
 
+  console.log('proglist', programsList);
+
   return (
     <div>
       <Container maxWidth="lg">
-        {/* <AdvancedSearchBar  setPodcastsList={setPodcastsList} podcastsList={podcastsList}/> */}
+        <AdvancedSearchBar setProgramsList={setProgramsList} programsList={programsList} />
 
         <Grid container spacing={3}>
-          {programs.map(program => {
+          {programsList.map(program => {
             return (
               <Grid item xs={12} sm={6} md={4} lg={4}>
                 <ProgramCard dataPrograms={program} />

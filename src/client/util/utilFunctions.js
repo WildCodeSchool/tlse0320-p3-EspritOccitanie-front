@@ -82,4 +82,9 @@ export function formatDuration(duration) {
   return moment.duration(duration.toString(), 'seconds').format('mm:ss', { trim: false });
 }
 
-export default { slugify, handleAudio, play, mute, formatDuration };
+// Refresh page button
+export function refreshPage() {
+  window.location.reload(false);
+}
+
+export default { slugify, handleAudio, play, mute, formatDuration, refreshPage };

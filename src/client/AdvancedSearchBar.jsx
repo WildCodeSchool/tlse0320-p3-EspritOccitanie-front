@@ -18,6 +18,12 @@ const AdvancedSearchBar = props => {
   const [animatorSelected, handleAnimatorSelected] = useState('');
   const [categorySelected, handleCategoryelected] = useState('');
 
+  const [animatorSelectedProg, handleAnimatorSelectedProg] = useState('');
+  const [categorySelectedProg, handleCategorySelectedProg] = useState('');
+
+  const url = window.location.href.split('/');
+  const keyword = url[url.length - 1];
+
   // Get category list
   useEffect(() => {
     const fetchData = async () => {
@@ -42,41 +48,69 @@ const AdvancedSearchBar = props => {
 
   // get program list
   useEffect(() => {
-    const fetchData = async () => {
-      const result3 = await axios.get('/program').catch(error => {
-        console.log(error.toJSON());
-      });
-      setProgramsList(result3.data);
-    };
-    fetchData();
+    if (url === 'podcasts') {
+      const fetchData = async () => {
+        const result3 = await axios.get('/program').catch(error => {
+          console.log(error.toJSON());
+        });
+        setProgramsList(result3.data);
+      };
+      fetchData();
+    }
   }, []);
 
   // get podcasts when program is selected
   useEffect(() => {
-    const fetchData = async () => {
-      const podcastProgram = await axios.get(`/podcast?program=${programSelected}`).catch(error => {
-        console.log(error.toJSON());
-      });
-      setPodcastsList(podcastProgram.data);
-    };
-    fetchData();
+    if (programSelected) {
+      const fetchData = async () => {
+        const res = await axios.get(`/podcast?program=${programSelected}`).catch(error => {
+          console.log(error.toJSON());
+        });
+        setPodcastsList(res.data);
+      };
+      fetchData();
+    }
   }, [programSelected]);
 
   // get podcasts when animator is selected
   useEffect(() => {
-    axios
-      .get(`/podcast?animator=${animatorSelected}`)
-      .then(res => res.data)
-      .then(res => setPodcastsList(res));
+    if (animatorSelected) {
+      return axios
+        .get(`/podcast?animator=${animatorSelected}`)
+        .then(res => res.data)
+        .then(res => setPodcastsList(res));
+    }
   }, [animatorSelected]);
 
   // get podcasts when category is selected
   useEffect(() => {
-    axios
-      .get(`/podcast?program=${categorySelected}`)
-      .then(res => res.data)
-      .then(res => setPodcastsList(res));
+    if (categorySelected) {
+      axios
+        .get(`/podcast?categorie=${categorySelected}`)
+        .then(res => res.data)
+        .then(res => setPodcastsList(res));
+    }
   }, [categorySelected]);
+
+  // get programs when category is selected
+  useEffect(() => {
+    if (categorySelectedProg) {
+      return axios
+        .get(`/program?categorie=${categorySelectedProg}`)
+        .then(res => res.data)
+        .then(res => console.log(res));
+    }
+  }, [categorySelectedProg]);
+
+  // get programs when animator is selected
+  useEffect(() => {
+    if (animatorSelectedProg) {
+      axios
+        .get(`/program?animator=${animatorSelectedProg}`)
+        .then(res => res.data)
+        .then(res => setProgramsList(res));
+    }
+  }, [animatorSelectedProg]);
 
   return (
     <div>
@@ -97,6 +131,10 @@ const AdvancedSearchBar = props => {
                 handleAnimatorSelected={handleAnimatorSelected}
                 categorySelected={categorySelected}
                 handleCategoryelected={handleCategoryelected}
+                animatorSelectedProg={animatorSelectedProg}
+                handleAnimatorSelectedProg={handleAnimatorSelectedProg}
+                categorySelectedProg={categorySelectedProg}
+                handleCategorySelectedProg={handleCategorySelectedProg}
               />
             </div>
           </Grid>

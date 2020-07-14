@@ -7,8 +7,17 @@ import AdvancedSearchBar from './AdvancedSearchBar';
 import './pagination.scss';
 
 const PodcastsList = props => {
-  const { podcastsList, setPodcastsList } = props;
-  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
+  const {
+    podcastsList,
+    setPodcastsList,
+    onPlay,
+    setOnPlay,
+    setIdPodastPlay,
+    idPodastPlay,
+    playerRef,
+    setDataPlayer
+  } = props;
+
   const [nbPodcasts, setNbPodcasts] = useState();
   const [paginationPodcast, setPaginationPodcast] = useState([]);
   const [positionPage, setPositionPage] = useState(1);
@@ -36,7 +45,7 @@ const PodcastsList = props => {
   return (
     <div>
       <Container maxWidth="lg">
-        <AdvancedSearchBar setPodcastsList={setPodcastsList} podcastsList={podcastsList} />
+        {/* <AdvancedSearchBar setPodcastsList={setPodcastsList} podcastsList={podcastsList} /> */}
 
         <Grid container spacing={5}>
           {podcastsList.slice(startSlicePagination, endSlicePagination).map(podcast => {
