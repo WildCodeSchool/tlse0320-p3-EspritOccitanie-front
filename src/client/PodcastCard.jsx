@@ -33,7 +33,7 @@ const PodcastCard = props => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`/program/${ro_program_program_id}`).catch(function(error) {
-        console.log(error.toJSON());
+        console.log(`error pocast card`, error.toJSON());
       });
       setProgramName(result.data);
     };

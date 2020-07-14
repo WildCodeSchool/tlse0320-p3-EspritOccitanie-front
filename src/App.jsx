@@ -14,6 +14,7 @@ import './App.css';
 
 function App() {
   const [podcastsList, setPodcastsList] = useState([]);
+  const [programsList, setProgramsList] = useState([]);
   const [onPlay, setOnPlay] = useState(false);
   const [isMute, setIsMute] = useState(true);
   const [idPodastPlay, setIdPodastPlay] = useState();
@@ -36,6 +37,7 @@ function App() {
                 setDataPlayer={setDataPlayer}
                 podcastsList={podcastsList}
                 setPodcastsList={setPodcastsList}
+                programsList={programsList}
               />
             </Route>
             <Route exact path="/podcasts/:podcast_id/:podcast_title">
@@ -55,7 +57,7 @@ function App() {
               <LoginPage />
             </Route>
             <Route exact path="/emissions">
-              <ProgramList />
+              <ProgramList programsList={programsList} setProgramsList={setProgramsList} />
             </Route>
             <Route exact path="/emission/:program_id/:program_title">
               <ProgramDetail
