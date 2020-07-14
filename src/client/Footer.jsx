@@ -1,36 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import './Navbar.scss';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  menuButton: {
-    marginRight: theme.spacing(2)
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
+import './Footer.scss';
 
 export default function Footer() {
-  const classes = useStyles();
-
   return (
-    <div className="navBar">
-      <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
-            <Link className="link" to="/mentions-legales">
-              <Button>Mentions légales</Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
+    <div className="container-footer">
+      <div className="wrapper">
+        <div className="img">
+          <Link className="link" to="/qui-sommes-nous">
+            <img src="/about.png" alt="image Esprit Occitanie c'est quoi?" />
+          </Link>
+        </div>
+        <div className="links">
+          <Link className="link" to="mentions légales">
+            <a>Mentions légales</a>
+          </Link>
+          <Link className="link" to="/contact">
+            <a>Contact</a>
+          </Link>
+        </div>
+        <div className="socials">
+          <div className="item">
+            <a href="https://www.facebook.com/espritoccitanie" target="_blank">
+              <img src="/facebook.svg" alt="logo facebook" />
+            </a>
+          </div>
+          <div className="item">
+            <a href="https://www.instagram.com/espritoccitanie/" target="_blank">
+              <img src="/instagram.svg" alt="logo instagram" />
+            </a>
+          </div>
+          <div className="item">
+            <a href="https://twitter.com/EspritOccitanie" target="_blank">
+              <img src="/twitter.svg" alt="logo twitter" />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

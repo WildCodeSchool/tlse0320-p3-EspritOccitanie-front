@@ -68,7 +68,9 @@ function App() {
               <Navigation />
             </Route>
           </Switch>
+          <Footer />
         </div>
+
         <PlayerBottom
           onPlay={onPlay}
           setOnPlay={setOnPlay}
@@ -77,7 +79,6 @@ function App() {
           playerRef={playerRef}
           dataPlayer={dataPlayer}
         />
-        <Footer />
       </Router>
     </div>
   );
