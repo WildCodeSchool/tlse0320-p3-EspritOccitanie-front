@@ -15,10 +15,13 @@ const ProgramDetail = props => {
   const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
 
   useEffect(() => {
-    axios
-      .get(`/program/${program_id}`)
-      .then(res => res.data)
-      .then(res => setProgramData([res]));
+    const fetchData = async () => {
+      const result = await axios.get(`/program/${program_id}`).catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setProgramData([result.data]);
+    };
+    fetchData();
   }, []);
 
   const [animators, setAnimators] = useState([]);
