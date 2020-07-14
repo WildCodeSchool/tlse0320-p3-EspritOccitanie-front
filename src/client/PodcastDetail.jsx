@@ -24,16 +24,16 @@ const useStyles = makeStyles(() => ({
 const PodcastDetail = props => {
   const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
   const [podcastData, setPodcastData] = useState([]);
-  const { id_podcast } = useParams();
+  const { podcast_id } = useParams();
 
   const classes = useStyles();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`/podcast/${id_podcast}`).catch(function(error) {
+      const result = await axios.get(`/podcast/${podcast_id}`).catch(function(error) {
         console.log(error.toJSON());
       });
-      setPodcastData(result.data);
+      setPodcastData(result.data[0]);
       console.log(result.data);
     };
     fetchData();
