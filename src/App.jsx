@@ -36,6 +36,7 @@ function App() {
                 setDataPlayer={setDataPlayer}
                 podcastsList={podcastsList}
                 setPodcastsList={setPodcastsList}
+                programsList={programsList}
               />
             </Route>
             <Route exact path="/podcasts/:id_podcast/:podcast_title">

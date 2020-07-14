@@ -31,10 +31,10 @@ const PodcastDetail = props => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`/podcast/${id_podcast}`).catch(function(error) {
-        console.log(error.toJSON());
+        console.log(`error pocast detail`, error.toJSON());
       });
       setPodcastData(result.data);
-      console.log(result.data);
+      console.log(`result pocast detail`, result.data);
     };
     fetchData();
   }, []);

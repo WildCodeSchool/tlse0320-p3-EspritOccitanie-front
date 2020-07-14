@@ -17,7 +17,7 @@ const ProgramPodcastsList = props => {
         console.log(error.toJSON());
       });
       console.log(result);
-      setProgramPodcastList(result.data.result);
+      setProgramPodcastList(result.data);
     };
     fetchData();
   }, []);

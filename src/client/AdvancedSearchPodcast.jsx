@@ -13,6 +13,7 @@ const AdvancedSearchPodcast = props => {
     setProgramsList,
     animatorsList,
     categorysList,
+    podcastsList,
     programSelected,
     handleProgramSelected,
     animatorSelected,
@@ -28,31 +29,33 @@ const AdvancedSearchPodcast = props => {
   // console.log('catselected', categorySelectedProg);
 
   const url = window.location.href.split('/');
-  const keyword = url[url.length - 1];
 
   return (
     <div>
       <Grid container spacing={2}>
-        <Grid lg={4}>
-          <FormControl variant="outlined" className="MuiFormControl-fullWidth">
-            <InputLabel id="demo-simple-select-outlined-label" fullWidth>
-              Émissions
-            </InputLabel>
+        {url[3] === 'podcasts' ? (
+          <Grid lg={4}>
+            <FormControl variant="outlined" className="MuiFormControl-fullWidth">
+              <InputLabel id="demo-simple-select-outlined-label" fullWidth>
+                Émissions
+              </InputLabel>
 
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              label="Émissions"
-              name="ro_program_program_id"
-              value={programSelected}
-              onChange={e => handleProgramSelected(e.target.value)}
-            >
-              {programsList.map(program => {
-                return <MenuItem value={program.program_id}>{program.program_title}</MenuItem>;
-              })}
-            </Select>
-          </FormControl>
-        </Grid>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                label="Émissions"
+                name="ro_program_program_id"
+                value={programSelected}
+                onChange={e => handleProgramSelected(e.target.value)}
+              >
+                {programsList.map(program => {
+                  return <MenuItem value={program.program_id}>{program.program_title}</MenuItem>;
+                })}
+              </Select>
+            </FormControl>
+          </Grid>
+        ) : null}
+
         <Grid lg={4}>
           <FormControl variant="outlined" className="MuiFormControl-fullWidth">
             <InputLabel id="demo-simple-select-outlined-label" fullWidth>
@@ -64,9 +67,9 @@ const AdvancedSearchPodcast = props => {
               id="demo-simple-select-outlined"
               label="Catégorie"
               name="ro_category_category_id"
-              value={url === 'podcasts' ? categorySelected : categorySelectedProg}
+              value={url[3] === 'podcasts' ? categorySelected : categorySelectedProg}
               onChange={e =>
-                url === 'podcasts'
+                url[3] === 'podcasts'
                   ? handleCategoryelected(e.target.value)
                   : handleCategorySelectedProg(e.target.value)
               }

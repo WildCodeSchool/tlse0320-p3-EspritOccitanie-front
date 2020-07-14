@@ -10,15 +10,13 @@ const ProgramList = props => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('/program').catch(function(error) {
-        console.log(error.toJSON());
+        // console.log(`error axion program list = `, error.toJSON());
       });
-      console.log('program', result.data);
+
       setProgramsList(result.data);
     };
     fetchData();
   }, []);
-
-  console.log('proglist', programsList);
 
   return (
     <div>

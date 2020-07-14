@@ -15,7 +15,8 @@ const PodcastsList = props => {
     setIdPodastPlay,
     idPodastPlay,
     playerRef,
-    setDataPlayer
+    setDataPlayer,
+    programsList
   } = props;
 
   const [nbPodcasts, setNbPodcasts] = useState();
@@ -25,8 +26,9 @@ const PodcastsList = props => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('/podcast').catch(error => {
-        console.log(error.toJSON());
+        console.log(`error Podcaslist axios = `, error.toJSON());
       });
+
       setPodcastsList(result.data);
     };
     fetchData();
@@ -45,7 +47,11 @@ const PodcastsList = props => {
   return (
     <div>
       <Container maxWidth="lg">
-        {/* <AdvancedSearchBar setPodcastsList={setPodcastsList} podcastsList={podcastsList} /> */}
+        <AdvancedSearchBar
+          setPodcastsList={setPodcastsList}
+          podcastsList={podcastsList}
+          programsList={programsList}
+        />
 
         <Grid container spacing={5}>
           {podcastsList.slice(startSlicePagination, endSlicePagination).map(podcast => {
