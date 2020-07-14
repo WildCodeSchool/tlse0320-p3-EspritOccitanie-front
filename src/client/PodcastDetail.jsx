@@ -34,7 +34,40 @@ const PodcastDetail = props => {
         console.log(error.toJSON());
       });
       setPodcastData(result.data[0]);
-      console.log(result.data);
+      console.log(result.data[0]);
+    };
+    fetchData();
+  }, []);
+
+  const [animators, setAnimators] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios
+        .get(`/animator?podcast=${podcast_id}`)
+        .then(response => {
+          return response.data;
+        })
+        .then(response => {
+          const arrayGet = [];
+          for (let i = 0; i < response.length; i++) {
+            const str = `/animator/${response[i].ro_animator_animator_id}`;
+            arrayGet.push(axios.get(str));
+          }
+          const animatorList = axios.all(arrayGet).then(
+            axios.spread((...res) => {
+              let animator = [];
+              for (let j = 0; j < res.length; j++) {
+                animator = [...animator, res[j].data];
+              }
+              return animator;
+            })
+          );
+          return animatorList;
+        })
+        .catch(error => {
+          console.log(error.toJSON());
+        });
+      setAnimators(result);
     };
     fetchData();
   }, []);
@@ -101,7 +134,7 @@ const PodcastDetail = props => {
               <h1>{podcastData.podcast_title}</h1>
 
               <span className="tagAnimateur">
-                {podcastData.map(animator => {
+                {animators.map(animator => {
                   return (
                     <span className="tagAnimateur">
                       <span>

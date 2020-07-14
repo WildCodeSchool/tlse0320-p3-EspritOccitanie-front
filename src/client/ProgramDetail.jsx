@@ -70,11 +70,15 @@ const ProgramDetail = props => {
                   {data.program_title}
                 </Typography>
                 <Typography variant="subtitle2" gutterBottom>
-                  Animée par :
                   {animators.map(animator => {
                     console.log('animator', animator);
                     return (
-                      <span>{` ${animator.animator_firstname} ${animator.animator_lastname} `}</span>
+                      <span className="tagAnimateur">
+                        <span>
+                          <img src="/anim.svg" alt="icon" />
+                        </span>
+                        {` ${animator.animator_firstname} ${animator.animator_lastname} `}
+                      </span>
                     );
                   })}
                 </Typography>

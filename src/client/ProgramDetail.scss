@@ -1,3 +1,21 @@
 .program_detail_image {
   max-width: 360px;
 }
+
+.tagAnimateur {
+  font-size: 12px;
+  border-radius: 5px;
+  padding: 8px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: -12px;
+  opacity: 0.6;
+  span {
+    margin-right: 5px;
+
+    transform: scale(0.9);
+    margin-top: 2px;
+  }
+}
