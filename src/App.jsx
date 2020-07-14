@@ -13,6 +13,7 @@ import Footer from './client/Footer';
 import './App.css';
 
 function App() {
+  const [podcastsList, setPodcastsList] = useState([]);
   const [onPlay, setOnPlay] = useState(false);
   const [isMute, setIsMute] = useState(true);
   const [idPodastPlay, setIdPodastPlay] = useState();
@@ -33,6 +34,8 @@ function App() {
                 idPodastPlay={idPodastPlay}
                 playerRef={playerRef}
                 setDataPlayer={setDataPlayer}
+                podcastsList={podcastsList}
+                setPodcastsList={setPodcastsList}
               />
             </Route>
             <Route exact path="/podcasts/:id_podcast/:podcast_title">

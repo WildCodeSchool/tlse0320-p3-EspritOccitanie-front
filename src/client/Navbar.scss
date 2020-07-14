@@ -21,3 +21,44 @@
     text-decoration: none !important;
   }
 }
+
+.desktop-link {
+  @media (max-width: 1180px) {
+    display: none;
+  }
+}
+
+.burger {
+  @media (min-width: 1180px) {
+    display: none;
+  }
+}
+
+.content-nav {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.nav-mobile {
+  position: absolute;
+  background-color: #181827;
+  width: 100%;
+  z-index: 44;
+  height: 100%;
+  transform: translateY(-1200px);
+  transition: ease-in-out;
+  transition-duration: 0.3s;
+  box-shadow: #000 0px 0px 0px;
+
+  .MuiButtonBase-root {
+    width: 100% !important;
+  }
+  &.active {
+    transform: translateY(0px);
+    transition: ease-out;
+    transition-duration: 0.3s;
+  }
+  @media (min-width: 1180px) {
+    display: none;
+  }
+}
