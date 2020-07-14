@@ -9,6 +9,7 @@ import PodcastDetail from './client/PodcastDetail';
 import Navbar from './client/Navbar';
 import PlayerBottom from './client/PlayerBottom';
 import LoginPage from './client/LoginPage';
+import Footer from './client/Footer';
 import './App.css';
 
 function App() {
@@ -70,16 +71,18 @@ function App() {
               <Navigation />
             </Route>
           </Switch>
+          <Footer />
         </div>
+
+        <PlayerBottom
+          onPlay={onPlay}
+          setOnPlay={setOnPlay}
+          isMute={isMute}
+          setIsMute={setIsMute}
+          playerRef={playerRef}
+          dataPlayer={dataPlayer}
+        />
       </Router>
-      <PlayerBottom
-        onPlay={onPlay}
-        setOnPlay={setOnPlay}
-        isMute={isMute}
-        setIsMute={setIsMute}
-        playerRef={playerRef}
-        dataPlayer={dataPlayer}
-      />
     </div>
   );
 }
