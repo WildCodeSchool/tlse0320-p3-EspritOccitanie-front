@@ -12,7 +12,7 @@ export default function Footer() {
           </Link>
         </div>
         <div className="links">
-          <Link className="link" to="mentions légales">
+          <Link className="link" to="/mentions-legales">
             <a>
               Mentions
               <span>légales</span>
