@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -68,7 +69,9 @@ const PodcastsTab = props => {
                 </TableCell>
                 <TableCell align="center">{podcast.podcast_title}</TableCell>
 
-                <TableCell align="center">{podcast.podcast_creation_date}</TableCell>
+                <TableCell align="center">
+                  {moment(podcast.podcast_creation_date).format('DD/MM/YYYY')}
+                </TableCell>
                 <TableCell align="center">
                   <IconButton
                     aria-label="delete"
