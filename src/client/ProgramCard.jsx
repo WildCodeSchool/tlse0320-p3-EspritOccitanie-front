@@ -18,7 +18,8 @@ const ProgramCard = props => {
     program_title,
     program_description,
     program_image,
-    ro_category_category_id
+    ro_category_category_id,
+    category_name
   } = props.dataPrograms;
 
   const [animators, setAnimators] = useState([]);
@@ -79,6 +80,8 @@ const ProgramCard = props => {
         <p> {program_description.substring(0, 120) + '...'}</p>
       </div>
       <div className="footer">
+        <div className="categoryTag">{category_name}</div>
+
         <Link component={RouterLink} to={`/emission/${program_id}/${slugify(program_title)}`}>
           <Button variant="outlined" color="primary" size="small">
             Voir plus
