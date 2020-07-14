@@ -69,9 +69,9 @@ export default function VerticalTabs() {
       >
         <Tab label="Emissions" {...a11yProps(0)} />
         <Tab label="Podcasts" {...a11yProps(1)} />
-        <Tab label="Catégorie" {...a11yProps(2)} />
+        <Tab label="Catégories" {...a11yProps(2)} />
         <Tab label="Animateurs" {...a11yProps(3)} />
-        <Tab label="Progammation" {...a11yProps(4)} />
+        <Tab label="Programmation" {...a11yProps(4)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <ProgramPage />
