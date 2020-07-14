@@ -24,38 +24,38 @@ const ProgramDetail = props => {
     fetchData();
   }, []);
 
-  // const [animators, setAnimators] = useState([]);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await axios
-  //       .get(`/animator?program=${program_id}`)
-  //       .then(response => {
-  //         return response.data;
-  //       })
-  //       .then(response => {
-  //         const arrayGet = [];
-  //         for (let i = 0; i < response.length; i++) {
-  //           const str = `/animator/${response[i].ro_animator_animator_id}`;
-  //           arrayGet.push(axios.get(str));
-  //         }
-  //         const animatorList = axios.all(arrayGet).then(
-  //           axios.spread((...res) => {
-  //             let animator = [];
-  //             for (let j = 0; j < res.length; j++) {
-  //               animator = [...animator, res[j].data];
-  //             }
-  //             return animator;
-  //           })
-  //         );
-  //         return animatorList;
-  //       })
-  //       .catch(error => {
-  //         console.log(error.toJSON());
-  //       });
-  //     setAnimators(result);
-  //   };
-  //   fetchData();
-  // }, []);
+  const [animators, setAnimators] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios
+        .get(`/animator?program=${program_id}`)
+        .then(response => {
+          return response.data;
+        })
+        .then(response => {
+          const arrayGet = [];
+          for (let i = 0; i < response.length; i++) {
+            const str = `/animator/${response[i].ro_animator_animator_id}`;
+            arrayGet.push(axios.get(str));
+          }
+          const animatorList = axios.all(arrayGet).then(
+            axios.spread((...res) => {
+              let animator = [];
+              for (let j = 0; j < res.length; j++) {
+                animator = [...animator, res[j].data];
+              }
+              return animator;
+            })
+          );
+          return animatorList;
+        })
+        .catch(error => {
+          console.log(error.toJSON());
+        });
+      setAnimators(result);
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -73,13 +73,17 @@ const ProgramDetail = props => {
                   {data.program_title}
                 </Typography>
                 <Typography variant="subtitle2" gutterBottom>
-                  Animée par :
-                  {/* {animators.map(animator => {
+                  {animators.map(animator => {
                     console.log('animator', animator);
                     return (
-                      <span>{` ${animator.animator_firstname} ${animator.animator_lastname} `}</span>
+                      <span className="tagAnimateur">
+                        <span>
+                          <img src="/anim.svg" alt="icon" />
+                        </span>
+                        {` ${animator.animator_firstname} ${animator.animator_lastname} `}
+                      </span>
                     );
-                  })} */}
+                  })}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {data.program_description}

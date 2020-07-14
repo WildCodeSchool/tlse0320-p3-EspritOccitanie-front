@@ -16,7 +16,6 @@ const ProgramPodcastsList = props => {
       const result = await axios.get(`/podcast?program=${program_id}`).catch(error => {
         console.log(error.toJSON());
       });
-      console.log(result);
       setProgramPodcastList(result.data);
     };
     fetchData();
