@@ -11,3 +11,71 @@
 .signature {
   font-weight: bold;
 }
+
+.wrapper-about {
+  .flexAlignCenter {
+    display: flex;
+    align-items: center;
+  }
+
+  .full-header {
+    width: 100%;
+    margin-top: -60px;
+
+    background-image: url('/bg-about-top.png');
+    height: 525px;
+  }
+
+  .img-left {
+    float: left;
+    padding: 60px;
+  }
+
+  .img-right {
+    float: right;
+    padding: 60px;
+  }
+
+  .full {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 100%;
+    background-color: #ebebeb;
+  }
+
+  .full-white {
+    background-color: blanck;
+  }
+
+  .space {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+  .full-white {
+    margin-bottom: 60px;
+    width: 100%;
+  }
+
+  .author-card {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06), 0px 2px 14px rgba(0, 0, 0, 0.04),
+      0px 6px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+
+    .img {
+      min-height: 120px;
+      min-width: 120px;
+      border-radius: 50%;
+      background-color: #ddd;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-right: 15px;
+    }
+
+    .desc {
+    }
+  }
+}

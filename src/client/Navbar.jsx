@@ -38,7 +38,7 @@ export default function Navbar() {
               <Link className="link" to="direct">
                 <Button>Le direct</Button>
               </Link>
-              <Link className="link" to="/qui-sommes-nous">
+              <Link className="link" to="/a-propos">
                 <Button>Qui sommes nous ?</Button>
               </Link>
               <Link className="link" to="/grille-des-programmes">
