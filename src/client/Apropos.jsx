@@ -1,37 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Container, Grid } from '@material-ui/core';
+import Contact from './Contact';
 import './Apropos.scss';
 
 export default function Apropos() {
+  const [allAnimators, setAllAnimators] = useState([]);
+  //Get animator request
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(`/animator`).catch(function(error) {
+        console.log(`error animator`, error.toJSON());
+      });
+      setAllAnimators(result.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div className="wrapper-about">
-      <section className="full-header">dklfsjlskdjfglks</section>
+      <section className="full-blue header-title">
+        <h1>Bienvenue sur Radio Occitanie</h1>
+      </section>
 
       <section className="">
         <Container maxWidth="lg" className="flexAlignCenter">
-          <div className="img-left">
-            <img src="/podacst.png"></img>
-          </div>
-          <div className="txt-right">
-            <h2>this is a titlte</h2>
-            <p>
-              Une nouvelle radio est née récemment portée par un groupe de passionnés, passionnés
-              par ce fabuleux média qu’est la radio, mais aussi passionnés par leur région, cette
-              Occitanie et ce pays Catalan, dont ils entendent faire connaître et aimer les valeurs
-              souvent fort anciennes, ainsi que leurs nombreux atouts géographiques, économiques,
-              historiques. Des valeurs telles que la convivencia et le partage qui sont, elles,
-              ancestrales en pays Occitan. Mais aussi des valeurs plus générales telles l’Humanisme,
-              la tolérance, la connaissance de soi et de l’autre, l’amour de la Culture et bien
-              évidemment celle des langues Occitane et Catalane.
-            </p>
-          </div>
+          <Grid container spacing={3} className="alignCenter">
+            <Grid item xs={12} md={6} lg={6}>
+              <div className="img-left">
+                <img src="/podacst.png"></img>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6}>
+              <div className="txt-right">
+                <h2>this is a titlte</h2>
+                <p>
+                  Une nouvelle radio est née récemment portée par un groupe de passionnés,
+                  passionnés par ce fabuleux média qu’est la radio, mais aussi passionnés par leur
+                  région, cette Occitanie et ce pays Catalan, dont ils entendent faire connaître et
+                  aimer les valeurs souvent fort anciennes, ainsi que leurs nombreux atouts
+                  géographiques, économiques, historiques. Des valeurs telles que la convivencia et
+                  le partage qui sont, elles, ancestrales en pays Occitan. Mais aussi des valeurs
+                  plus générales telles l’Humanisme, la tolérance, la connaissance de soi et de
+                  l’autre, l’amour de la Culture et bien évidemment celle des langues Occitane et
+                  Catalane.
+                </p>
+              </div>
+            </Grid>
+          </Grid>
         </Container>
       </section>
 
       <section className="full">
         <Container maxWidth="lg" className="space">
           <h2>the second title</h2>
-          <p>
+          <p className="txt">
             Avec une nécessaire ouverture sur notre Monde, si divers, si magnifique mais aussi en
             proie à des passions, des conflits, un monde riche d’opportunités mais aussi lourd de
             menaces. Des atouts géographiques que sont la mer Méditerranée, les Pyrénées, mais aussi
@@ -49,22 +72,29 @@ export default function Apropos() {
 
       <section className="full-white">
         <Container maxWidth="lg" className="flexAlignCenter">
-          <div className="txt-left">
-            <h2>this is a titlte</h2>
-            <p>
-              Une nouvelle radio est née récemment portée par un groupe de passionnés, passionnés
-              par ce fabuleux média qu’est la radio, mais aussi passionnés par leur région, cette
-              Occitanie et ce pays Catalan, dont ils entendent faire connaître et aimer les valeurs
-              souvent fort anciennes, ainsi que leurs nombreux atouts géographiques, économiques,
-              historiques. Des valeurs telles que la convivencia et le partage qui sont, elles,
-              ancestrales en pays Occitan. Mais aussi des valeurs plus générales telles l’Humanisme,
-              la tolérance, la connaissance de soi et de l’autre, l’amour de la Culture et bien
-              évidemment celle des langues Occitane et Catalane.
-            </p>
-          </div>
-          <div className="img-right">
-            <img src="/equipes.png"></img>
-          </div>
+          <Grid container spacing={3} className="alignCenter">
+            <Grid item xs={12} md={6} lg={6}>
+              <div className="txt-left">
+                <h2>this is a titlte</h2>
+                <p>
+                  Une nouvelle radio est née récemment portée par un groupe de passionnés,
+                  passionnés par ce fabuleux média qu’est la radio, mais aussi passionnés par leur
+                  région, cette Occitanie et ce pays Catalan, dont ils entendent faire connaître et
+                  aimer les valeurs souvent fort anciennes, ainsi que leurs nombreux atouts
+                  géographiques, économiques, historiques. Des valeurs telles que la convivencia et
+                  le partage qui sont, elles, ancestrales en pays Occitan. Mais aussi des valeurs
+                  plus générales telles l’Humanisme, la tolérance, la connaissance de soi et de
+                  l’autre, l’amour de la Culture et bien évidemment celle des langues Occitane et
+                  Catalane.
+                </p>
+              </div>
+            </Grid>
+            <Grid item xs={12} md={6} lg={6}>
+              <div className="img-right">
+                <img src="/equipes.png"></img>
+              </div>
+            </Grid>
+          </Grid>
         </Container>
       </section>
 
@@ -91,21 +121,42 @@ export default function Apropos() {
       </section>
 
       <section className="full-white">
-        <Container maxWidth="lg" className="space">
+        <Container maxWidth="md" className="space ">
+          <h2>L’équipes d’Esprit Occitanie</h2>
           <Grid container spacing={5}>
-            <Grid item xs={12} md={6} lg={6}>
-              <h2>L’équipes d’Esprit Occitanie</h2>
-              <div className="author-card">
-                <div className="img"></div>
-                <div className="desc">
-                  endancieuse, pleine de gouaille, j'irai à la rencontre de mes coups de cœur dans
-                  le domaine de la mode, de la déco, des sorties… J'interrogerai 2 invités
-                  emblématiques de ces secteurs pour faire découvrir un lieu, un produit, une bonne
-                  affaire À Très vite !
-                </div>
-              </div>
-            </Grid>
+            {allAnimators.map(animator => {
+              return (
+                <Grid item xs={12} md={6} lg={6}>
+                  <div className="author-card">
+                    <div
+                      className="img"
+                      style={{
+                        backgroundImage: `url(${
+                          animator.animator_image ? animator.animator_image : '/default-author.png'
+                        })`
+                      }}
+                    ></div>
+                    <div className="desc">
+                      <h3> {animator.animator_firstname + ' ' + animator.animator_lastname}</h3>
+                      <p> {animator.animator_description}</p>
+                    </div>
+                  </div>
+                </Grid>
+              );
+            })}
           </Grid>
+        </Container>
+      </section>
+
+      <section className="full-blue">
+        <Container maxWidth="md">
+          <h2>Nous contacter</h2>
+
+          <Contact />
+
+          <div>
+            <img src="/contact-illustration.jpg"></img>
+          </div>
         </Container>
       </section>
     </div>

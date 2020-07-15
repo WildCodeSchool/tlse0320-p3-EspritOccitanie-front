@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 
 import { TextField, Box, Grid, Button } from '@material-ui/core';
@@ -21,11 +20,10 @@ const Contact = () => {
         console.error(e);
         alert(`Erreur concernant l'ajout d'un Contact' ${e.message}`);
       });
-    console.log(dataForms);
   };
 
   return (
-    <Box p={2} bgcolor="background.paper" display="flex">
+    <Box p={2}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={6}>
