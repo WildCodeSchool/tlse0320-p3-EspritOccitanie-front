@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/* eslint-disable no-console */
-=======
->>>>>>> d4fc01ffe438831582c0cb54551bd097e33b7e40
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-undef */
 /* eslint-disable no-use-before-define */
