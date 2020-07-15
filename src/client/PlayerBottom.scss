@@ -1,0 +1,71 @@
+.player-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  background-color: #181827;
+  position: fixed;
+  bottom: 0;
+  width: calc(100% - 30px);
+  padding: 15px;
+  color: white;
+  .infos {
+    display: flex;
+    align-items: center;
+    .btnPlay {
+      background-color: #ac111b !important;
+      color: white !important;
+      border-radius: 40px;
+      .MuiIconButton-label {
+        color: white;
+      }
+    }
+    .group {
+      text-align: left;
+      margin-left: 15px;
+      .title {
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .author {
+        font-size: 12px;
+      }
+      @media (max-width: 992px) {
+        display: none;
+      }
+    }
+    @media (max-width: 992px) {
+      margin-right: 10px;
+    }
+  }
+
+  .barPlayer {
+    width: 60%;
+    input {
+      width: 100%;
+      @media (max-width: 992px) {
+        max-width: 100%;
+      }
+    }
+  }
+  .audio {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .infos-duration {
+      font-size: 12px;
+      @media (max-width: 992px) {
+        display: none;
+      }
+    }
+    .mute {
+      margin-left: 15px;
+      background-color: #343652 !important;
+      color: white !important;
+      border-radius: 40px;
+      .MuiIconButton-label {
+        color: white;
+      }
+    }
+  }
+}
