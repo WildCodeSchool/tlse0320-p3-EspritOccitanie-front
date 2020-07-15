@@ -10,10 +10,12 @@ import Navbar from './client/Navbar';
 import Apropos from './client/Apropos';
 import PlayerBottom from './client/PlayerBottom';
 import LoginPage from './client/LoginPage';
+import Footer from './client/Footer';
 import './App.css';
 
 function App() {
   const [podcastsList, setPodcastsList] = useState([]);
+  const [programsList, setProgramsList] = useState([]);
   const [onPlay, setOnPlay] = useState(false);
   const [isMute, setIsMute] = useState(true);
   const [idPodastPlay, setIdPodastPlay] = useState();
@@ -39,9 +41,10 @@ function App() {
                 setDataPlayer={setDataPlayer}
                 podcastsList={podcastsList}
                 setPodcastsList={setPodcastsList}
+                programsList={programsList}
               />
             </Route>
-            <Route exact path="/podcasts/:id_podcast/:podcast_title">
+            <Route exact path="/podcasts/:podcast_id/:podcast_title">
               <PodcastDetail
                 onPlay={onPlay}
                 setOnPlay={setOnPlay}
@@ -58,7 +61,7 @@ function App() {
               <LoginPage />
             </Route>
             <Route exact path="/emissions">
-              <ProgramList />
+              <ProgramList programsList={programsList} setProgramsList={setProgramsList} />
             </Route>
             <Route exact path="/emission/:program_id/:program_title">
               <ProgramDetail
@@ -74,16 +77,18 @@ function App() {
               <Navigation />
             </Route>
           </Switch>
+          <Footer />
         </div>
+
+        <PlayerBottom
+          onPlay={onPlay}
+          setOnPlay={setOnPlay}
+          isMute={isMute}
+          setIsMute={setIsMute}
+          playerRef={playerRef}
+          dataPlayer={dataPlayer}
+        />
       </Router>
-      <PlayerBottom
-        onPlay={onPlay}
-        setOnPlay={setOnPlay}
-        isMute={isMute}
-        setIsMute={setIsMute}
-        playerRef={playerRef}
-        dataPlayer={dataPlayer}
-      />
     </div>
   );
 }

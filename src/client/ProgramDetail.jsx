@@ -15,10 +15,13 @@ const ProgramDetail = props => {
   const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
 
   useEffect(() => {
-    axios
-      .get(`/program/${program_id}`)
-      .then(res => res.data)
-      .then(res => setProgramData([res]));
+    const fetchData = async () => {
+      const result = await axios.get(`/program/${program_id}`).catch(function(error) {
+        console.log(error.toJSON());
+      });
+      setProgramData([result.data]);
+    };
+    fetchData();
   }, []);
 
   const [animators, setAnimators] = useState([]);
@@ -70,11 +73,15 @@ const ProgramDetail = props => {
                   {data.program_title}
                 </Typography>
                 <Typography variant="subtitle2" gutterBottom>
-                  Animée par :
                   {animators.map(animator => {
                     console.log('animator', animator);
                     return (
-                      <span>{` ${animator.animator_firstname} ${animator.animator_lastname} `}</span>
+                      <span className="tagAnimateur">
+                        <span>
+                          <img src="/anim.svg" alt="icon" />
+                        </span>
+                        {` ${animator.animator_firstname} ${animator.animator_lastname} `}
+                      </span>
                     );
                   })}
                 </Typography>
