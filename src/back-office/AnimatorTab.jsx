@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -20,19 +19,14 @@ const useStyles = makeStyles({
   }
 });
 
-const PodcastsTab = props => {
-  const {
-    setUpdateMode,
-    setPodcastIdToUpdate,
-    podcastIdToUpdate,
-    podcasts,
-    setPodcastInfo
-  } = props;
+const AnimatorTab = props => {
+  const { setUpdateMode, animatorIdToUpdate, setAnimatorIdToUpdate, animatorsData } = props;
+
   const classes = useStyles();
 
-  // Delete Podcast
-  const DeletePodcast = id => {
-    axios.delete(`/podcast/${id}`).then(response => {});
+  // Delete Animator
+  const DeleteAnimator = id => {
+    axios.delete(`/animator/${id}`).then(response => {});
   };
 
   return (
@@ -43,40 +37,38 @@ const PodcastsTab = props => {
             <TableRow>
               <TableCell>Id</TableCell>
               <TableCell align="center">Image</TableCell>
-              <TableCell align="center">Titre</TableCell>
-              <TableCell align="center">Date de mise en ligne</TableCell>
+              <TableCell align="center">Nom</TableCell>
+              <TableCell align="center">Prénom</TableCell>
               <TableCell align="center">Supprimer</TableCell>
               <TableCell align="center">Mettre à jours</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {podcasts.map(podcast => (
-              <TableRow key={podcast.podcast_title}>
+            {animatorsData.map(animator => (
+              <TableRow key={animator.animator_id}>
                 <TableCell component="th" scope="row">
-                  {podcast.podcast_id}
+                  {animator.animator_id}
                 </TableCell>
                 <TableCell align="center">
                   <div
-                    className="coverPodcast"
+                    className="coverAnimator"
                     style={{
                       backgroundImage: `url(${
-                        podcast.podcast_image
-                          ? podcast.podcast_image
+                        animator.animator_image
+                          ? animator.animator_image
                           : '/radio-occitanie-default.jpg'
                       })`
                     }}
                   />
                 </TableCell>
-                <TableCell align="center">{podcast.podcast_title}</TableCell>
+                <TableCell align="center">{animator.animator_firstname}</TableCell>
 
-                <TableCell align="center">
-                  {moment(podcast.podcast_creation_date).format('DD/MM/YYYY')}
-                </TableCell>
+                <TableCell align="center">{animator.animator_lastname}</TableCell>
                 <TableCell align="center">
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeletePodcast(podcast.podcast_id)}
+                    onClick={() => DeleteAnimator(animator.animator_id)}
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>
@@ -86,7 +78,7 @@ const PodcastsTab = props => {
                     aria-label="edit"
                     className={classes.margin}
                     onClick={() => {
-                      setPodcastIdToUpdate(podcast.podcast_id);
+                      setAnimatorIdToUpdate(animator.animator_id);
                       setUpdateMode(true);
                     }}
                   >
@@ -102,4 +94,4 @@ const PodcastsTab = props => {
   );
 };
 
-export default PodcastsTab;
+export default AnimatorTab;

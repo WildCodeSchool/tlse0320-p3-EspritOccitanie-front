@@ -22,15 +22,20 @@ function App() {
   const [dataPlayer, setDataPlayer] = useState();
   const playerRef = useRef();
 
+  const url = window.location.href.split('/');
+
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        {url[3] !== 'admin-radio-occitanie' && <Navbar />}
         <div className="main-ro">
           <Switch>
             <Route exact path="/qui-sommes-nous">
               <Apropos />
             </Route>
+
+            {/* <Route path="/" exact component={Home} /> */}
+
             <Route exact path="/podcasts">
               <PodcastsList
                 onPlay={onPlay}
@@ -77,17 +82,18 @@ function App() {
               <Navigation />
             </Route>
           </Switch>
-          <Footer />
+          {url[3] !== 'admin-radio-occitanie' && <Footer />}
         </div>
-
-        <PlayerBottom
-          onPlay={onPlay}
-          setOnPlay={setOnPlay}
-          isMute={isMute}
-          setIsMute={setIsMute}
-          playerRef={playerRef}
-          dataPlayer={dataPlayer}
-        />
+        {url[3] !== 'admin-radio-occitanie' && (
+          <PlayerBottom
+            onPlay={onPlay}
+            setOnPlay={setOnPlay}
+            isMute={isMute}
+            setIsMute={setIsMute}
+            playerRef={playerRef}
+            dataPlayer={dataPlayer}
+          />
+        )}
       </Router>
     </div>
   );
