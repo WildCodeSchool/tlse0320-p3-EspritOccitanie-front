@@ -1,31 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import moment from 'moment';
+import './ProgrammationCard.scss';
 
 const ProgrammationCard = props => {
-  const { program, setProgrammation } = props;
+  const { program } = props;
   moment.locale('fr');
-  console.log('emissions', program);
+  // console.log('emissions', program);
   return (
-    <div>
-      {program.map(data => {
-        return (
-          <div>
-            <img
-              src={data.program_image}
-              alt={data.program_title}
-              className="program_detail_image"
-            />
-            <p>{data.program_title}</p>
-            <p>
-              {moment(data.program_start).format('LT')} {moment(data.program_end).format('LT')}
-            </p>
-            {data.program_animator.map(animator => {
-              return <span className="tagAnimateur">{animator}</span>;
-            })}
-          </div>
-        );
-      })}
+    <div className="programCard">
+      <div
+        className="coverProgram"
+        style={{
+          backgroundImage: `url(${
+            program.program_image ? program.program_image : '/radio-occitanie-default.jpg'
+          })`
+        }}
+      />
+      <div className="content">
+        <h2>{program.program_title}</h2>
+        <div>
+          {moment(program.program_start).format('LT')} {moment(program.program_end).format('LT')}
+        </div>
+        <div>
+          {program.program_animator.map(animator => {
+            return (
+              <span className="tagAnimateur">
+                <span>
+                  <img src="/anim.svg" alt="icon" />
+                </span>
+                {animator}
+              </span>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

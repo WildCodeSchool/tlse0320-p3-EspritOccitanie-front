@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { Container, Grid } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import ProgrammationCard from './ProgrammationCard';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -61,15 +63,32 @@ export default function ScrollableTabsButtonAuto() {
 
   // get programmation
   useEffect(() => {
-    axios
-      .get(
-        'https://script.google.com/macros/s/AKfycbya2CcsOpKGTpl3rC6c4bGk-JfKNnKgcbB6fMxwi53NH-_wdms/exec'
-      )
-      .then(res => {
-        return setProgrammation(res.data);
-      })
-      .catch(e => console.error(e));
+    const fetchData = async () => {
+      const result = await axios
+        .get(
+          'https://script.google.com/macros/s/AKfycbya2CcsOpKGTpl3rC6c4bGk-JfKNnKgcbB6fMxwi53NH-_wdms/exec'
+        )
+        .catch(function(error) {
+          console.log(`error`, error.toJSON());
+        });
+      setProgrammation(result.data);
+    };
+    fetchData();
   }, []);
+
+  console.log('PROGRAMMATION', programmation);
+  programmation.length > 0 && console.log('PROG-0', programmation[0].emissions);
+  // // get programmation
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       'https://script.google.com/macros/s/AKfycbya2CcsOpKGTpl3rC6c4bGk-JfKNnKgcbB6fMxwi53NH-_wdms/exec'
+  //     )
+  //     .then(res => {
+  //       return setProgrammation(res.data);
+  //     })
+  //     .catch(e => console.error(e));
+  // }, []);
 
   return (
     <div className={classes.root}>
@@ -89,7 +108,16 @@ export default function ScrollableTabsButtonAuto() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {programmation.length > 0 && <p> {programmation[0].date}</p>}
+        {programmation.length > 0 &&
+          programmation[0].emissions.map(program => {
+            console.log(programmation.length);
+            console.log(program);
+            return (
+              <Grid item xs={12} sm={6} md={4} lg={4}>
+                <ProgrammationCard program={program} />
+              </Grid>
+            );
+          })}
       </TabPanel>
       <TabPanel value={value} index={1}>
         {programmation.length > 0 && <p> {programmation[1].date}</p>}
