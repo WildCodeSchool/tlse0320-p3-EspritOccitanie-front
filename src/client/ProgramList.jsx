@@ -19,20 +19,25 @@ const ProgramList = props => {
   }, []);
 
   return (
-    <div>
-      <Container maxWidth="lg">
-        <AdvancedSearchBar setProgramsList={setProgramsList} programsList={programsList} />
+    <div className="wrapper-about">
+      <section className="full-blue header-title">
+        <h1>Nos Emissions</h1>
+      </section>
+      <div>
+        <Container maxWidth="lg">
+          <AdvancedSearchBar setProgramsList={setProgramsList} programsList={programsList} />
 
-        <Grid container spacing={3}>
-          {programsList.map(program => {
-            return (
-              <Grid item xs={12} sm={6} md={4} lg={4}>
-                <ProgramCard dataPrograms={program} />
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Container>
+          <Grid container spacing={3}>
+            {programsList.map(program => {
+              return (
+                <Grid item xs={12} sm={6} md={4} lg={4}>
+                  <ProgramCard dataPrograms={program} />
+                </Grid>
+              );
+            })}
+          </Grid>
+        </Container>
+      </div>
     </div>
   );
 };

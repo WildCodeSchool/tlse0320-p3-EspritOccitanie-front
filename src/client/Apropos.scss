@@ -1,0 +1,141 @@
+.title {
+  margin-top: 10%;
+  margin-bottom: 6%;
+  font-weight: bold;
+}
+
+.header-title {
+  margin-top: -60px !important;
+
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  text-align: justify;
+}
+.alignCenter {
+  display: flex;
+  align-items: center;
+}
+.signature {
+  font-weight: bold;
+}
+
+.wrapper-about {
+  .flexAlignCenter {
+    display: flex;
+    align-items: center;
+  }
+
+  .full-header {
+    width: 100%;
+    margin-top: -60px;
+
+    background-image: url('/bg-about-top.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 525px;
+  }
+
+  .img-left {
+    float: left;
+    padding: 60px;
+
+    @media (max-width: 959px) {
+      float: none;
+      padding: 0px;
+    }
+
+    img {
+      @media (max-width: 500px) {
+        max-width: 270px;
+      }
+    }
+  }
+
+  .img-right {
+    float: right;
+    padding: 60px;
+
+    @media (max-width: 959px) {
+      float: none;
+      padding: 0px;
+    }
+
+    img {
+      @media (max-width: 500px) {
+        max-width: 270px;
+      }
+    }
+  }
+
+  .full {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 100%;
+    background-color: #ebebeb;
+  }
+
+  .full-white {
+    background-color: blanck;
+  }
+
+  .space {
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+  .full-white {
+    margin-bottom: 60px;
+    width: 100%;
+  }
+
+  .author-card {
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06), 0px 2px 14px rgba(0, 0, 0, 0.04),
+      0px 6px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    border-radius: 5px;
+
+    .img {
+      min-height: 120px;
+      min-width: 120px;
+      border-radius: 50%;
+      background-color: #ddd;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      margin-right: 15px;
+    }
+
+    .desc {
+    }
+  }
+
+  .flexColContact {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .full-blue {
+    margin-top: 60px;
+    margin-bottom: -60px;
+    width: 100%;
+    background-color: #181827;
+    color: white;
+
+    h2 {
+      padding-top: 60px;
+    }
+    img {
+      margin-bottom: -3px;
+      padding-top: 30px;
+    }
+  }
+}

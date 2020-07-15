@@ -32,9 +32,18 @@ const AdvancedSearchPodcast = props => {
 
   return (
     <div>
-      <Grid container spacing={2}>
+      <Grid container direction="row" justify="flex-start" alignItems="center">
+        <Grid xs={4} md={url[3] === 'podcasts' ? 3 : 6} lg={6} className="notVisible">
+          <div className="nbMedia">
+            Il y a
+            <div className="count">
+              {url[3] === 'podcasts' ? ` ${podcastsList.length} ` : ` ${programsList.length} `}
+            </div>
+            {url[3] === 'podcasts' ? ` podcasts` : ` émissions`}
+          </div>
+        </Grid>
         {url[3] === 'podcasts' ? (
-          <Grid lg={4}>
+          <Grid xs={4} md={3} lg={2} className="notVisible">
             <FormControl variant="outlined" className="MuiFormControl-fullWidth">
               <InputLabel id="demo-simple-select-outlined-label" fullWidth>
                 Émissions
@@ -56,7 +65,7 @@ const AdvancedSearchPodcast = props => {
           </Grid>
         ) : null}
 
-        <Grid lg={4}>
+        <Grid xs={6} md={3} lg={url[3] === 'podcasts' ? 2 : 3}>
           <FormControl variant="outlined" className="MuiFormControl-fullWidth">
             <InputLabel id="demo-simple-select-outlined-label" fullWidth>
               Catégorie
@@ -80,7 +89,7 @@ const AdvancedSearchPodcast = props => {
             </Select>
           </FormControl>
         </Grid>
-        <Grid lg={4}>
+        <Grid xs={6} md={3} lg={url[3] === 'podcasts' ? 2 : 3}>
           <FormControl variant="outlined" className="MuiFormControl-fullWidth">
             <InputLabel id="demo-simple-select-outlined-label" fullWidth>
               Animateurs
@@ -103,11 +112,6 @@ const AdvancedSearchPodcast = props => {
             </Select>
           </FormControl>
         </Grid>
-        <div>
-          <IconButton aria-label="refresh" onClick={refreshPage}>
-            <RefreshIcon />
-          </IconButton>
-        </div>
       </Grid>
     </div>
   );
