@@ -2,11 +2,12 @@ import React, { useState, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
 import PodcastsList from './client/PodcastsList';
-import Contact from './back-office/Contact';
+import Contact from './client/Contact';
 import ProgramList from './client/ProgramList';
 import ProgramDetail from './client/ProgramDetail';
 import PodcastDetail from './client/PodcastDetail';
 import Navbar from './client/Navbar';
+import Apropos from './client/Apropos';
 import PlayerBottom from './client/PlayerBottom';
 import LoginPage from './client/LoginPage';
 import Footer from './client/Footer';
@@ -29,7 +30,12 @@ function App() {
         {url[3] !== 'admin-radio-occitanie' && <Navbar />}
         <div className="main-ro">
           <Switch>
+            <Route exact path="/qui-sommes-nous">
+              <Apropos />
+            </Route>
+
             {/* <Route path="/" exact component={Home} /> */}
+
             <Route exact path="/podcasts">
               <PodcastsList
                 onPlay={onPlay}
