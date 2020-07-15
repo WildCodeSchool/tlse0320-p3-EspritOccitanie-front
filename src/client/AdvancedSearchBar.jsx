@@ -1,10 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
-import { Container, Grid } from '@material-ui/core';
-
-import { BrowserRouter as Router, Switch, Route, useParams } from 'react-router-dom';
+import './AdvancedSearch.scss';
 
 import AdvancedSearchPodcast from './AdvancedSearchPodcast';
 
@@ -155,34 +152,28 @@ const AdvancedSearchBar = props => {
   }, [animatorSelected]);
 
   return (
-    <div>
-      <Container>
-        <Grid>
-          <Grid>
-            <div>
-              <AdvancedSearchPodcast
-                podcastsList={podcastsList}
-                programsList={programsList}
-                setProgramsList={setProgramsList}
-                animatorsList={animatorsList}
-                setAnimatorsList={setAnimatorsList}
-                categorysList={categorysList}
-                setCategorysList={setCategorysList}
-                programSelected={programSelected}
-                handleProgramSelected={handleProgramSelected}
-                animatorSelected={animatorSelected}
-                handleAnimatorSelected={handleAnimatorSelected}
-                categorySelected={categorySelected}
-                handleCategoryelected={handleCategoryelected}
-                animatorSelectedProg={animatorSelectedProg}
-                handleAnimatorSelectedProg={handleAnimatorSelectedProg}
-                categorySelectedProg={categorySelectedProg}
-                handleCategorySelectedProg={handleCategorySelectedProg}
-              />
-            </div>
-          </Grid>
-        </Grid>
-      </Container>
+    <div className="filter-bar">
+      <div>
+        <AdvancedSearchPodcast
+          podcastsList={podcastsList}
+          programsList={programsList}
+          setProgramsList={setProgramsList}
+          animatorsList={animatorsList}
+          setAnimatorsList={setAnimatorsList}
+          categorysList={categorysList}
+          setCategorysList={setCategorysList}
+          programSelected={programSelected}
+          handleProgramSelected={handleProgramSelected}
+          animatorSelected={animatorSelected}
+          handleAnimatorSelected={handleAnimatorSelected}
+          categorySelected={categorySelected}
+          handleCategoryelected={handleCategoryelected}
+          animatorSelectedProg={animatorSelectedProg}
+          handleAnimatorSelectedProg={handleAnimatorSelectedProg}
+          categorySelectedProg={categorySelectedProg}
+          handleCategorySelectedProg={handleCategorySelectedProg}
+        />
+      </div>
     </div>
   );
 };
