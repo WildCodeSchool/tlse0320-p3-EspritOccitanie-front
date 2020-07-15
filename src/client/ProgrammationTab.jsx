@@ -9,6 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import ProgrammationCard from './ProgrammationCard';
+import './Programmation.scss';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -76,20 +77,6 @@ export default function ScrollableTabsButtonAuto() {
     fetchData();
   }, []);
 
-  console.log('PROGRAMMATION', programmation);
-  programmation.length > 0 && console.log('PROG-0', programmation[0].emissions);
-  // // get programmation
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       'https://script.google.com/macros/s/AKfycbya2CcsOpKGTpl3rC6c4bGk-JfKNnKgcbB6fMxwi53NH-_wdms/exec'
-  //     )
-  //     .then(res => {
-  //       return setProgrammation(res.data);
-  //     })
-  //     .catch(e => console.error(e));
-  // }, []);
-
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -108,34 +95,116 @@ export default function ScrollableTabsButtonAuto() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        {programmation.length > 0 &&
-          programmation[0].emissions.map(program => {
-            console.log(programmation.length);
-            console.log(program);
-            return (
-              <Grid item xs={12} sm={6} md={4} lg={4}>
-                <ProgrammationCard program={program} />
-              </Grid>
-            );
-          })}
+        <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            {programmation.length > 0 &&
+              programmation[0].emissions.map(program => {
+                console.log(programmation.length);
+                console.log(program);
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <ProgrammationCard program={program} />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </Container>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        {programmation.length > 0 && <p> {programmation[1].date}</p>}
+        <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            {programmation.length > 0 &&
+              programmation[1].emissions.map(program => {
+                console.log(programmation.length);
+                console.log(program);
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <ProgrammationCard program={program} />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </Container>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        {programmation.length > 0 && <p> {programmation[2].date}</p>}
+        <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            {programmation.length > 0 &&
+              programmation[2].emissions.map(program => {
+                console.log(programmation.length);
+                console.log(program);
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <ProgrammationCard program={program} />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </Container>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        {programmation.length > 0 && <p> {programmation[3].date}</p>}
+        <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            {programmation.length > 0 &&
+              programmation[3].emissions.map(program => {
+                console.log(programmation.length);
+                console.log(program);
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <ProgrammationCard program={program} />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </Container>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        {programmation.length > 0 && <p> {programmation[4].date}</p>}
+        <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            {programmation.length > 0 &&
+              programmation[4].emissions.map(program => {
+                console.log(programmation.length);
+                console.log(program);
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <ProgrammationCard program={program} />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </Container>
       </TabPanel>
       <TabPanel value={value} index={5}>
-        {programmation.length > 0 && <p> {programmation[5].date}</p>}
+        <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            {programmation.length > 0 &&
+              programmation[5].emissions.map(program => {
+                console.log(programmation.length);
+                console.log(program);
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <ProgrammationCard program={program} />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </Container>
       </TabPanel>
       <TabPanel value={value} index={6}>
-        {programmation.length > 0 && <p> {programmation[6].date}</p>}
+        <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            {programmation.length > 0 &&
+              programmation[6].emissions.map(program => {
+                console.log(programmation.length);
+                console.log(program);
+                return (
+                  <Grid item xs={12} sm={6} md={4} lg={4}>
+                    <ProgrammationCard program={program} />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </Container>
       </TabPanel>
     </div>
   );

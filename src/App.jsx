@@ -21,7 +21,6 @@ function App() {
   const [idPodastPlay, setIdPodastPlay] = useState();
   const [dataPlayer, setDataPlayer] = useState();
   const playerRef = useRef();
-
   const url = window.location.href.split('/');
 
   return (
