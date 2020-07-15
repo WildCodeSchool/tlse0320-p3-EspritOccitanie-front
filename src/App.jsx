@@ -12,6 +12,7 @@ import MentionsLegal from './client/MentionsLegal';
 import PlayerBottom from './client/PlayerBottom';
 import LoginPage from './client/LoginPage';
 import Footer from './client/Footer';
+import ProgrammationTab from './client/ProgrammationTab';
 import './App.css';
 
 function App() {
@@ -22,7 +23,6 @@ function App() {
   const [idPodastPlay, setIdPodastPlay] = useState();
   const [dataPlayer, setDataPlayer] = useState();
   const playerRef = useRef();
-
   const url = window.location.href.split('/');
 
   return (
@@ -62,6 +62,9 @@ function App() {
                 playerRef={playerRef}
                 setDataPlayer={setDataPlayer}
               />
+            </Route>
+            <Route exact path="/grille-des-programmes">
+              <ProgrammationTab />
             </Route>
             <Route exact path="/contact">
               <Contact />
