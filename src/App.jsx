@@ -8,6 +8,7 @@ import ProgramDetail from './client/ProgramDetail';
 import PodcastDetail from './client/PodcastDetail';
 import Navbar from './client/Navbar';
 import Apropos from './client/Apropos';
+import MentionsLegal from './client/MentionsLegal';
 import PlayerBottom from './client/PlayerBottom';
 import LoginPage from './client/LoginPage';
 import Footer from './client/Footer';
@@ -30,6 +31,9 @@ function App() {
         {url[3] !== 'admin-radio-occitanie' && <Navbar />}
         <div className="main-ro">
           <Switch>
+            <Route exact path="/mentions-legales">
+              <MentionsLegal />
+            </Route>
             <Route exact path="/qui-sommes-nous">
               <Apropos />
             </Route>
