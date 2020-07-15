@@ -10,6 +10,7 @@ import Navbar from './client/Navbar';
 import PlayerBottom from './client/PlayerBottom';
 import LoginPage from './client/LoginPage';
 import Footer from './client/Footer';
+import ProgrammationTab from './client/ProgrammationTab';
 import './App.css';
 
 function App() {
@@ -52,6 +53,9 @@ function App() {
                 playerRef={playerRef}
                 setDataPlayer={setDataPlayer}
               />
+            </Route>
+            <Route exact path="/grille-des-programmes">
+              <ProgrammationTab />
             </Route>
             <Route exact path="/contact">
               <Contact />
