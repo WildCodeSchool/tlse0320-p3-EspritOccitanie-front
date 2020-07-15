@@ -10,6 +10,7 @@ import Box from '@material-ui/core/Box';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
+
   return (
     <div
       role="tabpanel"
@@ -52,6 +53,10 @@ export default function ScrollableTabsButtonAuto() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   const [programmation, setProgrammation] = useState([]);
 
   // get programmation
@@ -61,15 +66,10 @@ export default function ScrollableTabsButtonAuto() {
         'https://script.google.com/macros/s/AKfycbya2CcsOpKGTpl3rC6c4bGk-JfKNnKgcbB6fMxwi53NH-_wdms/exec'
       )
       .then(res => {
-        console.log('programmation', res.data);
         return setProgrammation(res.data);
       })
       .catch(e => console.error(e));
   }, []);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
     <div className={classes.root}>
@@ -83,45 +83,32 @@ export default function ScrollableTabsButtonAuto() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          {programmation.map(program => {
-            console.log('program', program);
-            return (
-              <div>
-                <Tab label={program.date} />
-              </div>
-            );
+          {programmation.map((program, i) => {
+            return <Tab label={program.date} {...a11yProps(i)} />;
           })}
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        {programmation.length > 0 && <p> {programmation[0].date}</p>}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        {programmation.length > 0 && <p> {programmation[1].date}</p>}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        {programmation.length > 0 && <p> {programmation[2].date}</p>}
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        {programmation.length > 0 && <p> {programmation[3].date}</p>}
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+        {programmation.length > 0 && <p> {programmation[4].date}</p>}
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        {programmation.length > 0 && <p> {programmation[5].date}</p>}
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+        {programmation.length > 0 && <p> {programmation[6].date}</p>}
       </TabPanel>
     </div>
   );
 }
-
-// {programmation.map(program => {
-//     return (
-//       <div>
-//         <Tab label={program.date} {...a11yProps(0)} />
-//       </div>
-//     );
-//   })}
