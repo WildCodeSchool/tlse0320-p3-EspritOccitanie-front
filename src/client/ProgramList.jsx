@@ -3,6 +3,7 @@ import { Container, Grid } from '@material-ui/core';
 import axios from 'axios';
 import ProgramCard from './ProgramCard';
 import AdvancedSearchBar from './AdvancedSearchBar';
+import './title.scss';
 
 const ProgramList = props => {
   const { setProgramsList, programsList } = props;
@@ -19,15 +20,15 @@ const ProgramList = props => {
   }, []);
 
   return (
-    <div className="wrapper-about">
-      <section className="full-blue header-title">
-        <h1>Nos Emissions</h1>
+    <div>
+      <section className="title-page">
+        <h1>Les Podcasts</h1>
       </section>
       <div>
         <Container maxWidth="lg">
           <AdvancedSearchBar setProgramsList={setProgramsList} programsList={programsList} />
 
-          <Grid container spacing={3}>
+          <Grid container spacing={5}>
             {programsList.map(program => {
               return (
                 <Grid item xs={12} sm={6} md={4} lg={4}>

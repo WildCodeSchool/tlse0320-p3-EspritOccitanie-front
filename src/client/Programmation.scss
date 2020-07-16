@@ -1,15 +1,47 @@
-.MuiTabs-root {
-  margin-top: -60px !important;
-}
+.programmation {
+  .MuiTabs-flexContainer {
+    justify-content: center;
+    background-color: #f5f5f5;
+  }
 
-.MuiTab-textColorPrimary.Mui-selected {
-  color: #ab1520 !important;
-}
+  .MuiTabs-root {
+    margin-top: -60px !important;
+  }
 
-.PrivateTabIndicator-colorPrimary-7 {
-  background-color: #ab1520 !important;
-}
+  .MuiTab-textColorPrimary.Mui-selected {
+    color: #ab1520 !important;
+  }
 
-.PrivateTabIndicator-colorPrimary-11 {
-  background-color: #ab1520 !important;
+  .PrivateTabIndicator-colorPrimary-7 {
+    background-color: #ab1520 !important;
+  }
+
+  .PrivateTabIndicator-colorPrimary-11 {
+    background-color: #ab1520 !important;
+  }
+
+  .MuiCardContent-root {
+    padding: 30px;
+  }
+
+  .MuiCard-root,
+  react-card-back,
+  react-card-flip {
+    height: 100% !important;
+  }
+
+  .react-card-flip {
+    height: 100% !important;
+  }
+
+  .MuiButtonBase-root {
+    margin-top: 10px;
+  }
+
+  .MuiPaper-elevation1 {
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.06), 0px 2px 14px rgba(0, 0, 0, 0.04),
+      0px 6px 10px rgba(0, 0, 0, 0.1);
+  }
 }

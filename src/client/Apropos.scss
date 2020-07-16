@@ -138,4 +138,34 @@
       padding-top: 30px;
     }
   }
+  .full-blue1 {
+    margin-top: 60px;
+    margin-bottom: -60px;
+    width: 100%;
+    background-color: #181827;
+    color: white;
+
+    h2 {
+      padding-top: 60px;
+    }
+    img {
+      margin-bottom: -3px;
+      padding-top: 30px;
+    }
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: rgb(255, 255, 255);
+    background-color: white;
+
+    &:hover {
+      border-color: rgb(255, 255, 200) !important;
+    }
+  }
+
+  .MuiOutlinedInput-inputMultiline,
+  .MuiOutlinedInput-input {
+    color: black !important;
+    z-index: 4 !important;
+  }
 }
