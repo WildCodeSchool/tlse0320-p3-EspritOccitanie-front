@@ -19,23 +19,42 @@ import {
   Chip
 } from '@material-ui/core';
 
-const AnimatorPostForm = () => {
+const AnimatorPostForm = props => {
   const { handleSubmit, register, control } = useForm();
+  const { updateMode, animatorIdToUpdate, animatorsData } = props;
 
   const onSubmit = data => {
+    // create animator
+    if (!updateMode) {
+      const dataForms = {
+        ...data
+      };
+
+      axios
+        .post('/animator', dataForms)
+        .then(res => res.data)
+        .then(res => {
+          alert(`L'animateur/animatrice est créé`);
+        })
+        .catch(e => {
+          console.error(e);
+          alert(`Erreur concernant l'ajout de l'animateur/animatrice ${e.message}`);
+        });
+    }
+
+    // update animator
     const dataForms = {
       ...data
     };
-
     axios
-      .post('/animator', dataForms)
+      .put(`/animator/${animatorIdToUpdate}`, dataForms)
       .then(res => res.data)
       .then(res => {
-        alert(`L'animateur/animatrice est créé`);
+        alert(`Animateur/animatrice modifié(e) avec succès !`);
       })
       .catch(e => {
         console.error(e);
-        alert(`Erreur concernant l'ajout de l'animateur/animatrice ${e.message}`);
+        alert(`Erreur concernant la modification  de l'animateur/animatrice ${e}`);
       });
   };
 
@@ -89,7 +108,7 @@ const AnimatorPostForm = () => {
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
-              Créer
+              {updateMode ? "Mettre à jour l'animateur/animatrice" : 'Créer animateur/animatrice'}
             </Button>
           </Grid>
         </Grid>

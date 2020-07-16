@@ -20,13 +20,21 @@ const useStyles = makeStyles({
 });
 
 const AnimatorTab = props => {
-  const { setUpdateMode, animatorIdToUpdate, setAnimatorIdToUpdate, animatorsData } = props;
+  const {
+    setUpdateMode,
+    animatorIdToUpdate,
+    setAnimatorIdToUpdate,
+    animatorsData,
+    setAnimatorsData
+  } = props;
 
   const classes = useStyles();
 
   // Delete Animator
   const DeleteAnimator = id => {
-    axios.delete(`/animator/${id}`).then(response => {});
+    axios.delete(`/animator/${id}`).then(response => {
+      alert('Animateur/animatrice supprimé(e) avec succès !');
+    });
   };
 
   return (

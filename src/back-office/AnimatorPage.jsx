@@ -22,22 +22,32 @@ const AnimatorPage = () => {
     fetchData();
   }, []);
 
-  // set data animator to default value for update
-  useEffect(() => {
-    if (updateMode) {
-      const values = animatorsData.filter(
-        animator => animator.animator_id === animatorIdToUpdate
-      )[0];
-      setAnimatorsData(values);
-    }
-  }, [animatorIdToUpdate]);
+  // const [ refresh, setRefresh ] = useState(false);
+  // const Refresh = () => {
+  //   // refresh data
+  //   if (!refresh) {
+  //     axios
+  //       .get('/animator')
+  //       .then(res => res.data)
+  //       .then(res => {
+  //         setAnimatorsData(res);
+  //       })
+  //       .catch(e => {
+  //         console.error(e);
+  //       });
+  //   }
+  // };
 
   return (
     <div className="admin-animator">
       <>
         <Container>
           <Paper elevation={2}>
-            <AnimatorPostForm />
+            <AnimatorPostForm
+              updateMode={updateMode}
+              animatorIdToUpdate={animatorIdToUpdate}
+              animatorsData={animatorsData}
+            />
           </Paper>
 
           <Paper elevation={2}>
