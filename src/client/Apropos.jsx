@@ -130,7 +130,7 @@ export default function Apropos() {
         </Container>
       </section>
 
-      <section className="full-blue">
+      <section className="full-blue1">
         <Container maxWidth="md">
           <h2>Nous contacter</h2>
 

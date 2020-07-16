@@ -3,8 +3,8 @@ import { Container, Grid } from '@material-ui/core';
 import axios from 'axios';
 import PodcastCard from './PodcastCard';
 import AdvancedSearchBar from './AdvancedSearchBar';
-
 import './pagination.scss';
+import './title.scss';
 
 const PodcastsList = props => {
   const {
@@ -45,8 +45,8 @@ const PodcastsList = props => {
   const lastIndex = paginationPodcast.slice(-1)[0];
 
   return (
-    <div className="wrapper-about">
-      <section className="full-blue header-title">
+    <div>
+      <section className="title-page">
         <h1>Les Podcasts</h1>
       </section>
       <div>

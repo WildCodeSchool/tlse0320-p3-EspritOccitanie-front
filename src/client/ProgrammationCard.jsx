@@ -12,9 +12,7 @@ import * as moment from 'moment';
 import 'moment/locale/fr';
 
 const useStyles = makeStyles({
-  root: {
-    maxWidth: 345
-  }
+  root: {}
 });
 
 const ProgrammationCard = props => {
@@ -44,10 +42,11 @@ const ProgrammationCard = props => {
               {' - '}
               {moment(program.program_end).format('LT')}
             </Typography>
+
+            <Button onClick={() => setIsFlipped(true)} variant="outlined" color="secondary">
+              Voir qui anime
+            </Button>
           </CardContent>
-          <Button onClick={() => setIsFlipped(true)} variant="outlined" color="secondary">
-            Voir qui anime
-          </Button>
         </CardActionArea>
       </Card>
 

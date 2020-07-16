@@ -82,7 +82,7 @@ export default function ScrollableTabsButtonAuto() {
   }, []);
 
   return (
-    <div className="wrapper-about">
+    <div className="wrapper-about programmation">
       <section className="full-blue header-title">
         <h1>Programmation</h1>
       </section>
@@ -109,7 +109,7 @@ export default function ScrollableTabsButtonAuto() {
         </AppBar>
         <TabPanel value={value} index={0}>
           <Container maxWidth="lg">
-            <Grid container spacing={2}>
+            <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[0].emissions.map(program => {
                   console.log(programmation.length);
@@ -125,7 +125,7 @@ export default function ScrollableTabsButtonAuto() {
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Container maxWidth="lg">
-            <Grid container spacing={2}>
+            <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[1].emissions.map(program => {
                   console.log(programmation.length);
@@ -141,7 +141,7 @@ export default function ScrollableTabsButtonAuto() {
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Container maxWidth="lg">
-            <Grid container spacing={2}>
+            <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[2].emissions.map(program => {
                   console.log(programmation.length);
@@ -157,7 +157,7 @@ export default function ScrollableTabsButtonAuto() {
         </TabPanel>
         <TabPanel value={value} index={3}>
           <Container maxWidth="lg">
-            <Grid container spacing={2}>
+            <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[3].emissions.map(program => {
                   console.log(programmation.length);
@@ -173,7 +173,7 @@ export default function ScrollableTabsButtonAuto() {
         </TabPanel>
         <TabPanel value={value} index={4}>
           <Container maxWidth="lg">
-            <Grid container spacing={2}>
+            <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[4].emissions.map(program => {
                   console.log(programmation.length);
@@ -189,7 +189,7 @@ export default function ScrollableTabsButtonAuto() {
         </TabPanel>
         <TabPanel value={value} index={5}>
           <Container maxWidth="lg">
-            <Grid container spacing={2}>
+            <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[5].emissions.map(program => {
                   console.log(programmation.length);
@@ -205,7 +205,7 @@ export default function ScrollableTabsButtonAuto() {
         </TabPanel>
         <TabPanel value={value} index={6}>
           <Container maxWidth="lg">
-            <Grid container spacing={2}>
+            <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[6].emissions.map(program => {
                   console.log(programmation.length);
