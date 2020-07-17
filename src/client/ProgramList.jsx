@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid } from '@material-ui/core';
-import axios from 'axios';
 import ProgramCard from './ProgramCard';
-import AdvancedSearchBar from './AdvancedSearchBar';
 import './title.scss';
 
 const ProgramList = props => {
@@ -12,8 +10,6 @@ const ProgramList = props => {
     <div>
       <div>
         <Container maxWidth="lg">
-          {/* <AdvancedSearchBar setProgramsList={setProgramsList} programsList={programsList} /> */}
-
           <Grid container spacing={5}>
             {programsList.map(program => {
               return (

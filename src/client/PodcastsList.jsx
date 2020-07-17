@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid } from '@material-ui/core';
-import axios from 'axios';
 import PodcastCard from './PodcastCard';
-import AdvancedSearchBar from './AdvancedSearchBar';
 import './pagination.scss';
 import './title.scss';
 
@@ -23,17 +21,6 @@ const PodcastsList = props => {
   const [paginationPodcast, setPaginationPodcast] = useState([]);
   const [positionPage, setPositionPage] = useState(1);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const result = await axios.get('/podcast').catch(error => {
-  //       console.log(`error Podcaslist axios = `, error.toJSON());
-  //     });
-
-  //     setPodcastsList(result.data);
-  //   };
-  //   fetchData();
-  // }, []);
-
   useEffect(() => {
     setNbPodcasts(podcastsList.length);
     const nbPages = Math.ceil(podcastsList.length / 9);
@@ -46,17 +33,8 @@ const PodcastsList = props => {
 
   return (
     <div>
-      {/* <section className="title-page">
-        <h1>Les Podcasts</h1>
-      </section> */}
       <div>
         <Container maxWidth="lg">
-          {/* <AdvancedSearchBar
-            setPodcastsList={setPodcastsList}
-            podcastsList={podcastsList}
-            programsList={programsList}
-          /> */}
-
           <Grid container spacing={5}>
             {podcastsList.slice(startSlicePagination, endSlicePagination).map(podcast => {
               return (
