@@ -81,10 +81,27 @@ export function formatDuration(duration) {
   require('moment-duration-format');
   return moment.duration(duration.toString(), 'seconds').format('mm:ss', { trim: false });
 }
+// export const multiSelectProgram = (animator, category, flag) => {
+//   let result = []
+//   console.log("anim", animator)
+//   console.log("cate", category)
+//   if(animator && category) {
+//     result = category.filter(cat => {
+//       return animator.filter(anim => {
+//         return anim.program_id === cat.program_id
+//       })
+//     })
+//   }
 
-// Refresh page button
-export function refreshPage() {
-  window.location.reload(false);
-}
+//   if (animator && !category) {
+//     result = animator
+//   }
 
-export default { slugify, handleAudio, play, mute, formatDuration, refreshPage };
+//   if (category && !animator) {
+//     result = category
+//   }
+//   console.log('reslut',result)
+//   return result;
+// };
+
+export default { slugify, handleAudio, play, mute, formatDuration };

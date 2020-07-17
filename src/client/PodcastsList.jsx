@@ -23,16 +23,16 @@ const PodcastsList = props => {
   const [paginationPodcast, setPaginationPodcast] = useState([]);
   const [positionPage, setPositionPage] = useState(1);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('/podcast').catch(error => {
-        console.log(`error Podcaslist axios = `, error.toJSON());
-      });
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios.get('/podcast').catch(error => {
+  //       console.log(`error Podcaslist axios = `, error.toJSON());
+  //     });
 
-      setPodcastsList(result.data);
-    };
-    fetchData();
-  }, []);
+  //     setPodcastsList(result.data);
+  //   };
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
     setNbPodcasts(podcastsList.length);
@@ -46,16 +46,16 @@ const PodcastsList = props => {
 
   return (
     <div>
-      <section className="title-page">
+      {/* <section className="title-page">
         <h1>Les Podcasts</h1>
-      </section>
+      </section> */}
       <div>
         <Container maxWidth="lg">
-          <AdvancedSearchBar
+          {/* <AdvancedSearchBar
             setPodcastsList={setPodcastsList}
             podcastsList={podcastsList}
             programsList={programsList}
-          />
+          /> */}
 
           <Grid container spacing={5}>
             {podcastsList.slice(startSlicePagination, endSlicePagination).map(podcast => {

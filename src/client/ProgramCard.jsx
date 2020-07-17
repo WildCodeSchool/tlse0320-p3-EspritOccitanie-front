@@ -13,20 +13,14 @@ import { slugify } from './util/utilFunctions';
 import './ProgramCard.scss';
 
 const ProgramCard = props => {
-  const {
-    program_id,
-    program_title,
-    program_description,
-    program_image,
-    ro_category_category_id,
-    category_name
-  } = props.dataPrograms;
+  const { program } = props;
 
   const [animators, setAnimators] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios
-        .get(`/animator?program=${program_id}`)
+        .get(`/animator?program=${program.program_id}`)
         .then(response => {
           return response.data;
         })
@@ -60,11 +54,13 @@ const ProgramCard = props => {
       <div
         className="coverProgram"
         style={{
-          backgroundImage: `url(${program_image ? program_image : '/radio-occitanie-default.jpg'})`
+          backgroundImage: `url(${
+            program.program_image ? program.program_image : '/radio-occitanie-default.jpg'
+          })`
         }}
       />
       <div className="content">
-        <h2>{program_title}</h2>
+        <h2>{program.program_title}</h2>
 
         {animators.map(animator => {
           return (
@@ -77,12 +73,15 @@ const ProgramCard = props => {
           );
         })}
 
-        <p> {program_description.substring(0, 120) + '...'}</p>
+        <p> {program.program_description.substring(0, 120) + '...'}</p>
       </div>
       <div className="footer">
-        <div className="categoryTag">{category_name}</div>
+        <div className="categoryTag">{program.category_name}</div>
 
-        <Link component={RouterLink} to={`/emission/${program_id}/${slugify(program_title)}`}>
+        <Link
+          component={RouterLink}
+          to={`/emission/${program.program_id}/${slugify(program.program_title)}`}
+        >
           <Button variant="outlined" color="primary" size="small">
             Voir plus
           </Button>
