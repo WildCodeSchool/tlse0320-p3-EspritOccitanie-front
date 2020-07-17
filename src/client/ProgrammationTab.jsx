@@ -86,6 +86,9 @@ export default function ScrollableTabsButtonAuto() {
       <section className="full-blue header-title">
         <h1>Programmation</h1>
       </section>
+
+      {programmation.length === 0 ? <p>Chargement de la programmation</p> : null}
+
       <div className={classes.root}>
         <AppBar position="static" color="default">
           <Tabs
@@ -110,10 +113,12 @@ export default function ScrollableTabsButtonAuto() {
         <TabPanel value={value} index={0}>
           <Container maxWidth="lg">
             <Grid container spacing={5}>
+              {programmation.length === 0 ? (
+                <p className="chargement">Chargement de la programmation...</p>
+              ) : null}
+
               {programmation.length > 0 &&
                 programmation[0].emissions.map(program => {
-                  console.log(programmation.length);
-                  console.log(program);
                   return (
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <ProgrammationCard program={program} />
@@ -128,8 +133,6 @@ export default function ScrollableTabsButtonAuto() {
             <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[1].emissions.map(program => {
-                  console.log(programmation.length);
-                  console.log(program);
                   return (
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <ProgrammationCard program={program} />
@@ -144,8 +147,6 @@ export default function ScrollableTabsButtonAuto() {
             <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[2].emissions.map(program => {
-                  console.log(programmation.length);
-                  console.log(program);
                   return (
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <ProgrammationCard program={program} />
@@ -160,8 +161,6 @@ export default function ScrollableTabsButtonAuto() {
             <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[3].emissions.map(program => {
-                  console.log(programmation.length);
-                  console.log(program);
                   return (
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <ProgrammationCard program={program} />
@@ -176,8 +175,6 @@ export default function ScrollableTabsButtonAuto() {
             <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[4].emissions.map(program => {
-                  console.log(programmation.length);
-                  console.log(program);
                   return (
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <ProgrammationCard program={program} />
@@ -192,8 +189,6 @@ export default function ScrollableTabsButtonAuto() {
             <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[5].emissions.map(program => {
-                  console.log(programmation.length);
-                  console.log(program);
                   return (
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <ProgrammationCard program={program} />
@@ -208,8 +203,6 @@ export default function ScrollableTabsButtonAuto() {
             <Grid container spacing={5}>
               {programmation.length > 0 &&
                 programmation[6].emissions.map(program => {
-                  console.log(programmation.length);
-                  console.log(program);
                   return (
                     <Grid item xs={12} sm={6} md={4} lg={4}>
                       <ProgrammationCard program={program} />
