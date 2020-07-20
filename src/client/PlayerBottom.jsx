@@ -42,19 +42,14 @@ const PlayerBottom = props => {
 
   const onDrag = e => {
     setPlayerCurrentTime(e.target.value);
-
-    // playerRef.currentTime = e.target.value;
-
-    // setIsDrag(true);
-
-    playerRef.currentTime = 60;
-
-    playerRef.ontimeupdate = event => {
-      console.log('The currentTime attribute has been updated. Again.');
-    };
+    playerRef.current.currentTime = e.target.value;
   };
 
-  playerCurrentTimeA && console.log(playerCurrentTimeA);
+  useEffect(() => {
+    if (playerRef.current.src.length > 0) {
+      setPlayerDuration(Math.trunc(playerRef.current.duration));
+    }
+  }, [onPlay]);
 
   return (
     <div className="player-bottom">
