@@ -62,5 +62,5 @@
       "pre-commit": "pretty-quick --staged",
       "post-merge": "npm install"
     }
-  },
+  }
 }
