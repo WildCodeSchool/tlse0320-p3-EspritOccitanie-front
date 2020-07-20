@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
 import PodcastsList from './client/PodcastsList';
 import Contact from './client/Contact';
@@ -38,7 +38,9 @@ function App() {
               <Apropos />
             </Route>
 
-            {/* <Route path="/" exact component={Home} /> */}
+            <Route exact path="/">
+              <Redirect to="/podcasts" />
+            </Route>
 
             <Route exact path="/podcasts">
               <PodcastsList

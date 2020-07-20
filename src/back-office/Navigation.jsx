@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -57,6 +57,17 @@ export default function VerticalTabs() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    const playerSelect = document.querySelector('.player-bottom');
+    const footerSelect = document.querySelector('.container-footer');
+    const navbarSelect = document.querySelector('.navBar');
+    if (playerSelect || footerSelect || navbarSelect) {
+      playerSelect.style.display = 'none';
+      footerSelect.style.display = 'none';
+      navbarSelect.style.display = 'none';
+    }
+  }, []);
 
   return (
     <div className={classes.root}>
