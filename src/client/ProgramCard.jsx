@@ -18,6 +18,7 @@ const ProgramCard = props => {
   const [animators, setAnimators] = useState([]);
 
   useEffect(() => {
+    console.log('actualise');
     const fetchData = async () => {
       const result = await axios
         .get(`/animator?program=${program.program_id}`)
@@ -44,6 +45,7 @@ const ProgramCard = props => {
         .catch(error => {
           console.log(error.toJSON());
         });
+      console.log('Anim1', result);
       setAnimators(result);
     };
     fetchData();

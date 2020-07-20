@@ -113,7 +113,6 @@ const AdvancedSearchBar = props => {
         return setPodcastsList(resultCategory.data);
         // get podcasts if program selected
       } else if (programSelected && !animatorSelected && !categorySelected) {
-        console.log('programselect', resultProgram.data);
         return setPodcastsList(resultProgram.data);
       }
     };
@@ -165,26 +164,26 @@ const AdvancedSearchBar = props => {
           </section>
         )}
       </div>
+      <div className="filter-bar">
+        <AdvancedSearchSelect
+          podcastsList={podcastsList}
+          programsList={programsList}
+          animatorsList={animatorsList}
+          setAnimatorsList={setAnimatorsList}
+          categorysList={categorysList}
+          setCategorysList={setCategorysList}
+          programSelected={programSelected}
+          handleProgramSelected={handleProgramSelected}
+          animatorSelected={animatorSelected}
+          handleAnimatorSelected={handleAnimatorSelected}
+          categorySelected={categorySelected}
+          handleCategoryelected={handleCategoryelected}
+        />
+      </div>
       <Container>
         <Grid>
           {url[3] === 'emissions' ? (
             <div>
-              <div className="filter-bar">
-                <AdvancedSearchSelect
-                  podcastsList={podcastsList}
-                  programsList={programsList}
-                  animatorsList={animatorsList}
-                  setAnimatorsList={setAnimatorsList}
-                  categorysList={categorysList}
-                  setCategorysList={setCategorysList}
-                  programSelected={programSelected}
-                  handleProgramSelected={handleProgramSelected}
-                  animatorSelected={animatorSelected}
-                  handleAnimatorSelected={handleAnimatorSelected}
-                  categorySelected={categorySelected}
-                  handleCategoryelected={handleCategoryelected}
-                />
-              </div>
               {programsList.length < 1 ? (
                 <h1>Désolé aucun résultat pour cette recherche</h1>
               ) : (
@@ -199,22 +198,6 @@ const AdvancedSearchBar = props => {
             </div>
           ) : (
             <div>
-              <div className="filter-bar">
-                <AdvancedSearchSelect
-                  podcastsList={podcastsList}
-                  programsList={programsList}
-                  animatorsList={animatorsList}
-                  setAnimatorsList={setAnimatorsList}
-                  categorysList={categorysList}
-                  setCategorysList={setCategorysList}
-                  programSelected={programSelected}
-                  handleProgramSelected={handleProgramSelected}
-                  animatorSelected={animatorSelected}
-                  handleAnimatorSelected={handleAnimatorSelected}
-                  categorySelected={categorySelected}
-                  handleCategoryelected={handleCategoryelected}
-                />
-              </div>
               {podcastsList.length < 1 ? (
                 <h1>Désolé aucun résultat pour cette recherche</h1>
               ) : (

@@ -12,6 +12,9 @@ export default function Footer() {
           </Link>
         </div>
         <div className="links">
+          <Link className="link" to="/login">
+            <a>Administration</a>
+          </Link>
           <Link className="link" to="/mentions-legales">
             <a>
               Mentions
