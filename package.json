@@ -10,8 +10,10 @@
     "lodash": "^4.17.19",
     "moment": "^2.27.0",
     "moment-duration-format": "^2.3.2",
+    "moment-locale-fr": "^1.0.0",
     "node-sass": "^4.14.1",
     "react": "^16.10.2",
+    "react-card-flip": "^1.0.10",
     "react-datepicker": "^3.0.0",
     "react-dom": "^16.10.2",
     "react-hook-form": "^5.7.2",
@@ -53,5 +55,11 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "post-merge": "npm install"
+    }
   }
 }

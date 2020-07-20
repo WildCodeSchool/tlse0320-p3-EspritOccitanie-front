@@ -101,23 +101,23 @@ const ProgramPostForm = props => {
           console.error(e);
           alert(`Erreur concernant l'ajout de l'émission`);
         });
+    } else if (updateMode) {
+      // update program
+      const dataForms = {
+        ...data,
+        ro_animator_animator_id: personName
+      };
+      axios
+        .put(`/program/${programIdToUpdate}`, dataForms)
+        .then(res => res.data)
+        .then(res => {
+          alert(`L'émission est modifiée avec succès'`);
+        })
+        .catch(e => {
+          console.error(e);
+          alert(`Erreur concernant la modification  de l'émission ${e}`);
+        });
     }
-
-    // update program
-    const dataForms = {
-      ...data,
-      ro_animator_animator_id: personName
-    };
-    axios
-      .put(`/program/${programIdToUpdate}`, dataForms)
-      .then(res => res.data)
-      .then(res => {
-        alert(`L'émission est modifiée avec succès'`);
-      })
-      .catch(e => {
-        console.error(e);
-        alert(`Erreur concernant la modification  de l'émission ${e}`);
-      });
   };
 
   return (
