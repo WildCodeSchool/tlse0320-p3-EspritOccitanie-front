@@ -14,7 +14,6 @@ import './ProgramCard.scss';
 
 const ProgramCard = props => {
   const { program } = props;
-
   const [animators, setAnimators] = useState([]);
 
   useEffect(() => {

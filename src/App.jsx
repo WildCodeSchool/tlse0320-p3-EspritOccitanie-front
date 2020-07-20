@@ -43,7 +43,13 @@ function App() {
             </Route>
 
             <Route exact path="/podcasts">
-              <PageList />
+              <PageList 
+              onPlay={onPlay}
+              setOnPlay={setOnPlay}
+              setIdPodastPlay={setIdPodastPlay}
+              idPodastPlay={idPodastPlay}
+              playerRef={playerRef}
+              setDataPlayer={setDataPlayer}/>
             </Route>
             <Route exact path="/podcasts/:podcast_id/:podcast_title">
               <PodcastDetail

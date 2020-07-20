@@ -62,5 +62,5 @@
       "post-merge": "npm install"
     }
   },
-  "proxy": "http://localhost:3000/"
+  "proxy": "http://localhost:4000/"
 }

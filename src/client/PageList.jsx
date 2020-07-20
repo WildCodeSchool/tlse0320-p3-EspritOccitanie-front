@@ -9,7 +9,8 @@ import AdvancedSearchSelect from './AdvancedSearchSelect';
 import './AdvancedSearch.scss';
 import './title.scss';
 
-const AdvancedSearchBar = props => {
+const PageList = props => {
+  const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
   const [podcastsList, setPodcastsList] = useState([]);
   const [programsList, setProgramsList] = useState([]);
   const [animatorsList, setAnimatorsList] = useState([]);
@@ -207,6 +208,12 @@ const AdvancedSearchBar = props => {
                     programsList={programsList}
                     animatorsList={animatorsList}
                     categorysList={categorysList}
+                    onPlay={onPlay}
+                    setOnPlay={setOnPlay}
+                    setIdPodastPlay={setIdPodastPlay}
+                    idPodastPlay={idPodastPlay}
+                    playerRef={playerRef}
+                    setDataPlayer={setDataPlayer}
                   />
                 </div>
               )}
@@ -218,4 +225,4 @@ const AdvancedSearchBar = props => {
   );
 };
 
-export default AdvancedSearchBar;
+export default PageList;
