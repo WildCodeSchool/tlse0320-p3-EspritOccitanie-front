@@ -69,6 +69,16 @@ export default function VerticalTabs() {
     }
   }, []);
 
+  const displayElement = () => {
+    const playerSelect = document.querySelector('.player-bottom');
+    const footerSelect = document.querySelector('.container-footer');
+    const navbarSelect = document.querySelector('.navBar');
+
+    playerSelect.style.display = 'flex';
+    footerSelect.style.display = 'flex';
+    navbarSelect.style.display = 'flex';
+  };
+
   return (
     <div className={classes.root}>
       <Tabs
@@ -101,7 +111,7 @@ export default function VerticalTabs() {
         Item Five
       </TabPanel>
       <span className="desktop-link">
-        <Link className="link" to="/">
+        <Link className="link" to="/" onClick={() => displayElement()}>
           <Button>Aller sur le site</Button>
         </Link>
       </span>
