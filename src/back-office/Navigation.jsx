@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -58,6 +58,27 @@ export default function VerticalTabs() {
     setValue(newValue);
   };
 
+  useEffect(() => {
+    const playerSelect = document.querySelector('.player-bottom');
+    const footerSelect = document.querySelector('.container-footer');
+    const navbarSelect = document.querySelector('.navBar');
+    if (playerSelect || footerSelect || navbarSelect) {
+      playerSelect.style.display = 'none';
+      footerSelect.style.display = 'none';
+      navbarSelect.style.display = 'none';
+    }
+  }, []);
+
+  const displayElement = () => {
+    const playerSelect = document.querySelector('.player-bottom');
+    const footerSelect = document.querySelector('.container-footer');
+    const navbarSelect = document.querySelector('.navBar');
+
+    playerSelect.style.display = 'flex';
+    footerSelect.style.display = 'flex';
+    navbarSelect.style.display = 'flex';
+  };
+
   return (
     <div className={classes.root}>
       <Tabs
@@ -90,7 +111,7 @@ export default function VerticalTabs() {
         Item Five
       </TabPanel>
       <span className="desktop-link">
-        <Link className="link" to="/">
+        <Link className="link" to="/" onClick={() => displayElement()}>
           <Button>Aller sur le site</Button>
         </Link>
       </span>

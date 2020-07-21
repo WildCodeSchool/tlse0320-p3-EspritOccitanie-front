@@ -33,9 +33,15 @@ const PlayerBottom = props => {
   useInterval(
     () => {
       setPlayerCurrentTime(playerRef.current.currentTime);
+      setPlayerDuration(Math.trunc(playerRef.current.duration));
     },
     onPlay ? delay : null
   );
+
+  const onDrag = e => {
+    setPlayerCurrentTime(e.target.value);
+    playerRef.current.currentTime = e.target.value;
+  };
 
   return (
     <div className="player-bottom">
@@ -69,6 +75,7 @@ const PlayerBottom = props => {
           value={playerCurrentTime}
           min="0"
           max={playerDuration}
+          onChange={event => onDrag(event)}
         />
       </div>
       <div className="audio">

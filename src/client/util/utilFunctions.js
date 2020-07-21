@@ -1,3 +1,9 @@
+/* eslint-disable no-useless-escape */
+/* eslint-disable no-undef */
+/* eslint-disable global-require */
+/* eslint-disable camelcase */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 /// ////////////////////////////////////////////////////////////////////////////////////////////
 // Function to transform String to a Valid URL
 // exemple "My tiTle é   ho  " -->  "my-title-e-ho"
@@ -77,7 +83,7 @@ export function handleAudio(
 
 // Format for duration (ss to mm:ss)
 export function formatDuration(duration) {
-  let moment = require('moment');
+  const moment = require('moment');
   require('moment-duration-format');
   return moment.duration(duration.toString(), 'seconds').format('mm:ss', { trim: false });
 }

@@ -1,10 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
-import PodcastsList from './client/PodcastsList';
 import Contact from './client/Contact';
-import ProgramList from './client/ProgramList';
 import ProgramDetail from './client/ProgramDetail';
 import PodcastDetail from './client/PodcastDetail';
 import Navbar from './client/Navbar';
