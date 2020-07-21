@@ -4,7 +4,7 @@ import ProgramCard from './ProgramCard';
 import './title.scss';
 
 const ProgramList = props => {
-  const { programsList } = props;
+  const { programsList, animatorSelected, categorySelected } = props;
 
   return (
     <div>
@@ -14,7 +14,10 @@ const ProgramList = props => {
             {programsList.map(program => {
               return (
                 <Grid item xs={12} sm={6} md={4} lg={4}>
-                  <ProgramCard program={program} />
+                  <ProgramCard program={program}
+                  animatorSelected={animatorSelected} 
+                  categorySelected={categorySelected} 
+                  />
                 </Grid>
               );
             })}

@@ -19,6 +19,8 @@ const PageList = props => {
   const [animatorSelected, handleAnimatorSelected] = useState();
   const [categorySelected, handleCategoryelected] = useState();
 
+  const url = window.location.href.split('/');
+
   // Get category list
   useEffect(() => {
     const fetchData = async () => {
@@ -45,10 +47,12 @@ const PageList = props => {
   // get all programs
   useEffect(() => {
     const fetchData = async () => {
-      const result3 = await axios.get('/program').catch(error => {
-        console.log(error.toJSON());
-      });
-      setProgramsList(result3.data);
+      if (url[3] === 'podcasts') {
+        const result3 = await axios.get('/program').catch(error => {
+          console.log(error.toJSON());
+        });
+        setProgramsList(result3.data);
+      }
     };
     fetchData();
   }, []);
@@ -137,20 +141,26 @@ const PageList = props => {
         : [];
       // get programs when category & animator selected
       if (categorySelected && animatorSelected) {
+        setProgramsList([]);
         const results = _.intersectionWith(resultCategory.data, resultAnimator.data, _.isEqual);
         setProgramsList(results);
         // get programs if animator selected
       } else if (animatorSelected && !categorySelected) {
+        setProgramsList([]);
         return setProgramsList(resultAnimator.data);
         // get programs if category selected
       } else if (categorySelected && !animatorSelected) {
+        setProgramsList([]);
         return setProgramsList(resultCategory.data);
+      } else {
+        const result = await axios.get('/program').catch(error => {
+          console.log(error.toJSON());
+        });
+        setProgramsList(result.data);
       }
     };
     fetchData();
   }, [categorySelected, animatorSelected]);
-
-  const url = window.location.href.split('/');
 
   return (
     <div>
@@ -193,6 +203,8 @@ const PageList = props => {
                     programsList={programsList}
                     animatorsList={animatorsList}
                     categorysList={categorysList}
+                    animatorSelected={animatorSelected}
+                    categorySelected={categorySelected}
                   />
                 </div>
               )}

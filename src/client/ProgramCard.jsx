@@ -13,11 +13,10 @@ import { slugify } from './util/utilFunctions';
 import './ProgramCard.scss';
 
 const ProgramCard = props => {
-  const { program } = props;
+  const { program, animatorSelected, categorySelected } = props;
   const [animators, setAnimators] = useState([]);
 
   useEffect(() => {
-    console.log('actualise');
     const fetchData = async () => {
       const result = await axios
         .get(`/animator?program=${program.program_id}`)
@@ -38,17 +37,16 @@ const ProgramCard = props => {
               }
               return animator;
             })
-          );
-          return animatorList;
-        })
-        .catch(error => {
-          console.log(error.toJSON());
-        });
-      console.log('Anim1', result);
+            );
+            return animatorList;
+          })
+          .catch(error => {
+            console.log(error.toJSON());
+          });
       setAnimators(result);
     };
     fetchData();
-  }, []);
+  }, [animatorSelected, categorySelected]);
 
   return (
     <div className="programCard">
