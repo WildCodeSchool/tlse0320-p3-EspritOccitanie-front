@@ -2,12 +2,8 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Grid, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
-import RefreshIcon from '@material-ui/icons/Refresh';
-import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
-import { refreshPage } from './util/utilFunctions';
 
-const AdvancedSearchPodcast = props => {
+const AdvancedSearchSelect = props => {
   const {
     programsList,
     setProgramsList,
@@ -19,14 +15,8 @@ const AdvancedSearchPodcast = props => {
     animatorSelected,
     handleAnimatorSelected,
     categorySelected,
-    handleCategoryelected,
-    handleCategorySelectedProg,
-    categorySelectedProg,
-    animatorSelectedProg,
-    handleAnimatorSelectedProg
+    handleCategoryelected
   } = props;
-
-  // console.log('catselected', categorySelectedProg);
 
   const url = window.location.href.split('/');
 
@@ -76,12 +66,8 @@ const AdvancedSearchPodcast = props => {
               id="demo-simple-select-outlined"
               label="Catégorie"
               name="ro_category_category_id"
-              value={url[3] === 'podcasts' ? categorySelected : categorySelectedProg}
-              onChange={e =>
-                url[3] === 'podcasts'
-                  ? handleCategoryelected(e.target.value)
-                  : handleCategorySelectedProg(e.target.value)
-              }
+              value={categorySelected}
+              onChange={e => handleCategoryelected(e.target.value)}
             >
               {categorysList.map(category => {
                 return <MenuItem value={category.category_id}>{category.category_name}</MenuItem>;
@@ -98,7 +84,9 @@ const AdvancedSearchPodcast = props => {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               label="Animateur"
+              // value={animatorSelected}
               value={animatorSelected}
+              // onChange={e => handleAnimatorSelected(e.target.value)}
               onChange={e => handleAnimatorSelected(e.target.value)}
             >
               {animatorsList.map(animator => (
@@ -117,4 +105,4 @@ const AdvancedSearchPodcast = props => {
   );
 };
 
-export default AdvancedSearchPodcast;
+export default AdvancedSearchSelect;

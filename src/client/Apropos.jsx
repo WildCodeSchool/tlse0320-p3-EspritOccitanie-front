@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Container, Grid } from '@material-ui/core';
 import Contact from './Contact';
@@ -6,6 +6,9 @@ import './Apropos.scss';
 
 export default function Apropos() {
   const [allAnimators, setAllAnimators] = useState([]);
+  const [isClick, setIsClick] = useState(false);
+  const cardDescAnimatorRef = useRef();
+
   // Get animator request
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +19,20 @@ export default function Apropos() {
     };
     fetchData();
   }, []);
+
+  const maxDesc = e => {
+    if (isClick) {
+      setIsClick(false);
+      e.target.style.display = 'block';
+      e.target.style.maxHeight = '100%';
+    }
+
+    if (!isClick) {
+      setIsClick(true);
+      e.target.style.display = '-webkit-box';
+      e.target.style.maxHeight = '44px';
+    }
+  };
 
   return (
     <div className="wrapper-about">
@@ -120,7 +137,13 @@ export default function Apropos() {
                     />
                     <div className="desc">
                       <h3> {animator.animator_firstname + ' ' + animator.animator_lastname}</h3>
-                      <p> {animator.animator_description}</p>
+                      <p
+                        ref={cardDescAnimatorRef}
+                        className={isClick ? 'your_className' : 'descText'}
+                        onClick={e => maxDesc(e)}
+                      >
+                        {animator.animator_description}
+                      </p>
                     </div>
                   </div>
                 </Grid>

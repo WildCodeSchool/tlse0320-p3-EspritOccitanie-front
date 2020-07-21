@@ -1,13 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Navigation from './back-office/Navigation';
-import PodcastsList from './client/PodcastsList';
 import Contact from './client/Contact';
-import ProgramList from './client/ProgramList';
 import ProgramDetail from './client/ProgramDetail';
 import PodcastDetail from './client/PodcastDetail';
 import Navbar from './client/Navbar';
 import Apropos from './client/Apropos';
+import PageList from './client/PageList';
 import MentionsLegal from './client/MentionsLegal';
 import PlayerBottom from './client/PlayerBottom';
 import LoginPage from './client/LoginPage';
@@ -16,8 +15,6 @@ import ProgrammationTab from './client/ProgrammationTab';
 import './App.css';
 
 function App() {
-  const [podcastsList, setPodcastsList] = useState([]);
-  const [programsList, setProgramsList] = useState([]);
   const [onPlay, setOnPlay] = useState(false);
   const [isMute, setIsMute] = useState(true);
   const [idPodastPlay, setIdPodastPlay] = useState();
@@ -43,17 +40,13 @@ function App() {
             </Route>
 
             <Route exact path="/podcasts">
-              <PodcastsList
-                onPlay={onPlay}
-                setOnPlay={setOnPlay}
-                setIdPodastPlay={setIdPodastPlay}
-                idPodastPlay={idPodastPlay}
-                playerRef={playerRef}
-                setDataPlayer={setDataPlayer}
-                podcastsList={podcastsList}
-                setPodcastsList={setPodcastsList}
-                programsList={programsList}
-              />
+              <PageList 
+              onPlay={onPlay}
+              setOnPlay={setOnPlay}
+              setIdPodastPlay={setIdPodastPlay}
+              idPodastPlay={idPodastPlay}
+              playerRef={playerRef}
+              setDataPlayer={setDataPlayer}/>
             </Route>
             <Route exact path="/podcasts/:podcast_id/:podcast_title">
               <PodcastDetail
@@ -75,7 +68,7 @@ function App() {
               <LoginPage />
             </Route>
             <Route exact path="/emissions">
-              <ProgramList programsList={programsList} setProgramsList={setProgramsList} />
+              <PageList />
             </Route>
             <Route exact path="/emission/:program_id/:program_title">
               <ProgramDetail
