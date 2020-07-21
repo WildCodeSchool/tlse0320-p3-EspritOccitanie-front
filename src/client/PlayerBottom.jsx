@@ -12,8 +12,6 @@ const PlayerBottom = props => {
   const [delay, setDelay] = useState(1000);
   const [playerDuration, setPlayerDuration] = useState(0);
   const [playerCurrentTime, setPlayerCurrentTime] = useState(0);
-  const [playerCurrentTimeA, setPlayerCurrentTimeA] = useState(0);
-  const [isDrag, setIsDrag] = useState(false);
 
   // UseInterval function tool
   function useInterval(callback, delay) {
@@ -32,10 +30,10 @@ const PlayerBottom = props => {
     }, [delay]);
   }
   // Update currentTime
-
   useInterval(
     () => {
       setPlayerCurrentTime(playerRef.current.currentTime);
+      setPlayerDuration(Math.trunc(playerRef.current.duration));
     },
     onPlay ? delay : null
   );
@@ -44,12 +42,6 @@ const PlayerBottom = props => {
     setPlayerCurrentTime(e.target.value);
     playerRef.current.currentTime = e.target.value;
   };
-
-  useEffect(() => {
-    if (playerRef.current.src.length > 0) {
-      setPlayerDuration(Math.trunc(playerRef.current.duration));
-    }
-  }, [onPlay]);
 
   return (
     <div className="player-bottom">
