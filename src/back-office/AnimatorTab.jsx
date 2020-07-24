@@ -32,9 +32,8 @@ const AnimatorTab = props => {
 
   // Delete Animator
   const DeleteAnimator = id => {
-    axios.delete(`/animator/${id}`).then(response => {
-      alert('Animateur/animatrice supprimé(e) avec succès !');
-    });
+    axios.delete(`/animator/${id}`).then(response => { });
+    alert('Animateur/animatrice supprimé(e) avec succès !');
   };
 
   return (
@@ -65,7 +64,7 @@ const AnimatorTab = props => {
                         animator.animator_image
                           ? animator.animator_image
                           : '/radio-occitanie-default.jpg'
-                      })`
+                        })`
                     }}
                   />
                 </TableCell>
