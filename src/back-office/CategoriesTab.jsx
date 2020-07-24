@@ -26,7 +26,8 @@ const PodcastsTab = props => {
 
   // Delete Podcast
   const DeleteCategories = id => {
-    axios.delete(`/category/${id}`).then(res => {});
+    axios.delete(`/category/${id}`).then(res => { });
+    alert('Categories supprimé(e) avec succès !');
   };
 
   return (

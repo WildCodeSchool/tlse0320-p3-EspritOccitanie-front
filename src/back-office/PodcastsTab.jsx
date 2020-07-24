@@ -32,7 +32,8 @@ const PodcastsTab = props => {
 
   // Delete Podcast
   const DeletePodcast = id => {
-    axios.delete(`/podcast/${id}`).then(response => {});
+    axios.delete(`/podcast/${id}`).then(response => { });
+    alert('Podcast supprimé(e) avec succès !');
   };
 
   return (
@@ -63,7 +64,7 @@ const PodcastsTab = props => {
                         podcast.podcast_image
                           ? podcast.podcast_image
                           : '/radio-occitanie-default.jpg'
-                      })`
+                        })`
                     }}
                   />
                 </TableCell>
