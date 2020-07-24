@@ -27,7 +27,7 @@ const PodcastsTab = props => {
   // Delete Podcast
   const DeletePodcast = id => {
     axios.delete(`/program/${id}`).then(res => { });
-    alert('Podcast supprimé(e) avec succès !');
+    alert('Emission supprimé(e) avec succès !');
   };
 
   return (
