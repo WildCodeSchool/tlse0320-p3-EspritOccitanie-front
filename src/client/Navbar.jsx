@@ -33,9 +33,6 @@ export default function Navbar() {
               </a>
             </div>
             <span className="desktop-link">
-              <Link className="link" to="direct">
-                <Button>Le direct</Button>
-              </Link>
               <Link className="link" to="/qui-sommes-nous">
                 <Button>Qui sommes nous ?</Button>
               </Link>
@@ -63,9 +60,6 @@ export default function Navbar() {
       </div>
 
       <div className={!mobileNavActive ? 'nav-mobile' : 'nav-mobile active'}>
-        <Link className="link" to="direct" onClick={() => setMobileNavActive(false)}>
-          <Button>Le direct</Button>
-        </Link>
         <Link className="link" to="/qui-sommes-nous" onClick={() => setMobileNavActive(false)}>
           <Button>Qui sommes nous ?</Button>
         </Link>

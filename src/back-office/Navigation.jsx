@@ -93,7 +93,6 @@ export default function VerticalTabs() {
         <Tab label="Podcasts" {...a11yProps(1)} />
         <Tab label="Catégories" {...a11yProps(2)} />
         <Tab label="Animateurs" {...a11yProps(3)} />
-        <Tab label="Programmation" {...a11yProps(4)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <ProgramPage />
@@ -106,9 +105,6 @@ export default function VerticalTabs() {
       </TabPanel>
       <TabPanel value={value} index={3}>
         <AnimatorPage />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
       </TabPanel>
       <span className="desktop-link">
         <Link className="link" to="/" onClick={() => displayElement()}>
