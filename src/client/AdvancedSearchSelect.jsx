@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Grid, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
 
 const AdvancedSearchSelect = props => {
   const {
     programsList,
-    setProgramsList,
     animatorsList,
     categorysList,
     podcastsList,

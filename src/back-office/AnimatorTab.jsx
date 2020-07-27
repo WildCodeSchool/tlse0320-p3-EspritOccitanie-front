@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -22,10 +22,8 @@ const useStyles = makeStyles({
 const AnimatorTab = props => {
   const {
     setUpdateMode,
-    animatorIdToUpdate,
     setAnimatorIdToUpdate,
-    animatorsData,
-    setAnimatorsData
+    animatorsData
   } = props;
 
   const classes = useStyles();

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 import axios from 'axios';
@@ -9,7 +8,6 @@ import './admin.scss';
 import {
   Input,
   TextField,
-  Box,
   Grid,
   Select,
   MenuItem,
@@ -49,7 +47,7 @@ const MenuProps = {
 };
 
 const PodcastForm = props => {
-  const { updateMode, valueToUpdate, podcastInfo, setPodcastInfo } = props;
+  const { updateMode, podcastInfo, setPodcastInfo } = props;
 
   // Get Program request
   const [programs, setPrograms] = useState([]);

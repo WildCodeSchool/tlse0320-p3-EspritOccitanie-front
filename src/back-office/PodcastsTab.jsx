@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,9 +24,7 @@ const PodcastsTab = props => {
   const {
     setUpdateMode,
     setPodcastIdToUpdate,
-    podcastIdToUpdate,
-    podcasts,
-    setPodcastInfo
+    podcasts
   } = props;
   const classes = useStyles();
 

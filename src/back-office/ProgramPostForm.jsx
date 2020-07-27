@@ -49,7 +49,7 @@ const MenuProps = {
 };
 
 const ProgramPostForm = props => {
-  const { updateMode, valueToUpdate, programIdToUpdate } = props;
+  const { updateMode, programIdToUpdate } = props;
 
   // Get Category request
   const [categorys, setCategorys] = useState([]);
