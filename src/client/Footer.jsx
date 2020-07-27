@@ -8,21 +8,21 @@ export default function Footer() {
       <div className="wrapper">
         <div className="img">
           <Link className="link" to="/qui-sommes-nous">
-            <img src="/about.png" alt="image Esprit Occitanie c'est quoi?" />
+            <img src="/about.png" alt="cover Esprit Occitanie c'est quoi?" />
           </Link>
         </div>
         <div className="links">
         <Link className="link" to="/login">
-            <a>Administration</a>
+            <a href="/login">Administration</a>
           </Link>
           <Link className="link" to="/mentions-legales">
-            <a>
+            <a href="/mentions-legales">
               Mentions
               <span>légales</span>
             </a>
           </Link>
           <Link className="link" to="/qui-sommes-nous">
-            <a>Contact</a>
+            <a href="/qui-sommes-nous">Contact</a>
           </Link>
         </div>
         <div className="socials">

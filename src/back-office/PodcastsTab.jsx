@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,16 +24,22 @@ const PodcastsTab = props => {
   const {
     setUpdateMode,
     setPodcastIdToUpdate,
-    podcastIdToUpdate,
-    podcasts,
-    setPodcastInfo
+    podcasts
   } = props;
   const classes = useStyles();
 
   // Delete Podcast
-  const DeletePodcast = id => {
-    axios.delete(`/podcast/${id}`).then(response => { });
-    alert('Podcast supprimé(e) avec succès !');
+  const DeletePodcast = (id, title, date)=> {
+    const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer le podcast ${title} mis en ligne le ${moment(date).format('DD/MM/YYYY')} ? `)
+    if (confirm) {
+      axios.delete(`/podcast/${id}`).then((res) => {
+        if(window.confirm('Podcast supprimé avec succès')){
+          document.location.reload(true);
+        } else {
+          document.location.reload(true);
+        }
+      });
+    }
   };
 
   return (
@@ -47,7 +53,7 @@ const PodcastsTab = props => {
               <TableCell align="center">Titre</TableCell>
               <TableCell align="center">Date de mise en ligne</TableCell>
               <TableCell align="center">Supprimer</TableCell>
-              <TableCell align="center">Mettre à jours</TableCell>
+              <TableCell align="center">Mettre à jour</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -77,7 +83,7 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeletePodcast(podcast.podcast_id)}
+                    onClick={() => DeletePodcast(podcast.podcast_id, podcast.podcast_title, podcast.podcast_creation_date)}
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>
