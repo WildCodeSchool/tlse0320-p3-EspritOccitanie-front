@@ -125,7 +125,11 @@ const PodcastForm = props => {
         .post('/podcast', dataForms)
         .then(res => res.data)
         .then(res => {
-          alert(`Le podcast a bien été ajouté dans la base de données`);
+          if(window.confirm(`Le podcast a bien été ajouté dans la base de données`)) {
+            document.location.reload(true);
+            } else {
+                document.location.reload(true);
+            }
         })
         .catch(e => {
           console.error(e);
@@ -147,7 +151,11 @@ const PodcastForm = props => {
         .put(`/podcast/${podcastInfo.podcast_id}`, dataForms)
         .then(res => res.data)
         .then(res => {
-          alert(`Le podcast a bien été modifié dans la base de données`);
+          if(window.confirm(`Le podcast a bien été modifié dans la base de données`)) {
+            document.location.reload(true);
+            } else {
+                document.location.reload(true);
+            }
         })
         .catch(e => {
           console.error(e);
@@ -280,14 +288,14 @@ const PodcastForm = props => {
               renderValue={selected => (
                 <div className={classes.chips}>
                   {selected.map((value, i) => (
-                    <Chip key={value} label={value} className={classes.chip} />
+                    <Chip key={value.animator_id} label={`${value.animator_firstname}${' '}${value.animator_lastname}`} className={classes.chip} />
                   ))}
                 </div>
               )}
               MenuProps={MenuProps}
             >
               {animators.map(animator => (
-                <MenuItem key={animator.animator_id} value={animator.animator_id}>
+                <MenuItem key={animator.animator_id} value={animator}>
                   {`${animator.animator_id} - ` +
                     animator.animator_firstname +
                     ' ' +
