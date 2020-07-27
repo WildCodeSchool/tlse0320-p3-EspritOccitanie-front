@@ -23,12 +23,12 @@ DB_NAME_TEST=customer_api_database_test
 ```
 
 * lancer la commande npm run migrate-up
-* lancer la commande npm run start:dev
+* lancer la commande npm start
 
 ### Front
 * git clone https://github.com/WildCodeSchool/tlse0320-p3-EspritOccitanie-front.git
 * lancer la commande npm install
-* lancer la commande npm start
+* lancer la commande npm run start:dev
 
 ## Fabriqué avec
 
