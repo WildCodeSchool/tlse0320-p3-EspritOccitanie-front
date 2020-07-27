@@ -5,9 +5,9 @@ Le site de la radio Esprit Occitanie recense une bibliothèque de podcasts. L'ut
 ## Installation
 
 ### Backend
-git clone https://github.com/WildCodeSchool/tlse0320-p3-EspritOccitanie-backend.git
-lancer la commande npm install
-mettre à jour le fichier .env.sample avec vos variables d'environnement
+* git clone https://github.com/WildCodeSchool/tlse0320-p3-EspritOccitanie-backend.git
+* lancer la commande npm install
+* mettre à jour le fichier .env.sample avec vos variables d'environnement
 ```
 DB_HOST=localhost
 DB_PORT=3306
@@ -22,13 +22,13 @@ DB_PASS_TEST=root
 DB_NAME_TEST=customer_api_database_test
 ```
 
-lancer la commande npm run migrate-up
-lancer la commande npm run start:dev
+* lancer la commande npm run migrate-up
+* lancer la commande npm run start:dev
 
 ### Front
-git clone https://github.com/WildCodeSchool/tlse0320-p3-EspritOccitanie-front.git
-lancer la commande npm install
-lancer la commande npm start
+* git clone https://github.com/WildCodeSchool/tlse0320-p3-EspritOccitanie-front.git
+* lancer la commande npm install
+* lancer la commande npm start
 
 ## Fabriqué avec
 
