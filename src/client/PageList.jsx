@@ -182,6 +182,11 @@ const PageList = props => {
           </section>
         )}
       </div>
+
+      <Container>
+
+
+
       <div className="filter-bar">
         <AdvancedSearchSelect
           podcastsList={podcastsList}
@@ -198,7 +203,8 @@ const PageList = props => {
           handleCategoryelected={handleCategoryelected}
         />
       </div>
-      <Container>
+
+
         <Grid>
           {url[3] === 'emissions' ? (
             <div>
