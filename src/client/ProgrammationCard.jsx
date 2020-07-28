@@ -69,7 +69,12 @@ const ProgrammationCard = props => {
             </Typography>
           );
         })}
-        <Button onClick={() => setIsFlipped(false)} variant="outlined" color="secondary">
+        <Button
+          className="button-retour"
+          onClick={() => setIsFlipped(false)}
+          variant="outlined"
+          color="secondary"
+        >
           Retour
         </Button>
       </Card>
