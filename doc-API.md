@@ -343,7 +343,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## POST /program
+## POST /program (création d'une nouvelle émission)
 
 >
 
@@ -353,9 +353,9 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     Content-Type: application/json
 
     {
-      "program_title": "", (string)
-      "program_description": "", (string)
-      "program_image": "", (string)
+      "program_title": "title", (string)
+      "program_description": "desc", (string)
+      "program_image": "url image", (string)
       "ro_category_category_id": 1, (integer)
       "ro_animator_animator_id": [1, 2] (integer)
     }
@@ -383,5 +383,127 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
         "protocol41": true,
         "changedRows": 0
     }
+
+>
+
+## PUT /program/:id (modifier les données d'une émissions)
+
+>
+
+    Ce qui est attendu :
+
+    Accept: application/json
+    Content-Type: application/json
+
+    {
+      "program_title": "title update", (string)
+      "program_description": "desc update", (string)
+      "program_image": "", (string)
+      "ro_category_category_id": 1, (integer)
+      "ro_animator_animator_id": [1, 2] (integer)
+    }
+
+>
+
+     Réponse :
+
+     HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 166
+    ETag: W/"a6-CbKUZbimu9qcbEgMlGX1l0Bnjd0"
+    Date: Tue, 28 Jul 2020 09:42:53 GMT
+    Connection: close
+
+    {
+        "fieldCount": 0,
+        "affectedRows": 2,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "&Records: 2  Duplicates: 0  Warnings: 0",
+        "protocol41": true,
+        "changedRows": 0
+    }
+
+>
+
+## DELETE /program/:id (supprimer une émission)
+
+>
+
+    Réponse :
+
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 27
+    ETag: W/"1b-BdDEyEHDjKFalUr1YKJWafWVxiM"
+    Date: Tue, 28 Jul 2020 09:44:31 GMT
+    Connection: close
+
+    {
+        "message": "field deleted"
+    }
+
+>
+
+## GET /program?animator=:id (récupérer les données d'une ou plusieurs émissions en fonction d'un animateur)
+
+>
+
+    Réponse :
+
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 256
+    ETag: W/"100-HewjlyrbbhWek+ML5gdktBj6474"
+    Date: Tue, 28 Jul 2020 09:45:52 GMT
+    Connection: close
+
+    [
+        {
+            "program_id": 4, (integer)
+            "program_title": "title", (string)
+            "program_description": "desc", (string)
+            "program_image": "url image", (string)
+            "ro_category_category_id": 9, (integer)
+            "category_name": "name" (string)
+        },
+        {...}
+    ]
+
+>
+
+## GET /program?categorie=4 (récupérer les données d'une ou plusieurs émissions en fonction d'une catégorie)
+
+>
+
+    Réponse :
+
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 1532
+    ETag: W/"5fc-ka93GT3Ay+YdAfiTkTPUvIG7b4c"
+    Date: Tue, 28 Jul 2020 09:49:29 GMT
+    Connection: close
+
+    [
+        {
+            "program_id": 4, (integer)
+            "program_title": "title", (string)
+            "program_description": "desc", (string)
+            "program_image": "url image", (string)
+            "ro_category_category_id": 9, (integer)
+            "category_name": "name" (string)
+        },
+        {...}
+    ]
 
 >
