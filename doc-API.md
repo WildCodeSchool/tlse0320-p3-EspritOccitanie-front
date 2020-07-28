@@ -27,7 +27,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 ## Podcasts
 
-## GET /podcast (récupérer tous les podcasts)
+### GET /podcast (récupérer tous les podcasts)
 
     On attend une réponse : 200
     Content-Type: application/json; charset=utf-8
@@ -49,7 +49,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
         { ... }
     ]
 
-## GET /podcast/:id (récupérer un podcast avec son id)
+### GET /podcast/:id (récupérer un podcast avec son id)
 
 >
 
@@ -74,7 +74,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## POST /podcast (création d'un podcast)
+### POST /podcast (création d'un podcast)
 
 >
 
@@ -119,7 +119,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## PUT /podcast/:id (modification des données d'un podcast)
+### PUT /podcast/:id (modification des données d'un podcast)
 
 >
 
@@ -164,7 +164,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## DELETE /podcast/:id (suppréssion d'un podcast)
+### DELETE /podcast/:id (suppréssion d'un podcast)
 
 >
 
@@ -185,7 +185,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## GET /podcast?program=:id (récupérer les podcast en fonction de l'id d'une émission)
+### GET /podcast?program=:id (récupérer les podcast en fonction de l'id d'une émission)
 
     Réponse attendue :
 
@@ -219,7 +219,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## GET /podcast?animator=:id (récupérer les podcast en fonction de l'id d'un animateur)
+### GET /podcast?animator=:id (récupérer les podcast en fonction de l'id d'un animateur)
 
     Réponse :
 
@@ -253,7 +253,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## GET /podcast?categorie=:id (récupérer les podcast en fonction de l'id d'une catégorie)
+### GET /podcast?categorie=:id (récupérer les podcast en fonction de l'id d'une catégorie)
 
     Réponse :
 
@@ -289,7 +289,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 ## Émissions (program)
 
-## GET /program (récupérer toutes les émissions)
+### GET /program (récupérer toutes les émissions)
 
 >
 
@@ -318,7 +318,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## GET /program/:id (récupérer une émission avec son id)
+### GET /program/:id (récupérer une émission avec son id)
 
 >
 
@@ -343,7 +343,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## POST /program (création d'une nouvelle émission)
+### POST /program (création d'une nouvelle émission)
 
 >
 
@@ -386,7 +386,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## PUT /program/:id (modifier les données d'une émissions)
+### PUT /program/:id (modifier les données d'une émissions)
 
 >
 
@@ -429,7 +429,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## DELETE /program/:id (supprimer une émission)
+### DELETE /program/:id (supprimer une émission)
 
 >
 
@@ -450,7 +450,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## GET /program?animator=:id (récupérer les données d'une ou plusieurs émissions en fonction d'un animateur)
+### GET /program?animator=:id (récupérer les données d'une ou plusieurs émissions en fonction d'un animateur)
 
 >
 
@@ -505,5 +505,58 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
         },
         {...}
     ]
+
+>
+
+## GET /animator (récupérer la liste de tous les animateurs)
+
+>
+
+    Réponse :
+
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 5708
+    ETag: W/"164c-PBGoJRGtkbgOQPI9LdwzgOrldR8"
+    Date: Tue, 28 Jul 2020 09:58:26 GMT
+    Connection: close
+
+    [
+        {
+            "animator_id": 1, (integer)
+            "animator_firstname": "prénom", (string)
+            "animator_lastname": "nom, (string)
+            "animator_description": "description", (string)
+            "animator_image": "url image" (string)
+        },
+        {...}
+    ]
+
+>
+
+## GET /animator/:id (récupérer les données d'un animateur)
+
+>
+
+    Réponse :
+
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 134
+    ETag: W/"86-iKN50VeoEWQOxLTJVw3Z/i51n50"
+    Date: Tue, 28 Jul 2020 10:00:04 GMT
+    Connection: close
+
+    {
+        "animator_id": 1, (integer)
+        "animator_firstname": "Prénom", (string)
+        "animator_lastname": "Nom", (string)
+        "animator_description": "description", (string)
+        "animator_image": "url image" (string)
+    }
 
 >
