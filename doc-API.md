@@ -27,7 +27,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 ## Podcasts
 
-# GET /podcast (récupérer tous les podcasts)
+## GET /podcast (récupérer tous les podcasts)
 
     On attend une réponse : 200
     Content-Type: application/json; charset=utf-8
@@ -49,7 +49,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
         { ... }
     ]
 
-# GET /podcast/:id (récupérer un podcast avec son id)
+## GET /podcast/:id (récupérer un podcast avec son id)
 
 >
 
@@ -74,7 +74,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-# POST /podcast (création d'un podcast)
+## POST /podcast (création d'un podcast)
 
 >
 
@@ -119,7 +119,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-# PUT /podcast/:id (modification des données d'un podcast)
+## PUT /podcast/:id (modification des données d'un podcast)
 
 >
 
@@ -164,7 +164,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-# DELETE /podcast/:id (suppréssion d'un podcast)
+## DELETE /podcast/:id (suppréssion d'un podcast)
 
 >
 
@@ -185,7 +185,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-# GET /podcast?program=:id (récupérer les podcast en fonction de l'id d'une émission)
+## GET /podcast?program=:id (récupérer les podcast en fonction de l'id d'une émission)
 
     Réponse attendue :
 
@@ -219,7 +219,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-# GET /podcast?animator=:id (récupérer les podcast en fonction de l'id d'un animateur)
+## GET /podcast?animator=:id (récupérer les podcast en fonction de l'id d'un animateur)
 
     Réponse :
 
@@ -253,7 +253,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-# GET /podcast?categorie=:id (récupérer les podcast en fonction de l'id d'une catégorie)
+## GET /podcast?categorie=:id (récupérer les podcast en fonction de l'id d'une catégorie)
 
     Réponse :
 
@@ -284,5 +284,104 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
         },
         {...}
     ]
+
+>
+
+## Émissions (program)
+
+## GET /program (récupérer toutes les émissions)
+
+>
+
+    Réponse :
+
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 4972
+    ETag: W/"136c-6caug+gHrG4FuHrFGPmMlMhj81M"
+    Date: Tue, 28 Jul 2020 09:31:37 GMT
+    Connection: close
+
+    [
+        {
+            "program_id": 1, (interger)
+            "program_title": "title", (string)
+            "program_description": "desc", (string)
+            "program_image": "image", (string)
+            "ro_category_category_id": 4, (integer)
+            "category_name": "name" (string)
+        },
+        {...}
+    ]
+
+>
+
+## GET /program/:id (récupérer une émission avec son id)
+
+>
+
+    Réponse :
+
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 163
+    ETag: W/"a3-Eaawd1SGjnt+700V/J3n8s3AnGk"
+    Date: Tue, 28 Jul 2020 09:34:19 GMT
+    Connection: close
+
+    {
+        "program_id": 1, (integer)
+        "program_title": "title", (string)
+        "program_description": "desc", (string)
+        "program_image": "url image", (string)
+        "ro_category_category_id": 1 (integer)
+    }
+
+>
+
+## POST /program
+
+>
+
+    Ce qui est attendu :
+
+    Accept: application/json
+    Content-Type: application/json
+
+    {
+      "program_title": "", (string)
+      "program_description": "", (string)
+      "program_image": "", (string)
+      "ro_category_category_id": 1, (integer)
+      "ro_animator_animator_id": [1, 2] (integer)
+    }
+
+>
+
+    Réponse :
+
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Access-Control-Allow-Origin: *
+    Content-Type: application/json; charset=utf-8
+    Content-Length: 166
+    ETag: W/"a6-CbKUZbimu9qcbEgMlGX1l0Bnjd0"
+    Date: Tue, 28 Jul 2020 09:38:36 GMT
+    Connection: close
+
+    {
+        "fieldCount": 0,
+        "affectedRows": 2,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "&Records: 2  Duplicates: 0  Warnings: 0",
+        "protocol41": true,
+        "changedRows": 0
+    }
 
 >
