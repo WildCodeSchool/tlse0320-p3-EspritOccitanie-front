@@ -21,8 +21,6 @@ const PodcastsPage = () => {
     ro_program_program_id: null
   });
 
-  console.log(podcastInfo);
-
   // get all podcasts
   useEffect(() => {
     const fetchData = async () => {

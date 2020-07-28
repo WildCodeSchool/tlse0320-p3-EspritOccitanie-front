@@ -21,19 +21,15 @@ const useStyles = makeStyles({
 });
 
 const PodcastsTab = props => {
-  const {
-    setUpdateMode,
-    setPodcastIdToUpdate,
-    podcasts
-  } = props;
+  const { setUpdateMode, setPodcastIdToUpdate, podcasts } = props;
   const classes = useStyles();
 
   // Delete Podcast
-  const DeletePodcast = (id, title, date)=> {
-    const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer le podcast ${title} mis en ligne le ${moment(date).format('DD/MM/YYYY')} ? `)
+  const DeletePodcast = id => {
+    const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer le podcast ? `);
     if (confirm) {
-      axios.delete(`/podcast/${id}`).then((res) => {
-        if(window.confirm('Podcast supprimé avec succès')){
+      axios.delete(`/podcast/${id}`).then(res => {
+        if (window.confirm('Podcast supprimé avec succès')) {
           document.location.reload(true);
         } else {
           document.location.reload(true);
@@ -70,7 +66,7 @@ const PodcastsTab = props => {
                         podcast.podcast_image
                           ? podcast.podcast_image
                           : '/radio-occitanie-default.jpg'
-                        })`
+                      })`
                     }}
                   />
                 </TableCell>
@@ -83,7 +79,7 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeletePodcast(podcast.podcast_id, podcast.podcast_title, podcast.podcast_creation_date)}
+                    onClick={() => DeletePodcast(podcast.podcast_id)}
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>

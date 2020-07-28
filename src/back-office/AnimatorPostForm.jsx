@@ -2,12 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-import {
-  TextField,
-  Box,
-  Grid,
-  Button
-} from '@material-ui/core';
+import { TextField, Box, Grid, Button } from '@material-ui/core';
 
 const AnimatorPostForm = props => {
   const { handleSubmit, register } = useForm();
@@ -24,7 +19,11 @@ const AnimatorPostForm = props => {
         .post('/animator', dataForms)
         .then(res => res.data)
         .then(res => {
-          alert(`L'animateur/animatrice est créé`);
+          if (window.confirm(`L'animateur/animatrice est créé`)) {
+            document.location.reload(true);
+          } else {
+            document.location.reload(true);
+          }
         })
         .catch(e => {
           console.error(e);
