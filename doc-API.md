@@ -6,11 +6,11 @@ Le point d’entrée racine de l’API est http://151.80.119.192/
 
 ## Formats de données
 
-# Content-type
+## Content-type
 
 Les différents points d’entrée de l’API attendent du JSON (application/json) en entrée et renvoient du JSON en sortie.
 
-# Gestion d’erreurs
+## Gestion d’erreurs
 
 La gestion d’erreur de l’API utilise les codes d’erreur HTTP standards :
 
@@ -82,9 +82,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Attendu :
 
-    Accept: application/json
-    Content-Type: application/json
-
     {
       "podcast_title": "", (string)
       "podcast_duration": "", (string)
@@ -100,9 +97,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     {
     "fieldCount": 0,
@@ -123,9 +117,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Attendu :
 
-    Accept: application/json
-    Content-Type: application/json
-
     {
       "podcast_title": "", (string)
       "podcast_duration": "", (string)
@@ -141,9 +132,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     {
         "fieldCount": 0,
@@ -289,9 +277,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Attendu :
 
-    Accept: application/json
-    Content-Type: application/json
-
     {
       "program_title": "title", (string)
       "program_description": "desc", (string)
@@ -303,9 +288,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     {
         "fieldCount": 0,
@@ -325,9 +307,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Attendu :
-
-    Accept: application/json
-    Content-Type: application/json
 
     {
       "program_title": "title update", (string)
@@ -449,9 +428,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Attendu :
 
-    Accept: application/json
-    Content-type: application/json; charset=utf-8
-
     {
       "animator_firstname": "prénom", (string)
       "animator_lastname": "nom", (string)
@@ -481,9 +457,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Attendu :
-
-    Accept: application/json
-    Content-Type: application/json
 
     {
         "animator_firstname": "prénom (modifié)",
@@ -552,8 +525,6 @@ Lors d'une modification, toutes les données ne sont pas obligatoirement à modi
 >
 
     Attendu :
-
-    Content-Type: application/json
 
     {
         "category_name": "name" (string)
@@ -626,9 +597,6 @@ Lors d'une modification, toutes les données ne sont pas obligatoirement à modi
 
     Attendu :
 
-    Accept: application/json
-    Content-Type: application/json
-
     {
         "admin_user": "toto",
         "admin_email": "toto@toto.to",
@@ -655,9 +623,6 @@ Lors d'une modification, toutes les données ne sont pas obligatoirement à modi
 >
 
     Attendu :
-
-    Accept: application/json
-    Content-Type: application/json
 
     {
         "admin_user": "toto",
