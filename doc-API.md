@@ -22,7 +22,11 @@ La gestion d’erreur de l’API utilise les codes d’erreur HTTP standards :
 Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 > {
-> "message": "un message d’erreur"
+> "error": "code erreur"
+> }
+> OU
+> {
+> "error": "message d'erreur"
 > }
 
 ## Podcasts
@@ -30,9 +34,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 ### GET /podcast (récupérer tous les podcasts)
 
     Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     [
         {
@@ -57,9 +58,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Réponse :
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
-
     [
         {
             "podcast_id": 1, (integer)
@@ -81,6 +79,8 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 ### POST /podcast (création d'un podcast)
 
 >
+
+    Attendu :
 
     Accept: application/json
     Content-Type: application/json
@@ -121,6 +121,8 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
+    Attendu :
+
     Accept: application/json
     Content-Type: application/json
 
@@ -138,7 +140,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-    Nous attendons une réponse comme suit:
+    Réponse :
 
     HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
@@ -162,9 +164,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Réponse :
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
-
     {
         "message": "field deleted"
     }
@@ -176,9 +175,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     [
         {
@@ -205,9 +201,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Réponse :
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
-
     [
         {
             "podcast_id": 1, (integer)
@@ -232,9 +225,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     [
         {
@@ -263,9 +253,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Réponse :
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
-
     [
         {
             "program_id": 1, (interger)
@@ -286,9 +273,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Réponse :
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
-
     {
         "program_id": 1, (integer)
         "program_title": "title", (string)
@@ -303,7 +287,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-    Ce qui est attendu :
+    Attendu :
 
     Accept: application/json
     Content-Type: application/json
@@ -340,7 +324,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-    Ce qui est attendu :
+    Attendu :
 
     Accept: application/json
     Content-Type: application/json
@@ -356,9 +340,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
      Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     {
         "fieldCount": 0,
@@ -379,9 +360,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Réponse :
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
-
     {
         "message": "field deleted"
     }
@@ -393,9 +371,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     [
         {
@@ -416,9 +391,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     Réponse :
-
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
 
     [
         {
@@ -442,9 +414,6 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Réponse :
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-82020 09:58:26 GMT
-
     [
         {
             "animator_id": 1, (integer)
@@ -464,15 +433,244 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
     Réponse :
 
-    HTTP/1.1 200 OK
-    Content-Type: application/json; charset=utf-8
-
     {
         "animator_id": 1, (integer)
         "animator_firstname": "Prénom", (string)
         "animator_lastname": "Nom", (string)
         "animator_description": "description", (string)
         "animator_image": "url image" (string)
+    }
+
+>
+
+### POST /animator (créer un animateur)
+
+>
+
+    Attendu :
+
+    Accept: application/json
+    Content-type: application/json; charset=utf-8
+
+    {
+      "animator_firstname": "prénom", (string)
+      "animator_lastname": "nom", (string)
+      "animator_description": "description", (string)
+      "animator_image": "url image" (string)
+    }
+
+>
+
+    Réponse :
+
+    {
+        "message": "OK",
+        "dataSend": {
+            "animator_firstname": "prénom",
+            "animator_lastname": "nom",
+            "animator_description": "description",
+            "animator_image": "url image"
+         },
+        "affectedRows": 1
+    }
+
+>
+
+### PUT /animator/:id (modifier les données d'un animateur via son id)
+
+>
+
+    Attendu :
+
+    Accept: application/json
+    Content-Type: application/json
+
+    {
+        "animator_firstname": "prénom (modifié)",
+        "animator_lastname": "nom (modifié)",
+        "animator_description": "description (modifiée)",
+        "animator_image": "url image (modifié)"
+    }
+
+Lors d'une modification, toutes les données ne sont pas obligatoirement à modifier.
+
+>
+
+### DELETE /animator/:id (supprimer un animateur avec son id)
+
+>
+
+    Réponse :
+
+    {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "",
+        "protocol41": true,
+        "changedRows": 0
+    }
+
+>
+
+### GET /animator?program=:id (récupérer l'id du ou des animateurs d'une émission)
+
+>
+
+    Réponse :
+
+    [
+        {
+            "ro_animator_animator_id": 6
+        },
+        {...}
+    ]
+
+>
+
+### GET /animator?podcast=:id (récupérer l'id du ou des animateurs d'un podcast)
+
+>
+
+    Réponse :
+
+    [
+        {
+            "ro_animator_animator_id": 7
+        },
+        {...}
+    ]
+
+>
+
+## Catégories
+
+### POST /category (créer un catégorie)
+
+>
+
+    Attendu :
+
+    Content-Type: application/json
+
+    {
+        "category_name": "name" (string)
+    }
+
+>
+
+    Réponse :
+
+    {
+        "message": "OK",
+        "dataSend": {
+            "category_name": "name"
+            },
+        "affectedRows": 1
+    }
+
+>
+
+### GET /category (récupérer les données de toutes les catégories)
+
+>
+
+    Réponse :
+
+    [
+        {
+            "category_id": 1,
+            "category_name": "name 1"
+        },
+        {
+            "category_id": 2,
+            "category_name": "name 2"
+        },
+        {...},
+    ]
+
+>
+
+### GET /category/:id (récupérer les données d'une catégorie avec son id)
+
+>
+
+    Réponse :
+
+    {
+        "category_id": 3,
+        "category_name": "name"
+    }
+
+>
+
+### DELETE /categgory/:id (supprimer une catégorie avec son id)
+
+>
+
+    Réponse :
+
+    {
+        "message": "Category deleted"
+    }
+
+>
+
+## Signin
+
+### POST /signin (créer un utilisateur)
+
+>
+
+    Attendu :
+
+    Accept: application/json
+    Content-Type: application/json
+
+    {
+        "admin_user": "toto",
+        "admin_email": "toto@toto.to",
+        "admin_password": "toto"
+    }
+
+>
+
+    Réponse :
+
+        {
+            "id": 1,
+            "admin_user": "toto",
+            "admin_email": "toto@toto.to",
+            "admin_password": "toto"
+        }
+
+>
+
+## Login
+
+### POST /login (identification)
+
+>
+
+    Attendu :
+
+    Accept: application/json
+    Content-Type: application/json
+
+    {
+        "admin_user": "toto",
+        "admin_email": "toto@toto.to",
+        "admin_password": "toto"
+    }
+
+>
+
+    Réponse :
+
+    {
+        "message": "OK"
     }
 
 >
