@@ -163,13 +163,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 27
-    ETag: W/"1b-BdDEyEHDjKFalUr1YKJWafWVxiM"
-    Date: Tue, 28 Jul 2020 09:16:33 GMT
-    Connection: close
 
     {
         "message": "field deleted"
@@ -179,9 +173,9 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 ### GET /podcast?program=:id (récupérer les podcast en fonction de l'id d'une émission)
 
-    Réponse attendue :
-
 >
+
+    Réponse :
 
     HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
@@ -207,9 +201,9 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 ### GET /podcast?animator=:id (récupérer les podcast en fonction de l'id d'un animateur)
 
-    Réponse :
-
 >
+
+    Réponse :
 
     HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
@@ -235,9 +229,9 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 ### GET /podcast?categorie=:id (récupérer les podcast en fonction de l'id d'une catégorie)
 
-    Réponse :
-
 >
+
+    Réponse :
 
     HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
@@ -439,6 +433,8 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     ]
 
 >
+
+## Animateurs (animator)
 
 ### GET /animator (récupérer la liste de tous les animateurs)
 
