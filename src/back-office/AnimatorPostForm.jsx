@@ -19,11 +19,7 @@ const AnimatorPostForm = props => {
         .post('/animator', dataForms)
         .then(res => res.data)
         .then(res => {
-          if (window.confirm(`L'animateur/animatrice est créé`)) {
-            document.location.reload(true);
-          } else {
-            document.location.reload(true);
-          }
+          alert(`L'animateur/animatrice est créé`);
         })
         .catch(e => {
           console.error(e);

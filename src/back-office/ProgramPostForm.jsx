@@ -96,11 +96,7 @@ const ProgramPostForm = props => {
         .post('/program', dataForms)
         .then(res => res.data)
         .then(res => {
-          if (window.confirm(`L'émission a bien été créée`)) {
-            document.location.reload(true);
-          } else {
-            document.location.reload(true);
-          }
+          alert(`L'émission a bien été créée`);
         })
         .catch(e => {
           console.error(e);
@@ -116,11 +112,7 @@ const ProgramPostForm = props => {
         .put(`/program/${programIdToUpdate}`, dataForms)
         .then(res => res.data)
         .then(res => {
-          if (window.confirm(`L'émission est modifiée avec succès`)) {
-            document.location.reload(true);
-          } else {
-            document.location.reload(true);
-          }
+          alert(`L'émission est modifiée avec succès`);
         })
         .catch(e => {
           console.error(e);
