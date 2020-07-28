@@ -29,7 +29,9 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 ### GET /podcast (récupérer tous les podcasts)
 
-    On attend une réponse : 200
+    Réponse :
+
+    HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
 
     [
@@ -53,7 +55,9 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-    On attend une réponse : 200
+    Réponse :
+
+    HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
 
     [
@@ -95,16 +99,10 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-    Nous attendons une réponse comme suit:
+    Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 166
-    ETag: W/"a6-CbKUZbimu9qcbEgMlGX1l0Bnjd0"
-    Date: Tue, 28 Jul 2020 09:13:27 GMT
-    Connection: close
 
     {
     "fieldCount": 0,
@@ -143,13 +141,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     Nous attendons une réponse comme suit:
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 166
-    ETag: W/"a6-CbKUZbimu9qcbEgMlGX1l0Bnjd0"
-    Date: Tue, 28 Jul 2020 09:13:27 GMT
-    Connection: close
 
     {
         "fieldCount": 0,
@@ -192,13 +184,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 4838
-    ETag: W/"12e6-UO7eWNgGR0ia7xo4dLbt+gggIU8"
-    Date: Tue, 28 Jul 2020 09:18:44 GMT
-    Connection: close
 
     [
         {
@@ -226,13 +212,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 1382
-    ETag: W/"566-xX2cF5BKCxH0SIVXwQF0QgVmTUw"
-    Date: Tue, 28 Jul 2020 09:22:39 GMT
-    Connection: close
 
     [
         {
@@ -260,13 +240,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 >
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 5964
-    ETag: W/"174c-8uQLQMezDjuxqWlqy//iHS5BAew"
-    Date: Tue, 28 Jul 2020 09:24:46 GMT
-    Connection: close
 
     [
         {
@@ -296,13 +270,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 4972
-    ETag: W/"136c-6caug+gHrG4FuHrFGPmMlMhj81M"
-    Date: Tue, 28 Jul 2020 09:31:37 GMT
-    Connection: close
 
     [
         {
@@ -325,13 +293,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 163
-    ETag: W/"a3-Eaawd1SGjnt+700V/J3n8s3AnGk"
-    Date: Tue, 28 Jul 2020 09:34:19 GMT
-    Connection: close
 
     {
         "program_id": 1, (integer)
@@ -365,13 +327,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 166
-    ETag: W/"a6-CbKUZbimu9qcbEgMlGX1l0Bnjd0"
-    Date: Tue, 28 Jul 2020 09:38:36 GMT
-    Connection: close
 
     {
         "fieldCount": 0,
@@ -407,14 +363,8 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
      Réponse :
 
-     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
+    HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
-    Content-Length: 166
-    ETag: W/"a6-CbKUZbimu9qcbEgMlGX1l0Bnjd0"
-    Date: Tue, 28 Jul 2020 09:42:53 GMT
-    Connection: close
 
     {
         "fieldCount": 0,
@@ -436,13 +386,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 27
-    ETag: W/"1b-BdDEyEHDjKFalUr1YKJWafWVxiM"
-    Date: Tue, 28 Jul 2020 09:44:31 GMT
-    Connection: close
 
     {
         "message": "field deleted"
@@ -457,13 +401,7 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 256
-    ETag: W/"100-HewjlyrbbhWek+ML5gdktBj6474"
-    Date: Tue, 28 Jul 2020 09:45:52 GMT
-    Connection: close
 
     [
         {
@@ -479,20 +417,14 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## GET /program?categorie=4 (récupérer les données d'une ou plusieurs émissions en fonction d'une catégorie)
+### GET /program?categorie=4 (récupérer les données d'une ou plusieurs émissions en fonction d'une catégorie)
 
 >
 
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 1532
-    ETag: W/"5fc-ka93GT3Ay+YdAfiTkTPUvIG7b4c"
-    Date: Tue, 28 Jul 2020 09:49:29 GMT
-    Connection: close
 
     [
         {
@@ -508,20 +440,14 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## GET /animator (récupérer la liste de tous les animateurs)
+### GET /animator (récupérer la liste de tous les animateurs)
 
 >
 
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
-    Content-Type: application/json; charset=utf-8
-    Content-Length: 5708
-    ETag: W/"164c-PBGoJRGtkbgOQPI9LdwzgOrldR8"
-    Date: Tue, 28 Jul 2020 09:58:26 GMT
-    Connection: close
+    Content-Type: application/json; charset=utf-82020 09:58:26 GMT
 
     [
         {
@@ -536,20 +462,14 @@ Lorsque c’est possible, l’API répondra en JSON avec le format suivant :
 
 >
 
-## GET /animator/:id (récupérer les données d'un animateur)
+### GET /animator/:id (récupérer les données d'un animateur)
 
 >
 
     Réponse :
 
     HTTP/1.1 200 OK
-    X-Powered-By: Express
-    Access-Control-Allow-Origin: *
     Content-Type: application/json; charset=utf-8
-    Content-Length: 134
-    ETag: W/"86-iKN50VeoEWQOxLTJVw3Z/i51n50"
-    Date: Tue, 28 Jul 2020 10:00:04 GMT
-    Connection: close
 
     {
         "animator_id": 1, (integer)
