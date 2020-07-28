@@ -5,7 +5,6 @@ import moment from 'moment';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import PauseIcon from '@material-ui/icons/Pause';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
@@ -14,19 +13,10 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { handleAudio } from './util/utilFunctions';
 import './PodcastDetail.scss';
 
-const useStyles = makeStyles(() => ({
-  playIcon: {
-    height: 25,
-    width: 25
-  }
-}));
-
 const PodcastDetail = props => {
   const { onPlay, setOnPlay, setIdPodastPlay, idPodastPlay, playerRef, setDataPlayer } = props;
   const [podcastData, setPodcastData] = useState([]);
   const { podcast_id } = useParams();
-
-  const classes = useStyles();
 
   useEffect(() => {
     const fetchData = async () => {

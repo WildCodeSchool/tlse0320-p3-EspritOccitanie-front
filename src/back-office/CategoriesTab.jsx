@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -10,7 +10,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles({
@@ -20,14 +19,24 @@ const useStyles = makeStyles({
 });
 
 const PodcastsTab = props => {
-  const { categoriesList, setCategoriesList } = props;
+  const { categoriesList } = props;
 
   const classes = useStyles();
 
   // Delete Podcast
-  const DeleteCategories = id => {
-    axios.delete(`/category/${id}`).then(res => { });
-    alert('Categories supprimé(e) avec succès !');
+  const DeleteCategories = (id, name) => {
+    const confirm = window.confirm(
+    `Êtes-vous sûr de vouloir supprimer la catégorie : ${name} ? 
+    Attention, toutes les émissions et/ou podcasts assocciés n'aurons plus de catégorie si vous validez !`)
+    if (confirm) {
+      axios.delete(`/category/${id}`).then((res) => {
+        if(window.confirm('Catégorie supprimée avec succès !')){
+          document.location.reload(true);
+        } else {
+          document.location.reload(true);
+        }
+      });
+    }
   };
 
   return (
@@ -52,7 +61,7 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeleteCategories(categories.category_id)}
+                    onClick={() => DeleteCategories(categories.category_id, categories.category_name)}
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>

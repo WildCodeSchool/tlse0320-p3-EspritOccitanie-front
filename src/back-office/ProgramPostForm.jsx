@@ -49,7 +49,7 @@ const MenuProps = {
 };
 
 const ProgramPostForm = props => {
-  const { updateMode, valueToUpdate, programIdToUpdate } = props;
+  const { updateMode, programIdToUpdate } = props;
 
   // Get Category request
   const [categorys, setCategorys] = useState([]);
@@ -81,6 +81,7 @@ const ProgramPostForm = props => {
 
   const handleChange = event => {
     const animatorId = event.target.value;
+    console.log(event.target.value);
     setPersonName(animatorId);
   };
 
@@ -95,7 +96,11 @@ const ProgramPostForm = props => {
         .post('/program', dataForms)
         .then(res => res.data)
         .then(res => {
-          alert(`L'émission a bien été créée`);
+          if (window.confirm(`L'émission a bien été créée`)) {
+            document.location.reload(true);
+          } else {
+            document.location.reload(true);
+          }
         })
         .catch(e => {
           console.error(e);
@@ -111,7 +116,11 @@ const ProgramPostForm = props => {
         .put(`/program/${programIdToUpdate}`, dataForms)
         .then(res => res.data)
         .then(res => {
-          alert(`L'émission est modifiée avec succès'`);
+          if (window.confirm(`L'émission est modifiée avec succès`)) {
+            document.location.reload(true);
+          } else {
+            document.location.reload(true);
+          }
         })
         .catch(e => {
           console.error(e);
@@ -195,7 +204,7 @@ const ProgramPostForm = props => {
                 input={<Input id="select-multiple-chip" />}
                 renderValue={selected => (
                   <div className={classes.chips}>
-                    {selected.map((value, i) => (
+                    {selected.map(value => (
                       <Chip key={value} label={value} className={classes.chip} />
                     ))}
                   </div>

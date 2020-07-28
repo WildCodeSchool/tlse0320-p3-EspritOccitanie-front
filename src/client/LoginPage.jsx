@@ -51,6 +51,7 @@ const LoginPage = () => {
               id="outlined-basic"
               label="Mot de passe"
               variant="outlined"
+              type="password"
               fullWidth
             />
           </Grid>

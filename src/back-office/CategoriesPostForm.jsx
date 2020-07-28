@@ -16,7 +16,11 @@ const CategoriesPostForm = () => {
       .post('/category', dataForms)
       .then(res => res.data)
       .then(res => {
-        alert(`La catégorie a bien été créée.`);
+        if (window.confirm(`La catégorie a bien été créée.`)) {
+          document.location.reload(true);
+        } else {
+          document.location.reload(true);
+        }
       })
       .catch(e => {
         console.error(e);

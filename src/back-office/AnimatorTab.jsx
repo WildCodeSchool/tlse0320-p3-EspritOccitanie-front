@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -22,18 +22,24 @@ const useStyles = makeStyles({
 const AnimatorTab = props => {
   const {
     setUpdateMode,
-    animatorIdToUpdate,
     setAnimatorIdToUpdate,
-    animatorsData,
-    setAnimatorsData
+    animatorsData
   } = props;
 
   const classes = useStyles();
 
   // Delete Animator
-  const DeleteAnimator = id => {
-    axios.delete(`/animator/${id}`).then(response => { });
-    alert('Animateur/animatrice supprimé(e) avec succès !');
+  const DeleteAnimator = (id, firstname, lastname) => {
+    const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer l'animateur/animatrice : ${firstname} ${lastname} ? `)
+    if (confirm) {
+      axios.delete(`/animator/${id}`).then((res) => {
+        if(window.confirm('Animateur/animatrice supprimé(e) avec succès !')){
+          document.location.reload(true);
+        } else {
+          document.location.reload(true);
+        }
+      });
+    }
   };
 
   return (
@@ -47,7 +53,7 @@ const AnimatorTab = props => {
               <TableCell align="center">Nom</TableCell>
               <TableCell align="center">Prénom</TableCell>
               <TableCell align="center">Supprimer</TableCell>
-              <TableCell align="center">Mettre à jours</TableCell>
+              <TableCell align="center">Mettre à jour</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -75,7 +81,7 @@ const AnimatorTab = props => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeleteAnimator(animator.animator_id)}
+                    onClick={() => DeleteAnimator(animator.animator_id, animator.animator_lastname, animator.animator_firstname)}
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>

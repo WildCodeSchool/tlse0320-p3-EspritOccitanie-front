@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Container, Grid } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import PodcastList from './PodcastsList';
 import ProgramList from './ProgramList';
 import _ from 'lodash';
