@@ -26,10 +26,10 @@ const PodcastsTab = props => {
 
   // Delete Podcast
   const DeletePodcast = (id, title) => {
-    const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer l'émission : ${title} ? `)
+    const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer l'émission : ${title} ? `);
     if (confirm) {
-      axios.delete(`/program/${id}`).then((res) => {
-        if(window.confirm('Emission supprimée avec succès')){
+      axios.delete(`/program/${id}`).then(res => {
+        if (window.confirm('Emission supprimée avec succès')) {
           document.location.reload(true);
         } else {
           document.location.reload(true);
@@ -65,7 +65,7 @@ const PodcastsTab = props => {
                         program.program_image
                           ? program.program_image
                           : '/radio-occitanie-default.jpg'
-                        })`
+                      })`
                     }}
                   />
                 </TableCell>
@@ -74,7 +74,7 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeletePodcast(program.podcast_id, program.program_title)}
+                    onClick={() => DeletePodcast(program.program_id, program.program_title)}
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>

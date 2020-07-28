@@ -96,11 +96,11 @@ const ProgramPostForm = props => {
         .post('/program', dataForms)
         .then(res => res.data)
         .then(res => {
-          if(window.confirm(`L'émission a bien été créée`)) {
+          if (window.confirm(`L'émission a bien été créée`)) {
             document.location.reload(true);
-            } else {
-                document.location.reload(true);
-            }
+          } else {
+            document.location.reload(true);
+          }
         })
         .catch(e => {
           console.error(e);
@@ -116,11 +116,11 @@ const ProgramPostForm = props => {
         .put(`/program/${programIdToUpdate}`, dataForms)
         .then(res => res.data)
         .then(res => {
-          if(window.confirm(`L'émission est modifiée avec succès`)) {
+          if (window.confirm(`L'émission est modifiée avec succès`)) {
             document.location.reload(true);
-            } else {
-                document.location.reload(true);
-            }
+          } else {
+            document.location.reload(true);
+          }
         })
         .catch(e => {
           console.error(e);
@@ -204,15 +204,15 @@ const ProgramPostForm = props => {
                 input={<Input id="select-multiple-chip" />}
                 renderValue={selected => (
                   <div className={classes.chips}>
-                    {selected.map((value, i) => (
-                      <Chip key={value.animator_id} label={`${value.animator_firstname}${' '}${value.animator_lastname}`} className={classes.chip} />
+                    {selected.map(value => (
+                      <Chip key={value} label={value} className={classes.chip} />
                     ))}
                   </div>
                 )}
                 MenuProps={MenuProps}
               >
                 {animators.map(animator => (
-                  <MenuItem key={animator.animator_id} value={animator}>
+                  <MenuItem key={animator.animator_id} value={animator.animator_id}>
                     {`${animator.animator_id} - ${animator.animator_firstname} ${animator.animator_lastname}`}
                   </MenuItem>
                 ))}
