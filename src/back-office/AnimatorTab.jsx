@@ -20,24 +20,18 @@ const useStyles = makeStyles({
 });
 
 const AnimatorTab = props => {
-  const {
-    setUpdateMode,
-    setAnimatorIdToUpdate,
-    animatorsData
-  } = props;
+  const { setUpdateMode, setAnimatorIdToUpdate, animatorsData } = props;
 
   const classes = useStyles();
 
   // Delete Animator
   const DeleteAnimator = (id, firstname, lastname) => {
-    const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer l'animateur/animatrice : ${firstname} ${lastname} ? `)
+    const confirm = window.confirm(
+      `Êtes-vous sûr de vouloir supprimer l'animateur/animatrice : ${firstname} ${lastname} ? `
+    );
     if (confirm) {
-      axios.delete(`/animator/${id}`).then((res) => {
-        if(window.confirm('Animateur/animatrice supprimé(e) avec succès !')){
-          document.location.reload(true);
-        } else {
-          document.location.reload(true);
-        }
+      axios.delete(`/animator/${id}`).then(res => {
+        alert('Animateur/animatrice supprimé(e) avec succès !');
       });
     }
   };
@@ -70,7 +64,7 @@ const AnimatorTab = props => {
                         animator.animator_image
                           ? animator.animator_image
                           : '/radio-occitanie-default.jpg'
-                        })`
+                      })`
                     }}
                   />
                 </TableCell>
@@ -81,7 +75,13 @@ const AnimatorTab = props => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeleteAnimator(animator.animator_id, animator.animator_lastname, animator.animator_firstname)}
+                    onClick={() =>
+                      DeleteAnimator(
+                        animator.animator_id,
+                        animator.animator_lastname,
+                        animator.animator_firstname
+                      )
+                    }
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>

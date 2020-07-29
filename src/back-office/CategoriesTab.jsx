@@ -26,15 +26,12 @@ const PodcastsTab = props => {
   // Delete Podcast
   const DeleteCategories = (id, name) => {
     const confirm = window.confirm(
-    `Êtes-vous sûr de vouloir supprimer la catégorie : ${name} ? 
-    Attention, toutes les émissions et/ou podcasts assocciés n'aurons plus de catégorie si vous validez !`)
+      `Êtes-vous sûr de vouloir supprimer la catégorie : ${name} ? 
+    Attention, toutes les émissions et/ou podcasts assocciés n'aurons plus de catégorie si vous validez !`
+    );
     if (confirm) {
-      axios.delete(`/category/${id}`).then((res) => {
-        if(window.confirm('Catégorie supprimée avec succès !')){
-          document.location.reload(true);
-        } else {
-          document.location.reload(true);
-        }
+      axios.delete(`/category/${id}`).then(res => {
+        alert('Catégorie supprimée avec succès !');
       });
     }
   };
@@ -61,7 +58,9 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeleteCategories(categories.category_id, categories.category_name)}
+                    onClick={() =>
+                      DeleteCategories(categories.category_id, categories.category_name)
+                    }
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>

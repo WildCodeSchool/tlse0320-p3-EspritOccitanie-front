@@ -29,11 +29,7 @@ const PodcastsTab = props => {
     const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer le podcast ? `);
     if (confirm) {
       axios.delete(`/podcast/${id}`).then(res => {
-        if (window.confirm('Podcast supprimé avec succès')) {
-          document.location.reload(true);
-        } else {
-          document.location.reload(true);
-        }
+        alert('Podcast supprimé avec succès');
       });
     }
   };

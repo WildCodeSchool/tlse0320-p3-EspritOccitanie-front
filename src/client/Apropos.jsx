@@ -45,7 +45,7 @@ export default function Apropos() {
           <Grid container spacing={3} className="alignCenter">
             <Grid item xs={12} md={6} lg={6}>
               <div className="img-left">
-                <img src="/podacst.png" />
+                <img src="/podacst.png" alt="podcast-radio-occitanie" />
               </div>
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
@@ -112,7 +112,7 @@ export default function Apropos() {
             </Grid>
             <Grid item xs={12} md={6} lg={6}>
               <div className="img-right">
-                <img src="/equipes.png" />
+                <img src="/equipes.png" alt="animateur radio occitanie" />
               </div>
             </Grid>
           </Grid>
@@ -160,7 +160,7 @@ export default function Apropos() {
           <Contact />
 
           <div>
-            <img src="/contact-illustration.jpg" />
+            <img src="/contact-illustration.jpg" alt="contact" />
           </div>
         </Container>
       </section>

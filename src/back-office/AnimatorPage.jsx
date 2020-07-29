@@ -22,22 +22,6 @@ const AnimatorPage = () => {
     fetchData();
   }, []);
 
-  // const [ refresh, setRefresh ] = useState(false);
-  // const Refresh = () => {
-  //   // refresh data
-  //   if (!refresh) {
-  //     axios
-  //       .get('/animator')
-  //       .then(res => res.data)
-  //       .then(res => {
-  //         setAnimatorsData(res);
-  //       })
-  //       .catch(e => {
-  //         console.error(e);
-  //       });
-  //   }
-  // };
-
   return (
     <div className="admin-animator">
       <>

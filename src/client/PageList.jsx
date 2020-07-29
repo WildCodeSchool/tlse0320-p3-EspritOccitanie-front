@@ -44,33 +44,37 @@ const PageList = props => {
     fetchData();
   }, []);
 
-  // get all programs
-  useEffect(() => {
-    const fetchData = async () => {
-      if (url[3] === 'podcasts') {
-        const result3 = await axios.get('/program').catch(error => {
-          console.log(error.toJSON());
-        });
-        setProgramsList(result3.data);
-      }
-    };
-    fetchData();
-  }, []);
+  // // get all programs
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     if (url[3] === 'podcasts') {
+  //       const result3 = await axios.get('/program').catch(error => {
+  //         console.log(error.toJSON());
+  //       });
+  //       setProgramsList(result3.data);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
-  // get all podcasts
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('/podcast').catch(error => {
-        console.log(`error Podcaslist axios = `, error.toJSON());
-      });
-      setPodcastsList(result.data);
-    };
-    fetchData();
-  }, []);
+  // // get all podcasts
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const result = await axios.get('/podcast').catch(error => {
+  //       console.log(`error Podcaslist axios = `, error.toJSON());
+  //     });
+  //     setPodcastsList(result.data);
+  //   };
+  //   fetchData();
+  // }, []);
 
   // filter on podcasts
   useEffect(() => {
     const fetchData = async () => {
+      //get all podcasts
+      const allPodcasts = await axios.get('/podcast').catch(error => {
+        console.log(`error Podcaslist axios = `, error.toJSON());
+      });
       //get podcast when program selected
       const resultProgram = programSelected
         ? await axios.get(`/podcast?program=${programSelected}`).catch(function(error) {
@@ -119,6 +123,9 @@ const PageList = props => {
         // get podcasts if program selected
       } else if (programSelected && !animatorSelected && !categorySelected) {
         return setPodcastsList(resultProgram.data);
+        // get all podcasts
+      } else if (!programSelected && !animatorSelected && !categorySelected) {
+        return setPodcastsList(allPodcasts.data);
       }
     };
     fetchData();
@@ -152,7 +159,7 @@ const PageList = props => {
       } else if (categorySelected && !animatorSelected) {
         setProgramsList([]);
         return setProgramsList(resultCategory.data);
-      } else {
+      } else if (!categorySelected && !animatorSelected) {
         const result = await axios.get('/program').catch(error => {
           console.log(error.toJSON());
         });

@@ -123,11 +123,7 @@ const PodcastForm = props => {
         .post('/podcast', dataForms)
         .then(res => res.data)
         .then(res => {
-          if (window.confirm(`Le podcast a bien été ajouté dans la base de données`)) {
-            document.location.reload(true);
-          } else {
-            document.location.reload(true);
-          }
+          alert(`Le podcast a bien été ajouté dans la base de données`);
         })
         .catch(e => {
           console.error(e);
@@ -149,11 +145,7 @@ const PodcastForm = props => {
         .put(`/podcast/${podcastInfo.podcast_id}`, dataForms)
         .then(res => res.data)
         .then(res => {
-          if (window.confirm(`Le podcast a bien été modifié dans la base de données`)) {
-            document.location.reload(true);
-          } else {
-            document.location.reload(true);
-          }
+          alert(`Le podcast a bien été modifié dans la base de données`);
         })
         .catch(e => {
           console.error(e);
