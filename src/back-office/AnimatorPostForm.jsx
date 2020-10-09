@@ -1,27 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { makeStyles } from '@material-ui/core/styles';
-import ReactDatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import moment from 'moment';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-import {
-  Input,
-  TextField,
-  Box,
-  Grid,
-  Select,
-  MenuItem,
-  InputLabel,
-  Button,
-  FormControl,
-  Chip
-} from '@material-ui/core';
+import { TextField, Box, Grid, Button } from '@material-ui/core';
 
 const AnimatorPostForm = props => {
-  const { handleSubmit, register, control } = useForm();
-  const { updateMode, animatorIdToUpdate, animatorsData } = props;
+  const { handleSubmit, register } = useForm();
+  const { updateMode, animatorIdToUpdate } = props;
 
   const onSubmit = data => {
     // create animator

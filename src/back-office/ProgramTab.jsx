@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -21,12 +21,17 @@ const useStyles = makeStyles({
 });
 
 const PodcastsTab = props => {
-  const { setUpdateMode, setProgramIdToUpdate, programIdToUpdate, programsData } = props;
+  const { setUpdateMode, setProgramIdToUpdate, programsData } = props;
   const classes = useStyles();
 
   // Delete Podcast
-  const DeletePodcast = id => {
-    axios.delete(`/program/${id}`).then(res => {});
+  const DeletePodcast = (id, title) => {
+    const confirm = window.confirm(`Êtes-vous sûr de vouloir supprimer l'émission : ${title} ? `);
+    if (confirm) {
+      axios.delete(`/program/${id}`).then(res => {
+        alert('Emission supprimée avec succès');
+      });
+    }
   };
 
   return (
@@ -65,7 +70,7 @@ const PodcastsTab = props => {
                   <IconButton
                     aria-label="delete"
                     className={classes.margin}
-                    onClick={() => DeletePodcast(program.podcast_id)}
+                    onClick={() => DeletePodcast(program.program_id, program.program_title)}
                   >
                     <DeleteIcon fontSize="large" />
                   </IconButton>

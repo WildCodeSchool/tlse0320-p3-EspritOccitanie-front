@@ -21,7 +21,6 @@ const PodcastCard = props => {
     podcast_image,
     podcast_mp3,
     podcast_title,
-    ro_category_category_id,
     ro_program_program_id,
     program_title,
     category_name

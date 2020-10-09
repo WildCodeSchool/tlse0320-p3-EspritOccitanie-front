@@ -7,14 +7,12 @@ import './title.scss';
 const PodcastsList = props => {
   const {
     podcastsList,
-    setPodcastsList,
     onPlay,
     setOnPlay,
     setIdPodastPlay,
     idPodastPlay,
     playerRef,
-    setDataPlayer,
-    programsList
+    setDataPlayer
   } = props;
 
   const [nbPodcasts, setNbPodcasts] = useState();
