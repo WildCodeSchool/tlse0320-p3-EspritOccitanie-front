@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import { Container, Grid } from '@material-ui/core';
 import PodcastList from './PodcastsList';
 import ProgramList from './ProgramList';
@@ -184,26 +184,22 @@ const PageList = props => {
       </div>
 
       <Container>
-
-
-
-      <div className="filter-bar">
-        <AdvancedSearchSelect
-          podcastsList={podcastsList}
-          programsList={programsList}
-          animatorsList={animatorsList}
-          setAnimatorsList={setAnimatorsList}
-          categorysList={categorysList}
-          setCategorysList={setCategorysList}
-          programSelected={programSelected}
-          handleProgramSelected={handleProgramSelected}
-          animatorSelected={animatorSelected}
-          handleAnimatorSelected={handleAnimatorSelected}
-          categorySelected={categorySelected}
-          handleCategoryelected={handleCategoryelected}
-        />
-      </div>
-
+        <div className="filter-bar">
+          <AdvancedSearchSelect
+            podcastsList={podcastsList}
+            programsList={programsList}
+            animatorsList={animatorsList}
+            setAnimatorsList={setAnimatorsList}
+            categorysList={categorysList}
+            setCategorysList={setCategorysList}
+            programSelected={programSelected}
+            handleProgramSelected={handleProgramSelected}
+            animatorSelected={animatorSelected}
+            handleAnimatorSelected={handleAnimatorSelected}
+            categorySelected={categorySelected}
+            handleCategoryelected={handleCategoryelected}
+          />
+        </div>
 
         <Grid>
           {url[3] === 'emissions' ? (

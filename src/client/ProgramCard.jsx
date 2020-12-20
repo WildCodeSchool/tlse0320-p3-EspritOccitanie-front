@@ -4,7 +4,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import Button from '@material-ui/core/Button';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
@@ -36,12 +36,12 @@ const ProgramCard = props => {
               }
               return animator;
             })
-            );
-            return animatorList;
-          })
-          .catch(error => {
-            console.log(error.toJSON());
-          });
+          );
+          return animatorList;
+        })
+        .catch(error => {
+          console.log(error.toJSON());
+        });
       setAnimators(result);
     };
     fetchData();

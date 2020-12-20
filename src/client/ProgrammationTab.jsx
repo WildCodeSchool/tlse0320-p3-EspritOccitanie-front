@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid } from '@material-ui/core';

@@ -46,9 +46,10 @@ const AdvancedSearchSelect = props => {
                 onChange={e => handleProgramSelected(e.target.value)}
               >
                 <MenuItem value="">Toutes les émissions</MenuItem>
-                {programsList.map(program => {
-                  return <MenuItem value={program.program_id}>{program.program_title}</MenuItem>;
-                })}
+                {programsList &&
+                  programsList.map(program => {
+                    return <MenuItem value={program.program_id}>{program.program_title}</MenuItem>;
+                  })}
               </Select>
             </FormControl>
           </Grid>
@@ -69,9 +70,10 @@ const AdvancedSearchSelect = props => {
               onChange={e => handleCategoryelected(e.target.value)}
             >
               <MenuItem value="">Toutes les catégories</MenuItem>
-              {categorysList.map(category => {
-                return <MenuItem value={category.category_id}>{category.category_name}</MenuItem>;
-              })}
+              {categorysList &&
+                categorysList.map(category => {
+                  return <MenuItem value={category.category_id}>{category.category_name}</MenuItem>;
+                })}
             </Select>
           </FormControl>
         </Grid>
@@ -90,14 +92,15 @@ const AdvancedSearchSelect = props => {
               onChange={e => handleAnimatorSelected(e.target.value)}
             >
               <MenuItem value="">Tous les animateurs/animatrices</MenuItem>
-              {animatorsList.map(animator => (
-                <MenuItem key={animator.animator_id} value={animator.animator_id}>
-                  {`${animator.animator_id} - ` +
-                    animator.animator_firstname +
-                    ' ' +
-                    animator.animator_lastname}
-                </MenuItem>
-              ))}
+              {animatorsList &&
+                animatorsList.map(animator => (
+                  <MenuItem key={animator.animator_id} value={animator.animator_id}>
+                    {`${animator.animator_id} - ` +
+                      animator.animator_firstname +
+                      ' ' +
+                      animator.animator_lastname}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </Grid>

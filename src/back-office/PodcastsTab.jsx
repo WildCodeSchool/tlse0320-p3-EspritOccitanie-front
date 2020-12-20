@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
