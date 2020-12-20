@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import './PodcastCard.scss';
 import moment from 'moment';
 import IconButton from '@material-ui/core/IconButton';

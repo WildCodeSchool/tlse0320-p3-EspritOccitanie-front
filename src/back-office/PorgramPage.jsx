@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import ProgramPostForm from './ProgramPostForm';
