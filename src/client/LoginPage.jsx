@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Redirect } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import { TextField, Box, Grid, Button } from '@material-ui/core';
 
 const LoginPage = () => {

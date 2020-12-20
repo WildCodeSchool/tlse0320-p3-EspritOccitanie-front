@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import './admin.scss';
 
 import {

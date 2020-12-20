@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import { Container, Grid } from '@material-ui/core';
 import Contact from './Contact';
 import './Apropos.scss';

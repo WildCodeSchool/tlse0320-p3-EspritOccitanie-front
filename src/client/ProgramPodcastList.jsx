@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Grid } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../helpers/axios';
 import PodcastCard from './PodcastCard';
 
 const ProgramPodcastsList = props => {

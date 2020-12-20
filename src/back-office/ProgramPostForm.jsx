@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { makeStyles } from '@material-ui/core/styles';
-import axios from 'axios';
+import axios from '../helpers/axios';
 
 import {
   Input,
